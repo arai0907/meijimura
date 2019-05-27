@@ -7,6 +7,9 @@ const app = express();
 const httpServer = http.Server(app);
 const io = new SocketServer(httpServer);
 
+// 正解の色のIDを入れる
+let trueColorId;
+
 app.get('/',(req,res) => {
     const file = path.join(__dirname,'../index.html');
     res.sendFile(file);
@@ -17,8 +20,10 @@ app.get('/test',(req,res) => {
 });
 
 app.get('/api/start',(req,res) => {
+    const colorsId  = ["1","2","3"];
+    trueColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
     // スマホ側に "/api/start" というラベルでデータを送る
-    io.emit('/api/start',{ trueColor: 'red'});
+    io.emit('/api/start',{ trueColorId: trueColorId});
     res.send('start');
 });
 
