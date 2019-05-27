@@ -22,44 +22,20 @@ app.get('/api/start',(req,res) => {
     res.send('start');
 });
 
-app.get('/api/vote/start/1',(req,res) => {
+app.get('/api/vote/start/:id',(req,res) => {
+    console.log(req.params);
     res.send('/api/vote/start/1');
 });
 
-app.get('/api/vote/end/1',(req,res) => {
+app.get('/api/vote/end/:id',(req,res) => {
+    console.log(req.params);
     res.send('/api/vote/end/1');
 });
 
-app.get('/api/scene/change/1',(req,res) => {
+app.get('/api/scene/change/:id',(req,res) => {
+    console.log(req.params);
+    io.emit('/api/scene/change/1');
     res.send('/api/scene/change/1');
-});
-
-app.get('/api/vote/start/2',(req,res) => {
-    res.send('/api/vote/start/2');
-});
-
-app.get('/api/vote/end/2',(req,res) => {
-    res.send('/api/vote/end/2');
-});
-
-app.get('/api/scene/change/2',(req,res) => {
-    res.send('/api/scene/change/2');
-});
-
-app.get('/api/scene/change/3',(req,res) => {
-    res.send('/api/scene/change/3');
-});
-
-app.get('/api/scene/change/4',(req,res) => {
-    res.send('/api/scene/change/4');
-});
-
-app.get('/api/vote/start/3',(req,res) => {
-    res.send('/api/vote/start/3');
-});
-
-app.get('/api/vote/end/3',(req,res) => {
-    res.send('/api/vote/end/3');
 });
 
 app.get('/api/end',(req,res) => {
