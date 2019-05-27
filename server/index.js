@@ -34,7 +34,10 @@ app.get('/api/vote/end/:id',(req,res) => {
 
 app.get('/api/scene/change/:id',(req,res) => {
     console.log(req.params.id);
-    io.emit('/api/scene/change/:id',{ id: req.params.id});
+    io.emit('/api/scene/change/:id',{ 
+        sceneId: req.params.id,
+        colorId: 0
+    });
     res.send('/api/scene/change/1');
 });
 

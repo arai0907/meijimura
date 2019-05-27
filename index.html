@@ -47,6 +47,14 @@
 				// スマホの画面のアニメーションを切り替える
 				console.log('サーバーからWebSocketで/api/scene/change/:idのデータを受信しました。')
 				console.log(data);
+
+				if(data.sceneId === "0") {
+					document.body.style.backgroundColor = "red";
+				} else if(data.sceneId === "1") {
+					document.body.style.backgroundColor = "blue";
+				} else if(data.sceneId === "2") {
+					document.body.style.backgroundColor = "green";
+				}
 			});
 
 			socket.on('/api/end', (data) => {
