@@ -28,7 +28,8 @@ app.get('/api/start',(req,res) => {
 });
 
 app.get('/api/vote/start/:id',(req,res) => {
-    console.log(req.params);
+    console.log(req.params.id);
+    
     res.send('/api/vote/start/1');
 });
 
@@ -37,6 +38,7 @@ app.get('/api/vote/end/:id',(req,res) => {
     res.send('/api/vote/end/1');
 });
 
+// 画面の切り替え
 app.get('/api/scene/change/:id',(req,res) => {
     console.log(req.params.id);
     io.emit('/api/scene/change/:id',{ 
@@ -46,6 +48,7 @@ app.get('/api/scene/change/:id',(req,res) => {
     res.send('/api/scene/change/1');
 });
 
+// マッピング終了
 app.get('/api/end',(req,res) => {
     io.emit('/api/end');
     res.send('end');

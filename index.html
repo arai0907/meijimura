@@ -32,6 +32,8 @@
 				$sendMessage.val('');
 			});
 
+
+
 			socket.on('chat message', (msg) => {
 				$messages.append($('<li>' + msg + '</li>'));
 				window.scrollTo(0, document.body.scrollHeight);
@@ -68,9 +70,36 @@
 
 <body>
 	<ul id="js-messages"><!-- 送受信したメッセージがここに入ります。--></ul>
-
 	<form id="js-form" action="">
 		<input id="js-send-message" autocomplete="off" /><button>送信</button>
-		</form>
+	</form>
+
+	<p id="ab">click</p>
+	<p id="cd">click2</p>
+	<p id="ef">click3</p>
+
+	<script>
+		var p = document.getElementById('ab');
+		var handler = function(){
+			console.log('aaa!');
+			p.removeEventListener('click', handler, false);
+		};
+		p.addEventListener('click', handler, false);
+
+		var p = document.getElementById('cd');
+		var handler = function(){
+			console.log('ccc!');
+			p.removeEventListener('click', handler, false);
+		};
+		p.addEventListener('click', handler, false);
+
+		var p = document.getElementById('ef');
+		var handler = function(){
+			console.log('eee!');
+			p.removeEventListener('click', handler, false);
+		};
+		p.addEventListener('click', handler, false);
+
+	</script>
 </body>
 </html>
