@@ -6,6 +6,8 @@ const SocketServer = require('socket.io');
 let red = 0; // redの投票数を記録する変数
 let blue = 0; // blueの投票数を記録する変数
 let yellow = 0; // yellowの投票数を記録する変数
+let black = 0;
+let white = 0;
 
 const app = express();
 const httpServer = http.Server(app);
@@ -34,6 +36,9 @@ app.get('/api/start',(req,res) => {
 app.get('/api/vote/start/:id',(req,res) => {
     console.log(req.params.id);
     res.send('/api/vote/start/1');
+    red = 0;
+    blue = 0;
+    yellow = 0;
 });
 
 app.get('/api/vote/end/:id',(req,res) => {
