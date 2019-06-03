@@ -57,10 +57,10 @@ app.get('/api/end',(req,res) => {
 io.on('connection',(socket) => {
     console.log('ユーザーが接続しました。');
 
-    socket.on('chat message',(msg) => {
+    socket.on('vote',(msg) => {
         console.log('ユーザーからのメッセージを受信しました。');
         // このサーバーに接続しているユーザーに受信したメッセージを配信します
-        io.emit('chat message',msg);
+        io.emit('vote',msg);
     });
 });
 

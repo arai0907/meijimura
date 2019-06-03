@@ -65,24 +65,25 @@
 				console.log(data);
 			});
 
+		// 投票
 		var p = document.getElementById('ab');
 		var handler = function(){
-			console.log('aaa!');
-			socket.emit('chat message', 'aaa!');
+			console.log('vote1');
+			socket.emit('vote', 'vote1');
 		};
 		p.addEventListener('click', handler, false);
 
 		var p1 = document.getElementById('cd');
 		var handler1 = function(){
-			console.log('ccc!');
-			socket.emit('chat message', 'ccc');
+			console.log('vote2');
+			socket.emit('vote', 'vote2');
 		};
 		p1.addEventListener('click', handler1, false);
 
 		var p2 = document.getElementById('ef');
 		var handler2 = function(){
-			console.log('eee!');
-			socket.emit('chat message', 'eee');
+			console.log('vote3');
+			socket.emit('vote', 'vote3');
 		};
 		p2.addEventListener('click', handler2, false);
 		});
