@@ -64,6 +64,27 @@
 				console.log('サーバーからWebSocketで/api/endのデータを受信しました。')
 				console.log(data);
 			});
+
+		var p = document.getElementById('ab');
+		var handler = function(){
+			console.log('aaa!');
+			socket.emit('chat message', 'aaa!');
+		};
+		p.addEventListener('click', handler, false);
+
+		var p1 = document.getElementById('cd');
+		var handler1 = function(){
+			console.log('ccc!');
+			socket.emit('chat message', 'ccc');
+		};
+		p1.addEventListener('click', handler1, false);
+
+		var p2 = document.getElementById('ef');
+		var handler2 = function(){
+			console.log('eee!');
+			socket.emit('chat message', 'eee');
+		};
+		p2.addEventListener('click', handler2, false);
 		});
 	</script>
 </head>
@@ -78,28 +99,5 @@
 	<p id="cd">click2</p>
 	<p id="ef">click3</p>
 
-	<script>
-		var p = document.getElementById('ab');
-		var handler = function(){
-			console.log('aaa!');
-			p.removeEventListener('click', handler, false);
-		};
-		p.addEventListener('click', handler, false);
-
-		var p = document.getElementById('cd');
-		var handler = function(){
-			console.log('ccc!');
-			p.removeEventListener('click', handler, false);
-		};
-		p.addEventListener('click', handler, false);
-
-		var p = document.getElementById('ef');
-		var handler = function(){
-			console.log('eee!');
-			p.removeEventListener('click', handler, false);
-		};
-		p.addEventListener('click', handler, false);
-
-	</script>
 </body>
 </html>
