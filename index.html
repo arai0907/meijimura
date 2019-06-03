@@ -69,21 +69,21 @@
 		var p = document.getElementById('ab');
 		var handler = function(){
 			console.log('vote1');
-			socket.emit('vote', 'vote1');
+			socket.emit('vote', 'red');
 		};
 		p.addEventListener('click', handler, false);
 
 		var p1 = document.getElementById('cd');
 		var handler1 = function(){
 			console.log('vote2');
-			socket.emit('vote', 'vote2');
+			socket.emit('vote', 'blue');
 		};
 		p1.addEventListener('click', handler1, false);
 
 		var p2 = document.getElementById('ef');
 		var handler2 = function(){
 			console.log('vote3');
-			socket.emit('vote', 'vote3');
+			socket.emit('vote', 'yellow');
 		};
 		p2.addEventListener('click', handler2, false);
 		});

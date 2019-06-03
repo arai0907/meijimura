@@ -3,6 +3,10 @@ const http = require('http');
 const path = require('path');
 const SocketServer = require('socket.io');
 
+let red = 0; // redの投票数を記録する変数
+let blue = 0; // blueの投票数を記録する変数
+let yellow = 0; // yellowの投票数を記録する変数
+
 const app = express();
 const httpServer = http.Server(app);
 const io = new SocketServer(httpServer);
@@ -29,7 +33,6 @@ app.get('/api/start',(req,res) => {
 
 app.get('/api/vote/start/:id',(req,res) => {
     console.log(req.params.id);
-    
     res.send('/api/vote/start/1');
 });
 
@@ -61,7 +64,23 @@ io.on('connection',(socket) => {
         console.log('ユーザーからのメッセージを受信しました。');
         // このサーバーに接続しているユーザーに受信したメッセージを配信します
         io.emit('vote',msg);
+
+switch (msg){
+    case 'red':
+        red = red + 1;
+        console.log(red);
+        break;
+    case 'blue':
+        blue = blue + 1;
+        console.log(blue);
+        break;
+    case 'yellow':
+        yellow = yellow + 1;
+        console.log(yellow);
+        break;
+}
     });
+
 });
 
 httpServer.listen(3000,function(){
