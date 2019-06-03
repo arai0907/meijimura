@@ -63,22 +63,28 @@ io.on('connection',(socket) => {
     socket.on('vote',(msg) => {
         console.log('ユーザーからのメッセージを受信しました。');
         // このサーバーに接続しているユーザーに受信したメッセージを配信します
-        io.emit('vote',msg);
+        // io.emit('vote',msg);
 
-switch (msg){
-    case 'red':
-        red = red + 1;
-        console.log(red);
-        break;
-    case 'blue':
-        blue = blue + 1;
-        console.log(blue);
-        break;
-    case 'yellow':
-        yellow = yellow + 1;
-        console.log(yellow);
-        break;
-}
+        switch (msg){
+            case 'red':
+                red = red + 1;
+                console.log(red);
+                break;
+            case 'blue':
+                blue = blue + 1;
+                console.log(blue);
+                break;
+            case 'yellow':
+                yellow = yellow + 1;
+                console.log(yellow);
+                break;
+        }
+
+        io.emit('vote',{
+            R: red,
+            B: blue,
+            Y: yellow
+        });
     });
 
 });

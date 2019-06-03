@@ -65,6 +65,12 @@
 				console.log(data);
 			});
 
+			socket.on('vote', (data) => {
+				// スマホの画面を終了画面に切り替える
+				console.log('サーバーからWebSocketでvoteのデータを受信しました。')
+				console.log(data);
+			});
+
 		// 投票
 		var p = document.getElementById('ab');
 		var handler = function(){
@@ -87,6 +93,8 @@
 		};
 		p2.addEventListener('click', handler2, false);
 		});
+
+
 	</script>
 </head>
 
