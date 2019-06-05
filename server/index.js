@@ -39,6 +39,8 @@ app.get('/api/vote/start/:id',(req,res) => {
     red = 0;
     blue = 0;
     yellow = 0;
+    black = 0;
+    white = 0;
 });
 
 app.get('/api/vote/end/:id',(req,res) => {
@@ -83,12 +85,22 @@ io.on('connection',(socket) => {
                 yellow = yellow + 1;
                 console.log(yellow);
                 break;
+            case 'black':
+                black = black + 1;
+                console.log(black);
+                break;
+            case 'white':
+                white = white + 1;
+                console.log(white);
+                break;
         }
 
         io.emit('vote',{
             R: red,
             B: blue,
-            Y: yellow
+            Y: yellow,
+            b: black,
+            w: white
         });
     });
 
