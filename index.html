@@ -72,26 +72,41 @@
 			});
 
 		// 投票
-		var p = document.getElementById('ab');
-		var handler = function(){
+		var p1 = document.getElementById('ab');
+		var handler1 = function(){
 			console.log('vote1');
 			socket.emit('vote', 'red');
 		};
-		p.addEventListener('click', handler, false);
+		p1.addEventListener('click', handler1, false);
 
-		var p1 = document.getElementById('cd');
-		var handler1 = function(){
+		var p2 = document.getElementById('cd');
+		var handler2 = function(){
 			console.log('vote2');
 			socket.emit('vote', 'blue');
 		};
-		p1.addEventListener('click', handler1, false);
+		p2.addEventListener('click', handler2, false);
 
-		var p2 = document.getElementById('ef');
-		var handler2 = function(){
+		var p3 = document.getElementById('ef');
+		var handler3 = function(){
 			console.log('vote3');
 			socket.emit('vote', 'yellow');
 		};
-		p2.addEventListener('click', handler2, false);
+		p3.addEventListener('click', handler3, false);
+
+		var p4 = document.getElementById('gh');
+		var handler4 = function(){
+			console.log('vote4');
+			socket.emit('vote', 'black');
+		};
+		p4.addEventListener('click', handler4, false);
+
+		var p5 = document.getElementById('ij');
+		var handler5 = function(){
+			console.log('vote5');
+			socket.emit('vote', 'white');
+		};
+		p5.addEventListener('click', handler5, false);
+
 		});
 
 
@@ -107,6 +122,8 @@
 	<p id="ab">click</p>
 	<p id="cd">click2</p>
 	<p id="ef">click3</p>
+	<p id="gh">click_1</p>
+	<p id="ij">click_2</p>
 
 </body>
 </html>
