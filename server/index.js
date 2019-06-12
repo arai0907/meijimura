@@ -26,7 +26,7 @@ app.get('/',(req,res) => {
 // });
 
 app.get('/api/start',(req,res) => {
-    const colorsId  = ["1","2","3"];
+    const colorsId = ["1","2","3"];
     trueColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
     // スマホ側に "/api/start" というラベルでデータを送る
     io.emit('/api/start',{ trueColorId: trueColorId});
@@ -34,7 +34,7 @@ app.get('/api/start',(req,res) => {
 });
 
 // 投票開始
-app.get('/api/vote/start/:id',(req,res) => {
+app.get('http://153.126.192.38:3000/api/vote/start/:id',(req,res) => {
     console.log(req.params.id);
     res.send('/api/vote/start/1');
     red = 0;
@@ -44,12 +44,15 @@ app.get('/api/vote/start/:id',(req,res) => {
     white = 0;
 });
 
-// 投票終了
-app.get('/api/end',(req,res) => {
-    const colorsId = ["1","2","3"];
-    trueColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
-    // console.log(req.params.id);
-    io.emit('/api/scene/change/', {sceneId: trueColorId});
+// 投票終了１
+app.get('/api/vote/end/1',(req,res) => {
+    const voteColorsId = ["1","2","3"];
+    randomTrueColorId = voteColorsId[Math.floor(Math.random() * voteColorsId.length)];
+    // スマホ側に "/api/vote/end/1" というラベルでデータを送る
+    io.emit('/api/scene/change/', {
+        sceneId: 1, 
+        colorId: randomTrueColorId
+    });
     res.send('end');
 });
 
