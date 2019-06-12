@@ -74,35 +74,35 @@
 		// 投票
 		var p1 = document.getElementById('ab');
 		var handler1 = function(){
-			console.log('vote1');
+			console.log('vote1 赤に投票しました');
 			socket.emit('vote', 'red');
 		};
 		p1.addEventListener('click', handler1, false);
 
 		var p2 = document.getElementById('cd');
 		var handler2 = function(){
-			console.log('vote2');
+			console.log('vote2 青に投票しました');
 			socket.emit('vote', 'blue');
 		};
 		p2.addEventListener('click', handler2, false);
 
 		var p3 = document.getElementById('ef');
 		var handler3 = function(){
-			console.log('vote3');
+			console.log('vote3 黄に投票しました');
 			socket.emit('vote', 'yellow');
 		};
 		p3.addEventListener('click', handler3, false);
 
 		var p4 = document.getElementById('gh');
 		var handler4 = function(){
-			console.log('vote4');
+			console.log('vote4 黒に投票しました');
 			socket.emit('vote', 'black');
 		};
 		p4.addEventListener('click', handler4, false);
 
 		var p5 = document.getElementById('ij');
 		var handler5 = function(){
-			console.log('vote5');
+			console.log('vote5 白に投票しました');
 			socket.emit('vote', 'white');
 		};
 		p5.addEventListener('click', handler5, false);
