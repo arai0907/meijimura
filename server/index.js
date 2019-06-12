@@ -33,6 +33,7 @@ app.get('/api/start',(req,res) => {
     res.send('start');
 });
 
+// 投票開始
 app.get('/api/vote/start/:id',(req,res) => {
     console.log(req.params.id);
     res.send('/api/vote/start/1');
@@ -43,9 +44,13 @@ app.get('/api/vote/start/:id',(req,res) => {
     white = 0;
 });
 
-app.get('/api/vote/end/:id',(req,res) => {
-    console.log(req.params);
-    res.send('/api/vote/end/1');
+// 投票終了
+app.get('/api/end',(req,res) => {
+    // console.log(req.params.id);
+    io.emit('/api/scene/change/', {
+        sceneId: req.params.id
+    });
+    res.send('end');
 });
 
 // 画面の切り替え
@@ -70,7 +75,6 @@ io.on('connection',(socket) => {
     socket.on('vote',(msg) => {
         console.log('ユーザーからのメッセージを受信しました。');
         // このサーバーに接続しているユーザーに受信したメッセージを配信します
-        // io.emit('vote',msg);
 
         switch (msg){
             case 'red':
@@ -103,7 +107,6 @@ io.on('connection',(socket) => {
             w: white
         });
     });
-
 });
 
 httpServer.listen(3000,function(){
