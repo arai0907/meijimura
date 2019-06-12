@@ -21,9 +21,9 @@ app.get('/',(req,res) => {
     res.sendFile(file);
 });
 
-app.get('/test',(req,res) => {
-    res.send('test');
-});
+// app.get('/test',(req,res) => {
+//     res.send('test');
+// });
 
 app.get('/api/start',(req,res) => {
     const colorsId  = ["1","2","3"];
@@ -46,10 +46,10 @@ app.get('/api/vote/start/:id',(req,res) => {
 
 // 投票終了
 app.get('/api/end',(req,res) => {
+    const colorsId = ["1","2","3"];
+    trueColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
     // console.log(req.params.id);
-    io.emit('/api/scene/change/', {
-        sceneId: req.params.id
-    });
+    io.emit('/api/scene/change/', {sceneId: trueColorId});
     res.send('end');
 });
 
