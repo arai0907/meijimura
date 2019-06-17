@@ -24,6 +24,9 @@
 			const $sendMessage = $('#js-send-message');
 			const $messages = $('#js-messages');
 
+			// 投票内容を表示する要素を取得する
+			const $log = $('#js-log')
+
 			$form.submit((e) => {
 				e.preventDefault();
 				const message = $sendMessage.val();
@@ -75,6 +78,7 @@
 		var p1 = document.getElementById('ab');
 		var handler1 = function(){
 			console.log('vote1');
+			$log.text('赤に投票しました');
 			socket.emit('vote', 'red');
 		};
 		p1.addEventListener('click', handler1, false);
@@ -82,6 +86,7 @@
 		var p2 = document.getElementById('cd');
 		var handler2 = function(){
 			console.log('vote2');
+			$log.text('青に投票しました');
 			socket.emit('vote', 'blue');
 		};
 		p2.addEventListener('click', handler2, false);
@@ -89,6 +94,7 @@
 		var p3 = document.getElementById('ef');
 		var handler3 = function(){
 			console.log('vote3');
+			$log.text('黄に投票しました');
 			socket.emit('vote', 'yellow');
 		};
 		p3.addEventListener('click', handler3, false);
@@ -96,6 +102,7 @@
 		var p4 = document.getElementById('gh');
 		var handler4 = function(){
 			console.log('vote4');
+			$log.text('黒に投票しました');
 			socket.emit('vote', 'black');
 		};
 		p4.addEventListener('click', handler4, false);
@@ -103,6 +110,7 @@
 		var p5 = document.getElementById('ij');
 		var handler5 = function(){
 			console.log('vote5');
+			$log.text('白に投票しました');
 			socket.emit('vote', 'white');
 		};
 		p5.addEventListener('click', handler5, false);
@@ -118,6 +126,8 @@
 	<form id="js-form" action="">
 		<input id="js-send-message" autocomplete="off" /><button>送信</button>
 	</form>
+
+	<div id="js-log"><!-- ここに投票内容が出ます --></div>
 
 	<p id="ab">click</p>
 	<p id="cd">click2</p>
