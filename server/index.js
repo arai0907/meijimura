@@ -34,16 +34,19 @@ app.get('/api/start',(req,res) => {
 });
 
 // 投票開始
+const id = '1';
+
 app.get('/api/vote/start/:id',(req,res) => {
     console.log(req.params.id);
 
     if(req.params.id === '1'){
-        io.emit('/api/start/1',{ trueColorId: trueColorId});
+        io.emit('/api/vote/start/1',{ trueColorId: trueColorId});
         res.send('start1');
-    } else {
-        io.emit('/api/start/2');
+    } else if(req.params.id == '2') {
+        io.emit('/api/vote/start/2');
         res.send('start2');
-        io.emit('/api/start/3');
+    } else {
+        io.emit('/api/vote/start/3');
         res.send('start3');
     }
     // res.send('/api/vote/start/1');
