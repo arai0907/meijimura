@@ -34,14 +34,24 @@ app.get('/api/start',(req,res) => {
 });
 
 // 投票開始
-app.get('http://153.126.192.38:3000/api/vote/start/:id',(req,res) => {
+app.get('/api/vote/start/:id',(req,res) => {
     console.log(req.params.id);
-    res.send('/api/vote/start/1');
-    red = 0;
-    blue = 0;
-    yellow = 0;
-    black = 0;
-    white = 0;
+
+    if(req.params.id === '1'){
+        io.emit('/api/start/1',{ trueColorId: trueColorId});
+        res.send('start1');
+    } else {
+        io.emit('/api/start/2');
+        res.send('start2');
+        io.emit('/api/start/3');
+        res.send('start3');
+    }
+    // res.send('/api/vote/start/1');
+    // red = 0;
+    // blue = 0;
+    // yellow = 0;
+    // black = 0;
+    // white = 0;
 });
 
 // 投票終了１
