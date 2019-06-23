@@ -48,10 +48,9 @@
 				console.log(data);
 			});
 
-			socket.on('/api/vote/start',(data) => {
+			socket.on('/api/vote/start/1',(data) => {
 				console.log('サーバーからWebSocketで/api/vote/startのデータを受け取る')
 				console.log(data);
-				socket.emit('/api/vote/start/1',{ randomTrueColorId: randomTrueColorId });
 			})
 
 			socket.on('/api/scene/change/:id', (data) => {
