@@ -48,6 +48,12 @@
 				console.log(data);
 			});
 
+			socket.on('/api/vote/start',(data) => {
+				console.log('サーバーからWebSocketで/api/vote/startのデータを受け取る')
+				console.log(data);
+				socket.emit('/api/vote/start/1',{ randomTrueColorId: randomTrueColorId });
+			})
+
 			socket.on('/api/scene/change/:id', (data) => {
 				// スマホの画面のアニメーションを切り替える
 				console.log('サーバーからWebSocketで/api/scene/change/:idのデータを受信しました。')

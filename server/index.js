@@ -42,7 +42,7 @@ app.get('/api/vote/start/:id',(req,res) => {
     if(req.params.id === '1'){
         const voteColorsId = ["1,2","1,3","2,3"];
         randomTrueColorId = voteColorsId[Math.floor(Math.random() * voteColorsId.length)];
-        io.emit('/api/vote/start/1',{ trueColorId: trueColorId});
+        io.emit('/api/vote/start/1',{ randomTrueColorId: randomTrueColorId });
         res.send('start1');
     } else if(req.params.id == '2') {
         io.emit('/api/vote/start/2');
