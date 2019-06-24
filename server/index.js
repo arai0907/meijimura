@@ -3,11 +3,26 @@ const http = require('http');
 const path = require('path');
 const SocketServer = require('socket.io');
 
+// Color番号
+const COLORS = {
+    sameVote: 0,
+    red: 1,
+    yellow: 2,
+    blue: 3,
+    green: 4,
+    orange: 5,
+    purple: 6,
+    white: 7,
+    black: 8
+};
+
 let red = 0; // redの投票数を記録する変数
-let blue = 0; // blueの投票数を記録する変数
 let yellow = 0; // yellowの投票数を記録する変数
+let blue = 0; // blueの投票数を記録する変数
 let black = 0; // blackの投票数を記録する変数
 let white = 0; // whiteの投票数を記録する変数
+
+const vote1colors = [] // 投票１でランダムで選択された2色のID
 
 const app = express();
 const httpServer = http.Server(app);
@@ -30,7 +45,7 @@ app.get('/api/start',(req,res) => {
     trueColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
     // スマホ側に "/api/start" というラベルでデータを送る
     io.emit('/api/start',{ trueColorId: trueColorId});
-    res.send('start');
+    res.json({ colorId: trueColorId });
 });
 
 // 投票開始１
@@ -38,10 +53,28 @@ const id = '1';
 app.get('/api/vote/start/:id',(req,res) => {
     console.log(req.params.id);
 
+    // 投票数をリセット
+    red = 0;
+    yellow = 0;
+    blue = 0;
+    white = 0;
+    black = 0;
+
     if(req.params.id === '1'){
-        const voteColorsId = ["1,2","1,3","2,3"];
-        randomTrueColorId = voteColorsId[Math.floor(Math.random() * voteColorsId.length)];
-        io.emit('/api/vote/start/1',{ randomTrueColorId: randomTrueColorId });
+        const voteColorsId = [
+            [COLORS.red, COLORS.yellow],
+            [COLORS.red, COLORS.blue],
+            [COLORS.yellow, COLORS.blue]
+        ];
+
+        // 投票１の2色をランダムで決定する
+        randomVoteColorId = voteColorsId[Math.floor(Math.random() * voteColorsId.length)];
+
+        // 投票１で選ばれた2色を保存
+        vote1colors[0] = randomVoteColorId[0];
+        vote1colors[1] = randomVoteColorId[1];
+
+        io.emit('/api/vote/start/1',{ randomVoteColorId: randomVoteColorId });
         res.send('start1');
     } else if(req.params.id == '2') {
         io.emit('/api/vote/start/2');
@@ -54,14 +87,36 @@ app.get('/api/vote/start/:id',(req,res) => {
 
 // 投票終了１
 app.get('/api/vote/end/1',(req,res) => {
-    const voteColorsId = ["1","2","3"];
-    randomTrueColorId = voteColorsId[Math.floor(Math.random() * voteColorsId.length)];
-    // スマホ側に "/api/vote/end/1" というラベルでデータを送る
-    io.emit('/api/scene/change/', {
-        sceneId: 1, 
-        colorId: randomTrueColorId
-    });
-    res.send('end');
+    // 投票
+    let voteColor0 = 0;
+    let voteColor1 = 0;
+    
+    if (vote1colors[0] === COLORS.red && vote1colors[1] === COLORS.yellow) {
+        voteColor0 = red;
+        voteColor1 = yellow;
+    } else if (vote1colors[0] === COLORS.red && vote1colors[1] === COLORS.blue) {
+        voteColor0 = red;
+        voteColor1 = blue;
+    } else if (vote1colors[0] === COLORS.yellow && vote1colors[1] === COLORS.blue) {
+        voteColor0 = yellow;
+        voteColor1 = blue;
+    }
+
+    if (voteColor0 > voteColor1) {
+        // 投票数がvoteColor1よりvoteColor0の方が大きい時
+        res.json({ colorId: vote1colors[0] });
+    } else if (voteColor0 < voteColor1) {
+        // 投票数がvoteColor0よりvoteColor1の方が大きい時
+        res.json({ colorId: vote1colors[1] });
+    } else {
+        // 投票数が同票の時
+        res.json({ colorId: COLORS.sameVote });
+    }
+});
+
+// 投票終了2
+app.get('/api/vote/end/2',(req,res) => {
+    res.send('/api/vote/end/2');
 });
 
 // 画面の切り替え
