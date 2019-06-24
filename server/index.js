@@ -6,8 +6,8 @@ const SocketServer = require('socket.io');
 let red = 0; // redの投票数を記録する変数
 let blue = 0; // blueの投票数を記録する変数
 let yellow = 0; // yellowの投票数を記録する変数
-let black = 0;
-let white = 0;
+let black = 0; // blackの投票数を記録する変数
+let white = 0; // whiteの投票数を記録する変数
 
 const app = express();
 const httpServer = http.Server(app);
@@ -21,31 +21,54 @@ app.get('/',(req,res) => {
     res.sendFile(file);
 });
 
-app.get('/test',(req,res) => {
-    res.send('test');
-});
+// app.get('/test',(req,res) => {
+//     res.send('test');
+// });
 
 app.get('/api/start',(req,res) => {
-    const colorsId  = ["1","2","3"];
+    const colorsId = ["1","2","3"];
     trueColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
     // スマホ側に "/api/start" というラベルでデータを送る
     io.emit('/api/start',{ trueColorId: trueColorId});
     res.send('start');
 });
 
+// 投票開始
+const id = '1';
+
 app.get('/api/vote/start/:id',(req,res) => {
     console.log(req.params.id);
-    res.send('/api/vote/start/1');
-    red = 0;
-    blue = 0;
-    yellow = 0;
-    black = 0;
-    white = 0;
+
+    if(req.params.id === '1'){
+        const voteColorsId = ["1,2","1,3","2,3"];
+        randomTrueColorId = voteColorsId[Math.floor(Math.random() * voteColorsId.length)];
+        io.emit('/api/vote/start/1',{ randomTrueColorId: randomTrueColorId });
+        res.send('start1');
+    } else if(req.params.id == '2') {
+        io.emit('/api/vote/start/2');
+        res.send('start2');
+    } else {
+        io.emit('/api/vote/start/3');
+        res.send('start3');
+    }
+    // res.send('/api/vote/start/1');
+    // red = 0;
+    // blue = 0;
+    // yellow = 0;
+    // black = 0;
+    // white = 0;
 });
 
-app.get('/api/vote/end/:id',(req,res) => {
-    console.log(req.params);
-    res.send('/api/vote/end/1');
+// 投票終了１
+app.get('/api/vote/end/1',(req,res) => {
+    const voteColorsId = ["1","2","3"];
+    randomTrueColorId = voteColorsId[Math.floor(Math.random() * voteColorsId.length)];
+    // スマホ側に "/api/vote/end/1" というラベルでデータを送る
+    io.emit('/api/scene/change/', {
+        sceneId: 1, 
+        colorId: randomTrueColorId
+    });
+    res.send('end');
 });
 
 // 画面の切り替え
@@ -70,7 +93,6 @@ io.on('connection',(socket) => {
     socket.on('vote',(msg) => {
         console.log('ユーザーからのメッセージを受信しました。');
         // このサーバーに接続しているユーザーに受信したメッセージを配信します
-        // io.emit('vote',msg);
 
         switch (msg){
             case 'red':
@@ -103,7 +125,6 @@ io.on('connection',(socket) => {
             w: white
         });
     });
-
 });
 
 httpServer.listen(3000,function(){
