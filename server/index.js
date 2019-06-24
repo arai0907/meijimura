@@ -33,9 +33,8 @@ app.get('/api/start',(req,res) => {
     res.send('start');
 });
 
-// 投票開始
+// 投票開始１
 const id = '1';
-
 app.get('/api/vote/start/:id',(req,res) => {
     console.log(req.params.id);
 
@@ -51,12 +50,6 @@ app.get('/api/vote/start/:id',(req,res) => {
         io.emit('/api/vote/start/3');
         res.send('start3');
     }
-    // res.send('/api/vote/start/1');
-    // red = 0;
-    // blue = 0;
-    // yellow = 0;
-    // black = 0;
-    // white = 0;
 });
 
 // 投票終了１
