@@ -147,13 +147,13 @@ io.on('connection',(socket) => {
                 red = red + 1;
                 console.log(red);
                 break;
-            case 'blue':
-                blue = blue + 1;
-                console.log(blue);
-                break;
             case 'yellow':
                 yellow = yellow + 1;
                 console.log(yellow);
+                break;
+            case 'blue':
+                blue = blue + 1;
+                console.log(blue);
                 break;
             case 'black':
                 black = black + 1;
@@ -167,8 +167,8 @@ io.on('connection',(socket) => {
 
         io.emit('vote',{
             R: red,
-            B: blue,
             Y: yellow,
+            B: blue,
             b: black,
             w: white
         });
