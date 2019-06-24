@@ -18,6 +18,18 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
+		const COLORS = {
+			sameVote: 0,
+			red: 1,
+			yellow: 2,
+			blue: 3,
+			green: 4,
+			orange: 5,
+			purple: 6,
+			white: 7,
+			black: 8
+		};
+
 		$(function() {
 			const socket = io();
 			const $form = $('#js-form');
@@ -51,13 +63,14 @@
 			// 投票１
 			socket.on('/api/vote/start/1',(data) => {
 				console.log('サーバーからWebSocketで/api/vote/start/1のデータを受け取る')
-				console.log(data);
+				const voteColor0 = data.randomVoteColorId[0];
+				const voteColor1 = data.randomVoteColorId[1];
 
-				if (data.randomTrueColorId === '1,2') {
+				if (voteColor0 === COLORS.red && voteColor1 === COLORS.yellow) {
 					console.log('赤と黄の投票画面を表示');
-				} else if (data.randomTrueColorId === '1,3') {
+				} else if (voteColor0 === COLORS.red && voteColor1 === COLORS.blue) {
 					console.log('赤と青の投票画面を表示');
-				} else if (data.randomTrueColorId === '2,3') {
+				} else if (voteColor0 === COLORS.yellow && voteColor1 === COLORS.blue) {
 					console.log('黄と青の投票画面を表示');
 				}
 			})
@@ -96,7 +109,7 @@
 			});
 
 		// 投票
-		var p1 = document.getElementById('ab');
+		var p1 = document.getElementById('red');
 		var handler1 = function(){
 			console.log('vote1');
 			$log.text('赤に投票しました');
@@ -104,35 +117,35 @@
 		};
 		p1.addEventListener('click', handler1, false);
 
-		var p2 = document.getElementById('cd');
+		var p2 = document.getElementById('yellow');
 		var handler2 = function(){
 			console.log('vote2');
-			$log.text('青に投票しました');
-			socket.emit('vote', 'blue');
-		};
-		p2.addEventListener('click', handler2, false);
-
-		var p3 = document.getElementById('ef');
-		var handler3 = function(){
-			console.log('vote3');
 			$log.text('黄に投票しました');
 			socket.emit('vote', 'yellow');
 		};
+		p2.addEventListener('click', handler2, false);
+
+		var p3 = document.getElementById('blue');
+		var handler3 = function(){
+			console.log('vote3');
+			$log.text('青に投票しました');
+			socket.emit('vote', 'blue');
+		};
 		p3.addEventListener('click', handler3, false);
 
-		var p4 = document.getElementById('gh');
+		var p4 = document.getElementById('white');
 		var handler4 = function(){
 			console.log('vote4');
-			$log.text('黒に投票しました');
-			socket.emit('vote', 'black');
+			$log.text('白に投票しました');
+			socket.emit('vote', 'white');
 		};
 		p4.addEventListener('click', handler4, false);
 
-		var p5 = document.getElementById('ij');
+		var p5 = document.getElementById('black');
 		var handler5 = function(){
 			console.log('vote5');
-			$log.text('白に投票しました');
-			socket.emit('vote', 'white');
+			$log.text('黒に投票しました');
+			socket.emit('vote', 'black');
 		};
 		p5.addEventListener('click', handler5, false);
 
@@ -150,11 +163,11 @@
 
 	<div id="js-log"><!-- ここに投票内容が出ます --></div>
 
-	<p id="ab">click</p>
-	<p id="cd">click2</p>
-	<p id="ef">click3</p>
-	<p id="gh">click_1</p>
-	<p id="ij">click_2</p>
+	<p id="red">red</p>
+	<p id="yellow">yellow</p>
+	<p id="blue">blue</p>
+	<p id="white">white</p>
+	<p id="black">black</p>
 
 </body>
 </html>
