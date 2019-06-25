@@ -130,6 +130,11 @@ app.get('/api/vote/end/1',(req,res) => {
 app.get('/api/vote/end/2',(req,res) => {
     const maxVoteNumber = Math.max(red,yellow,blue);
 
+    if (red === yellow && yellow === blue) {
+        // 投票数が同票の時
+        res.json({ colorId: COLORS.sameVote });
+    }
+
     // WebSocket で投票2の終了を通知
     io.emit('/api/vote/end/2');
 
@@ -184,8 +189,17 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.sameVote });
         }
-    } else if (res.params.id === '2') {
+    } else if (req.params.id === '2') {
         const maxVoteNumber2 = Math.max(red,yellow,blue);
+
+        if (red === yellow && yellow === blue) {
+            // 投票数が同票の時
+            io.emit('/api/scene/change', {
+              colorId: COLORS.sameVote,
+              sceneId: 2
+            });
+            res.json({ colorId: COLORS.sameVote });
+        }
 
         if (maxVoteNumber2 === red) {
             res.json({ colorId: COLORS.red });
@@ -193,32 +207,6 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.yellow });
         } else if (maxVoteNumber2 === blue) {
             res.json({ colorId: COLORS.blue });
-        } else {
-            // 投票数が同票の時
-            res.json({ colorId: COLORS.sameVote });
-        }
-
-        if (voteColor0 > voteColor1) {
-            // 投票数がvoteColor1よりvoteColor0の方が大きい時
-            io.emit('/api/vote/change/2', {
-                colorId: vote1colors[0],
-                sceneId: 2
-            });
-            res.json({ colorId: vote1colors[0] });
-        } else if (voteColor0 < voteColor1) {
-            // 投票数がvoteColor0よりvoteColor1の方が大きい時
-            io.emit('/api/vote/change/2', {
-                colorId: vote1colors[1],
-                sceneId: 2
-              });
-            res.json({ colorId: vote1colors[1] });
-        } else {
-            // 投票数が同票の時
-            io.emit('/api/vote/change/2', {
-                colorId: COLORS.sameVote,
-                sceneId: 2
-            });
-            res.json({ colorId: COLORS.sameVote });
         }
     } else if (res.params.id === '3') {
         io.emit('/api/vote/change/3');
