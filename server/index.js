@@ -208,7 +208,7 @@ app.get('/api/scene/change/:id',(req,res) => {
         } else if (maxVoteNumber2 === blue) {
             res.json({ colorId: COLORS.blue });
         }
-    } else if (res.params.id === '3') {
+    } else if (req.params.id === '3') {
         io.emit('/api/vote/change/3');
         res.send('change3');
     } else {
