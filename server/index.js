@@ -202,19 +202,19 @@ app.get('/api/scene/change/:id',(req,res) => {
         }
 
         if (maxVoteNumber2 === red) {
-            io.emit('/api/scene/change/2', {
+            io.emit('/api/scene/change', {
                 colorId: COLORS.red,
                 sceneId: 2
             });
             res.json({ colorId: COLORS.red });
         } else if (maxVoteNumber2 === yellow) {
-            io.emit('/api/scene/change/2', {
+            io.emit('/api/scene/change', {
                 colorId: COLORS.yellow,
                 sceneId: 2
             });
             res.json({ colorId: COLORS.yellow });
         } else if (maxVoteNumber2 === blue) {
-            io.emit('/api/scene/change/2', {
+            io.emit('/api/scene/change', {
                 colorId: COLORS.blue,
                 sceneId: 2
             });
@@ -222,10 +222,10 @@ app.get('/api/scene/change/:id',(req,res) => {
         }
         
     } else if (req.params.id === '3') {
-        io.emit('/api/vote/change/3');
+        io.emit('/api/vote/change');
         res.send('change3');
     } else {
-        io.emit('/api/vote/change/4');
+        io.emit('/api/vote/change');
         res.send('change4');
     }
 });
