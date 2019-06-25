@@ -176,7 +176,14 @@ app.get('/api/scene/change/:id',(req,res) => {
                 sceneId: 1
               });
             res.json({ colorId: vote1colors[1] });
-        } 
+        } else {
+            // 投票数が同票の時
+            io.emit('/api/scene/change', {
+                colorId: COLORS.sameVote,
+                sceneId: 1
+            });
+            res.json({ colorId: COLORS.sameVote });
+        }
     } else if (res.params.id === '2') {
         io.emit('/api/vote/change/2');
         res.send('change2');
