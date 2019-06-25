@@ -185,6 +185,18 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.sameVote });
         }
     } else if (res.params.id === '2') {
+        const maxVoteNumber2 = Math.max(red,yellow,blue);
+
+        if (maxVoteNumber2 === red) {
+            res.json({ colorId: COLORS.red });
+        } else if (maxVoteNumber2 === yellow) {
+            res.json({ colorId: COLORS.yellow });
+        } else if (maxVoteNumber2 === blue) {
+            res.json({ colorId: COLORS.blue });
+        } else {
+            // 投票数が同票の時
+            res.json({ colorId: COLORS.sameVote });
+        }
 
         if (voteColor0 > voteColor1) {
             // 投票数がvoteColor1よりvoteColor0の方が大きい時
