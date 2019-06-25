@@ -130,13 +130,13 @@ app.get('/api/vote/end/1',(req,res) => {
 app.get('/api/vote/end/2',(req,res) => {
     const maxVoteNumber = Math.max(red,yellow,blue);
 
+    // WebSocket で投票2の終了を通知
+    io.emit('/api/vote/end/2');
+
     if (red === yellow && yellow === blue) {
         // 投票数が同票の時
         res.json({ colorId: COLORS.sameVote });
     }
-
-    // WebSocket で投票2の終了を通知
-    io.emit('/api/vote/end/2');
 
     if (maxVoteNumber === red) {
         res.json({ colorId: COLORS.red });
