@@ -41,7 +41,7 @@ app.get('/',(req,res) => {
 // });
 
 app.get('/api/start',(req,res) => {
-    const colorsId = ["1","2","3"];
+    const colorsId = ["4","5","6"];
     trueColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
     // スマホ側に "/api/start" というラベルでデータを送る
     io.emit('/api/start',{ trueColorId: trueColorId});
@@ -104,31 +104,35 @@ app.get('/api/vote/end/1',(req,res) => {
 
     if (voteColor0 > voteColor1) {
         // 投票数がvoteColor1よりvoteColor0の方が大きい時
-        io.emit('/api/scene/change', {
+        io.emit('/api/scene/end/1', {
             colorId: vote1colors[0],
             sceneId: 1
         });
-        res.json({});
+        res.json({ colorId: vote1colors[0] });
     } else if (voteColor0 < voteColor1) {
         // 投票数がvoteColor0よりvoteColor1の方が大きい時
-        io.emit('/api/scene/change', {
-            colorId: vote1colors[0],
+        io.emit('/api/scene/end/1', {
+            colorId: vote1colors[1],
             sceneId: 1
         });
-        res.json({});
+        res.json({ colorId: vote1colors[1] });
     } else {
         // 投票数が同票の時
-        io.emit('/api/scene/change', {
+        io.emit('/api/scene/end/1', {
             colorId: COLORS.sameVote,
             sceneId: 1
         });
-        res.json({});
+        res.json({ colorId: COLORS.sameVote });
     }
 });
 
 // 投票終了2
 app.get('/api/vote/end/2',(req,res) => {
     const maxVoteNumber = Math.max(red,yellow,blue);
+
+    // WebSocket で投票2の終了を通知
+    io.emit('/api/vote/end/2');
+
     if (maxVoteNumber === red) {
         res.json({ colorId: COLORS.red });
     } else if (maxVoteNumber === yellow) {
@@ -160,15 +164,19 @@ app.get('/api/scene/change/:id',(req,res) => {
     
         if (voteColor0 > voteColor1) {
             // 投票数がvoteColor1よりvoteColor0の方が大きい時
+            io.emit('/api/scene/change', {
+                colorId: vote1colors[0],
+                sceneId: 1
+            });
             res.json({ colorId: vote1colors[0] });
         } else if (voteColor0 < voteColor1) {
             // 投票数がvoteColor0よりvoteColor1の方が大きい時
+            io.emit('/api/scene/change', {
+                colorId: vote1colors[1],
+                sceneId: 1
+              });
             res.json({ colorId: vote1colors[1] });
-        } else {
-            // 投票数が同票の時
-            res.json({ colorId: COLORS.sameVote });
-        }
-        res.send('change1');
+        } 
     } else if (res.params.id === '2') {
         io.emit('/api/vote/change/2');
         res.send('change2');

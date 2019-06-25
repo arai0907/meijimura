@@ -60,9 +60,9 @@
 				console.log(data);
 			});
 
-			// 投票１
+			// 投票開始１
 			socket.on('/api/vote/start/1',(data) => {
-				console.log('サーバーからWebSocketで/api/vote/start/1のデータを受け取る')
+				console.log('サーバーからWebSocketで/api/vote/start/1のデータを受信しました。')
 				const voteColor0 = data.randomVoteColorId[0];
 				const voteColor1 = data.randomVoteColorId[1];
 
@@ -73,16 +73,23 @@
 				} else if (voteColor0 === COLORS.yellow && voteColor1 === COLORS.blue) {
 					console.log('黄と青の投票画面を表示');
 				}
+			});
+
+			// 投票2の終了
+			socket.on('/api/vote/end/2', (data) => {
+				console.log('サーバーからWebSocketで/api/vote/end/2のデータを受信しました。')
+				console.log(data);
 			})
 
 			// 投票２
 			socket.on('/api/vote/start/2',(data) => {
-				console.log('サーバーからWebSocketで/api/vote/start/2のデータを受け取る')
+				console.log('サーバーからWebSocketで/api/vote/start/2のデータを受信しました。')
 				console.log(data);
 				console.log('赤と黄と青の投票画面を表示')
-			})
+			});
 
-			socket.on('/api/scene/change/:id', (data) => {
+			// 画面の切り替え
+			socket.on('/api/scene/change/1', (data) => {
 				// スマホの画面のアニメーションを切り替える
 				console.log('サーバーからWebSocketで/api/scene/change/:idのデータを受信しました。')
 				console.log(data);
@@ -94,6 +101,18 @@
 				} else if(data.sceneId === "2") {
 					document.body.style.backgroundColor = "green";
 				}
+			});
+
+			// change2
+			socket.on('/api/scene/change/2', (data) => {
+				console.log('サーバーからWebSocketで/api/scene/change/2のデータを受信しました。')
+				console.log(data);
+			});
+
+			// change3
+			socket.on('/api/scene/change/3', (data) => {
+				console.log('サーバーからWebSocketで/api/scene/change/3のデータを受信しました。')
+				console.log(data);
 			});
 
 			socket.on('/api/end', (data) => {
