@@ -185,8 +185,29 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.sameVote });
         }
     } else if (res.params.id === '2') {
-        io.emit('/api/vote/change/2');
-        res.send('change2');
+
+        if (voteColor0 > voteColor1) {
+            // 投票数がvoteColor1よりvoteColor0の方が大きい時
+            io.emit('/api/vote/change/2', {
+                colorId: vote1colors[0],
+                sceneId: 2
+            });
+            res.json({ colorId: vote1colors[0] });
+        } else if (voteColor0 < voteColor1) {
+            // 投票数がvoteColor0よりvoteColor1の方が大きい時
+            io.emit('/api/vote/change/2', {
+                colorId: vote1colors[1],
+                sceneId: 2
+              });
+            res.json({ colorId: vote1colors[1] });
+        } else {
+            // 投票数が同票の時
+            io.emit('/api/vote/change/2', {
+                colorId: COLORS.sameVote,
+                sceneId: 2
+            });
+            res.json({ colorId: COLORS.sameVote });
+        }
     } else if (res.params.id === '3') {
         io.emit('/api/vote/change/3');
         res.send('change3');
