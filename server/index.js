@@ -104,29 +104,81 @@ app.get('/api/vote/end/1',(req,res) => {
 
     if (voteColor0 > voteColor1) {
         // 投票数がvoteColor1よりvoteColor0の方が大きい時
-        res.json({ colorId: vote1colors[0] });
+        io.emit('/api/scene/change', {
+            colorId: vote1colors[0],
+            sceneId: 1
+        });
+        res.json({});
     } else if (voteColor0 < voteColor1) {
         // 投票数がvoteColor0よりvoteColor1の方が大きい時
-        res.json({ colorId: vote1colors[1] });
+        io.emit('/api/scene/change', {
+            colorId: vote1colors[0],
+            sceneId: 1
+        });
+        res.json({});
+    } else {
+        // 投票数が同票の時
+        io.emit('/api/scene/change', {
+            colorId: COLORS.sameVote,
+            sceneId: 1
+        });
+        res.json({});
+    }
+});
+
+// 投票終了2
+app.get('/api/vote/end/2',(req,res) => {
+    const maxVoteNumber = Math.max(red,yellow,blue);
+    if (maxVoteNumber === red) {
+        res.json({ colorId: COLORS.red });
+    } else if (maxVoteNumber === yellow) {
+        res.json({ colorId: COLORS.yellow });
+    } else if (maxVoteNumber === blue) {
+        res.json({ colorId: COLORS.blue });
     } else {
         // 投票数が同票の時
         res.json({ colorId: COLORS.sameVote });
     }
 });
 
-// 投票終了2
-app.get('/api/vote/end/2',(req,res) => {
-    res.send('/api/vote/end/2');
-});
-
 // 画面の切り替え
 app.get('/api/scene/change/:id',(req,res) => {
-    console.log(req.params.id);
-    io.emit('/api/scene/change/:id',{ 
-        sceneId: req.params.id,
-        colorId: 0
-    });
-    res.send('/api/scene/change/1');
+    if (res.params.id === '1') {
+        let voteColor0 = 0;
+        let voteColor1 = 0;
+        
+        if (vote1colors[0] === COLORS.red && vote1colors[1] === COLORS.yellow) {
+            voteColor0 = red;
+            voteColor1 = yellow;
+        } else if (vote1colors[0] === COLORS.red && vote1colors[1] === COLORS.blue) {
+            voteColor0 = red;
+            voteColor1 = blue;
+        } else if (vote1colors[0] === COLORS.yellow && vote1colors[1] === COLORS.blue) {
+            voteColor0 = yellow;
+            voteColor1 = blue;
+        }
+    
+        if (voteColor0 > voteColor1) {
+            // 投票数がvoteColor1よりvoteColor0の方が大きい時
+            res.json({ colorId: vote1colors[0] });
+        } else if (voteColor0 < voteColor1) {
+            // 投票数がvoteColor0よりvoteColor1の方が大きい時
+            res.json({ colorId: vote1colors[1] });
+        } else {
+            // 投票数が同票の時
+            res.json({ colorId: COLORS.sameVote });
+        }
+        res.send('change1');
+    } else if (res.params.id === '2') {
+        io.emit('/api/vote/change/2');
+        res.send('change2');
+    } else if (res.params.id === '3') {
+        io.emit('/api/vote/change/3');
+        res.send('change3');
+    } else {
+        io.emit('/api/vote/change/4');
+        res.send('change4');
+    }
 });
 
 // マッピング終了
