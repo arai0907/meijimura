@@ -41,7 +41,7 @@ app.get('/',(req,res) => {
 // });
 
 app.get('/api/start',(req,res) => {
-    const colorsId = ["4","5","6"];
+    const colorsId = [COLORS.green,COLORS.orange,COLORS.purple];
     trueColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
     // スマホ側に "/api/start" というラベルでデータを送る
     io.emit('/api/start',{ trueColorId: trueColorId});
