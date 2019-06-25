@@ -147,7 +147,7 @@ app.get('/api/vote/end/2',(req,res) => {
 
 // 画面の切り替え
 app.get('/api/scene/change/:id',(req,res) => {
-    if (res.params.id === '1') {
+    if (req.params.id === '1') {
         let voteColor0 = 0;
         let voteColor1 = 0;
         
