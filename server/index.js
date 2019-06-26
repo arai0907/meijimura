@@ -116,6 +116,7 @@ app.get('/api/vote/end/1',(req,res) => {
             sceneId: 1
         });
         res.json({ colorId: vote1colors[0] });
+        vote1ResultColorId = vote1colors[0];
     } else if (voteColor0 < voteColor1) {
         // 投票数がvoteColor0よりvoteColor1の方が大きい時
         io.emit('/api/scene/end/1', {
@@ -123,6 +124,7 @@ app.get('/api/vote/end/1',(req,res) => {
             sceneId: 1
         });
         res.json({ colorId: vote1colors[1] });
+        vote1ResultColorId = vote1colors[1];
     } else {
         // 投票数が同票の時
         io.emit('/api/scene/end/1', {
@@ -130,12 +132,8 @@ app.get('/api/vote/end/1',(req,res) => {
             sceneId: 1
         });
         res.json({ colorId: COLORS.sameVote });
+        vote1ResultColorId = COLORS.sameVote;
     }
-
-    // 
-    vote1ResultColorId = vote1colors[0];
-    vote1ResultColorId = vote1colors[1];
-    vote1ResultColorId = COLORS.sameVote;
 });
 
 // 投票終了2
@@ -256,6 +254,11 @@ app.get('/api/scene/change/:id',(req,res) => {
         res.send('change4');
     }
 });
+
+// 投票終了3
+app.get('/api/vote/end/3', (req,res) => {
+
+})
 
 // マッピング終了
 app.get('/api/end',(req,res) => {
