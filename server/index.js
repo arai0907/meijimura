@@ -235,17 +235,20 @@ app.get('/api/scene/change/:id',(req,res) => {
         }
         
     } else if (req.params.id === '3') {
-        // if (
-        //     TRUE_COLORS['id' + trueColorId].[0] === vote1ResultColorId &&
-        //     TRUE_COLORS['id' + trueColorId].[1] === vote2ResultColorId
-        //   ){
-        //     // 2回の投票結果がtrueColorになった時
-        //     io.emit('/api/scene/change/3', {
-                
-        //     })
-        //   } else {
-        //     // 2回の投票結果がtrueColorにならなかった時
-        //   }
+        if (
+            TRUE_COLORS['id' + trueColorId][0] === vote1ResultColorId &&
+            TRUE_COLORS['id' + trueColorId][1] === vote2ResultColorId
+          ){
+            // 2回の投票結果がtrueColorになった時
+            const num = 4;
+            console.log(TRUE_COLORS['id' + num]);
+            console.log(TRUE_COLORS['id' + num][0]);
+          } else {
+            // 2回の投票結果がtrueColorにならなかった時
+            const num = 4;
+            console.log(TRUE_COLORS['id' + num]);
+            console.log(TRUE_COLORS['id' + num][1]);
+          }
         io.emit('/api/vote/change');
         res.send('change3');
     } else {
