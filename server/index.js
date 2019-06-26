@@ -240,12 +240,12 @@ app.get('/api/scene/change/:id',(req,res) => {
             TRUE_COLORS['id' + trueColorId][1] === vote2ResultColorId
           ){
             // 2回の投票結果がtrueColorになった時
-            const num = ;
+            const num = trueColorId;
             console.log(TRUE_COLORS['id' + num]);
             console.log(TRUE_COLORS['id' + num][0]);
           } else {
             // 2回の投票結果がtrueColorにならなかった時
-            const num = ;
+            const num = trueColorId;
             console.log(TRUE_COLORS['id' + num]);
             console.log(TRUE_COLORS['id' + num][1]);
           }
