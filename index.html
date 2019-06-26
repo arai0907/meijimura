@@ -115,6 +115,12 @@
 				console.log(data);
 			});
 
+			// change4
+			socket.on('/api/scene/change/4', (data) => {
+				console.log('サーバーからWebSocketで/api/scene/change/4のデータを受信しました。')
+				console.log(data);
+			});
+
 			socket.on('/api/end', (data) => {
 				// スマホの画面を終了画面に切り替える
 				console.log('サーバーからWebSocketで/api/endのデータを受信しました。')
