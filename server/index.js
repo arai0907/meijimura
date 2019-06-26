@@ -115,24 +115,24 @@ app.get('/api/vote/end/1',(req,res) => {
             colorId: vote1colors[0],
             sceneId: 1
         });
-        res.json({ colorId: vote1colors[0] });
         vote1ResultColorId = vote1colors[0];
+        res.json({ colorId: vote1colors[0] });
     } else if (voteColor0 < voteColor1) {
         // 投票数がvoteColor0よりvoteColor1の方が大きい時
         io.emit('/api/scene/end/1', {
             colorId: vote1colors[1],
             sceneId: 1
         });
-        res.json({ colorId: vote1colors[1] });
         vote1ResultColorId = vote1colors[1];
+        res.json({ colorId: vote1colors[1] });
     } else {
         // 投票数が同票の時
         io.emit('/api/scene/end/1', {
             colorId: COLORS.sameVote,
             sceneId: 1
         });
-        res.json({ colorId: COLORS.sameVote });
         vote1ResultColorId = COLORS.sameVote;
+        res.json({ colorId: COLORS.sameVote });
     }
 });
 
@@ -149,14 +149,14 @@ app.get('/api/vote/end/2',(req,res) => {
     }
 
     if (maxVoteNumber === red) {
-        res.json({ colorId: COLORS.red });
         vote2ResultColorId = COLORS.red;
+        res.json({ colorId: COLORS.red });
     } else if (maxVoteNumber === yellow) {
-        res.json({ colorId: COLORS.yellow });
         vote2ResultColorId = COLORS.yellow;
+        res.json({ colorId: COLORS.yellow });
     } else if (maxVoteNumber === blue) {
-        res.json({ colorId: COLORS.blue });
         vote2ResultColorId = COLORS.blue;
+        res.json({ colorId: COLORS.blue });
     } else {
         // 投票数が同票の時
         res.json({ colorId: COLORS.sameVote });
@@ -240,12 +240,12 @@ app.get('/api/scene/change/:id',(req,res) => {
             TRUE_COLORS['id' + trueColorId][1] === vote2ResultColorId
           ){
             // 2回の投票結果がtrueColorになった時
-            const num = 4;
+            const num = ;
             console.log(TRUE_COLORS['id' + num]);
             console.log(TRUE_COLORS['id' + num][0]);
           } else {
             // 2回の投票結果がtrueColorにならなかった時
-            const num = 4;
+            const num = ;
             console.log(TRUE_COLORS['id' + num]);
             console.log(TRUE_COLORS['id' + num][1]);
           }
