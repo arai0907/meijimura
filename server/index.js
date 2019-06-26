@@ -265,8 +265,25 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.sameVote });
           }
     } else {
-        io.emit('/api/vote/change');
-        res.send('change4');
+        if (
+            trueColorId &&
+            TRUE_COLORS['id' + trueColorId][0] === vote1ResultColorId &&
+            TRUE_COLORS['id' + trueColorId][1] === vote2ResultColorId
+          ){
+            // 2回の投票結果がtrueColorになった時
+            io.emit('/api/vote/change', {
+                colorId: trueColorId,
+                sceneId: 4
+            });
+            res.json({ colorId: trueColorId });
+          } else {
+            // 2回の投票結果がtrueColorにならなかった時
+            io.emit('/api/vote/change', {
+                colorId: COLORS.sameVote,
+                sceneId: 4
+            });
+            res.json({ colorId: COLORS.sameVote });
+          }
     }
 });
 
