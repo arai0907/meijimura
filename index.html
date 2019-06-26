@@ -79,7 +79,7 @@
 			socket.on('/api/vote/end/2', (data) => {
 				console.log('サーバーからWebSocketで/api/vote/end/2のデータを受信しました。')
 				console.log(data);
-			})
+			});
 
 			// 投票２
 			socket.on('/api/vote/start/2',(data) => {
@@ -93,7 +93,13 @@
 				console.log('サーバーからWebSocketで/api/vote/start/3のデータを受信しました。')
 				console.log(data);
 				console.log('白と黒の投票画面を表示')
-			})
+			});
+
+			// 投票3の終了
+			socket.on('/api/vote/end/3', (data) => {
+				console.log('サーバーからWebSocketで/api/vote/end/3のデータを受信しました。')
+				console.log(data);
+			});
 
 			// 画面の切り替え
 			socket.on('/api/scene/change', (data) => {

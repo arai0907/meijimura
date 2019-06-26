@@ -173,6 +173,32 @@ app.get('/api/vote/end/2',(req,res) => {
     }
 });
 
+// 投票終了3
+app.get('/api/vote/end/3', (req,res) => {
+    if (white > black) {
+        // 白の投票数が多い時の処理
+        io.emit('/api/scene/end/3', {
+            colorId: COLORS.white,
+            sceneId: 3
+        })
+        res.json({ colorId: COLORS.white });
+    } else if (white < black) {
+        // 黒の投票数が多い時の処理
+        io.emit('/api/scene/end/3', {
+            colorId: COLORS.black,
+            sceneId: 3
+        })
+        res.json({ colorId: COLORS.black });
+    } else {
+        // 同票の時の処理
+        io.emit('/api/scene/end/3', {
+            colorId: COLORS.sameVote,
+            sceneId: 3
+        })
+        res.json({ colorId: COLORS.sameVote });
+    }
+})
+
 // 画面の切り替え
 app.get('/api/scene/change/:id',(req,res) => {
     if (req.params.id === '1') {
