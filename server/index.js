@@ -238,15 +238,17 @@ app.get('/api/scene/change/:id',(req,res) => {
         }
         
     } else if (req.params.id === '3') {
-        // if (
-        //     TRUE_COLORS['id' + trueColorId].[0] === vote1ResultColorId &&
-        //     TRUE_COLORS['id' + trueColorId].[1] === vote2ResultColorId
-        //   ){
-        //     // 2回の投票結果がtrueColorになった時
-
-        //   } else {
-        //     // 2回の投票結果がtrueColorにならなかった時
-        //   }
+        if (
+            TRUE_COLORS['id' + trueColorId].[0] === vote1ResultColorId &&
+            TRUE_COLORS['id' + trueColorId].[1] === vote2ResultColorId
+          ){
+            // 2回の投票結果がtrueColorになった時
+            io.emit('/api/scene/change/3', {
+                
+            })
+          } else {
+            // 2回の投票結果がtrueColorにならなかった時
+          }
         io.emit('/api/vote/change');
         res.send('change3');
     } else {
