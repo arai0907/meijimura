@@ -36,6 +36,13 @@ app.get('/',(req,res) => {
     res.sendFile(file);
 });
 
+/**
+ * 棒グラフページ
+ */
+app.get('/vote-graph', function(req, res){
+    res.sendFile(path.join(__dirname, '../vote-grapth.html'));
+});
+
 // app.get('/test',(req,res) => {
 //     res.send('test');
 // });
