@@ -150,18 +150,17 @@ app.get('/api/vote/end/2',(req,res) => {
 
     if (maxVoteNumber === red) {
         res.json({ colorId: COLORS.red });
+        vote2ResultColorId = COLORS.red;
     } else if (maxVoteNumber === yellow) {
         res.json({ colorId: COLORS.yellow });
+        vote2ResultColorId = COLORS.yellow;
     } else if (maxVoteNumber === blue) {
         res.json({ colorId: COLORS.blue });
+        vote2ResultColorId = COLORS.blue;
     } else {
         // 投票数が同票の時
         res.json({ colorId: COLORS.sameVote });
     }
-
-    vote2ResultColorId = COLORS.red;
-    vote2ResultColorId = COLORS.yellow;
-    vote2ResultColorId = COLORS.blue;
 });
 
 // 画面の切り替え
@@ -236,17 +235,17 @@ app.get('/api/scene/change/:id',(req,res) => {
         }
         
     } else if (req.params.id === '3') {
-        if (
-            TRUE_COLORS['id' + trueColorId].[0] === vote1ResultColorId &&
-            TRUE_COLORS['id' + trueColorId].[1] === vote2ResultColorId
-          ){
-            // 2回の投票結果がtrueColorになった時
-            io.emit('/api/scene/change/3', {
+        // if (
+        //     TRUE_COLORS['id' + trueColorId].[0] === vote1ResultColorId &&
+        //     TRUE_COLORS['id' + trueColorId].[1] === vote2ResultColorId
+        //   ){
+        //     // 2回の投票結果がtrueColorになった時
+        //     io.emit('/api/scene/change/3', {
                 
-            })
-          } else {
-            // 2回の投票結果がtrueColorにならなかった時
-          }
+        //     })
+        //   } else {
+        //     // 2回の投票結果がtrueColorにならなかった時
+        //   }
         io.emit('/api/vote/change');
         res.send('change3');
     } else {
