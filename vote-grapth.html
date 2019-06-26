@@ -57,14 +57,12 @@
 		const grapthblue = document.getElementById("js-vote-blue");
 		const grapthyellow = document.getElementById("js-vote-yellow");
 
-		// サーバーから'voting'といイベントネームのついたメッセージを受け取った時の処理
-		socket.on('voting', function (msg) {
+		// サーバーから'vote'といイベントネームのついたメッセージを受け取った時の処理
+		socket.on('vote', function (data) {
 			// サーバーに接続した時と自分や他のユーザーが投票した時に呼び出される
-			console.log(msg);
-
-			const R = msg.red;
-			const B = msg.blue;
-			const Y = msg.yellow;
+			const R = data.red;
+			const B = data.blue;
+			const Y = data.yellow;
 			const total = R + B + Y;
 
 			if (R === B && R === Y) {
