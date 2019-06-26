@@ -46,7 +46,6 @@ app.get('/',(req,res) => {
     res.sendFile(file);
 });
 
-<<<<<<< HEAD
 /**
  * 棒グラフページ
  */
@@ -58,9 +57,6 @@ app.get('/vote-graph', function(req, res){
 //     res.send('test');
 // });
 
-=======
-// マッピング開始
->>>>>>> master
 app.get('/api/start',(req,res) => {
     const colorsId = [COLORS.green,COLORS.orange,COLORS.purple];
     trueColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
