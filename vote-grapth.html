@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>宵街映写 -プロジェクションナイト- 2019 | 投票グラフ</title>
+	<style>
+		.main {
+			width: 100%;
+			margin: auto;
+		}
+	
+		.vote-container {
+			line-height: 100px;
+			height: 100px;
+			display: flex;
+		}
+	
+		.vote {
+			height: 100%;
+			top: 0;
+			transition: flex-grow 2s ease;
+		}
+	
+		.vote-red {
+			background-color: #F41F1F;
+			left: 0;
+		}
+	
+		.vote-blue {
+			background-color: #0000FF;
+			right: 0;
+			left: 0;
+			margin: auto auto;
+		}
+	
+		.vote-yellow {
+			background-color: #F8E220;
+			right: 0;
+		}
+	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<div class="vote-container">
+		<div id="js-vote-red" class="vote vote-red"></div>
+		<div id="js-vote-blue" class="vote vote-blue"></div>
+		<div id="js-vote-yellow" class="vote vote-yellow"></div>
+	</div>
+
+	<script>
+		const socket = io();
+
+		const grapthRed = document.getElementById("js-vote-red");
+		const grapthblue = document.getElementById("js-vote-blue");
+		const grapthyellow = document.getElementById("js-vote-yellow");
+
+		// サーバーから'vote'といイベントネームのついたメッセージを受け取った時の処理
+		socket.on('vote', function (data) {
+			// サーバーに接続した時と自分や他のユーザーが投票した時に呼び出される
+			const R = data.R;
+			const B = data.B;
+			const Y = data.Y;
+			const total = R + B + Y;
+
+			if (R === B && R === Y) {
+				grapthRed.style.flexGrow = 1;
+				grapthblue.style.flexGrow = 1;
+				grapthyellow.style.flexGrow = 1;
+			} else {
+				grapthRed.style.flexGrow = R;
+				grapthblue.style.flexGrow = B;
+				grapthyellow.style.flexGrow = Y;
+			}
+		});
+	</script>
+</body>
+</html>

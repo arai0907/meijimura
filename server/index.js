@@ -46,7 +46,17 @@ app.get('/',(req,res) => {
     res.sendFile(file);
 });
 
-// マッピング開始
+/**
+ * 棒グラフページ
+ */
+app.get('/vote-graph', function(req, res){
+    res.sendFile(path.join(__dirname, '../vote-grapth.html'));
+});
+
+// app.get('/test',(req,res) => {
+//     res.send('test');
+// });
+
 app.get('/api/start',(req,res) => {
     const colorsId = [COLORS.green,COLORS.orange,COLORS.purple];
     trueColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
@@ -273,6 +283,15 @@ app.get('/api/end',(req,res) => {
 
 io.on('connection',(socket) => {
     console.log('ユーザーが接続しました。');
+
+    // 接続したユーザーにこれまでの投票数を送信する
+    io.emit('vote', {
+        R: red,
+        Y: yellow,
+        B: blue,
+        b: black,
+        w: white
+    });
 
     socket.on('vote',(msg) => {
         console.log('ユーザーからのメッセージを受信しました。');
