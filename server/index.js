@@ -22,6 +22,16 @@ let blue = 0; // blueの投票数を記録する変数
 let black = 0; // blackの投票数を記録する変数
 let white = 0; // whiteの投票数を記録する変数
 
+// trueColorの正解の組み合わせ
+const TRUE_COLORS = {
+    ['id' + COLORS.green]: [COLORS.yellow,COLORS.blue],
+    ['id' + COLORS.orange]: [COLORS.yellow,COLORS.red],
+    ['id' + COLORS.purple]: [COLORS.red,COLORS.blue]
+};
+
+let vote1ResultColorId; // 1回目の投票結果の色IDを保持する
+let vote2ResultColorId; // 2回目の投票結果の色IDを保持する
+
 const vote1colors = [] // 投票１でランダムで選択された2色のID
 
 const app = express();
@@ -36,10 +46,7 @@ app.get('/',(req,res) => {
     res.sendFile(file);
 });
 
-// app.get('/test',(req,res) => {
-//     res.send('test');
-// });
-
+// マッピング開始
 app.get('/api/start',(req,res) => {
     const colorsId = [COLORS.green,COLORS.orange,COLORS.purple];
     trueColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
@@ -124,6 +131,11 @@ app.get('/api/vote/end/1',(req,res) => {
         });
         res.json({ colorId: COLORS.sameVote });
     }
+
+    // 
+    vote1ResultColorId = vote1colors[0];
+    vote1ResultColorId = vote1colors[1];
+    vote1ResultColorId = COLORS.sameVote;
 });
 
 // 投票終了2
@@ -148,6 +160,10 @@ app.get('/api/vote/end/2',(req,res) => {
         // 投票数が同票の時
         res.json({ colorId: COLORS.sameVote });
     }
+
+    vote2ResultColorId = COLORS.red;
+    vote2ResultColorId = COLORS.yellow;
+    vote2ResultColorId = COLORS.blue;
 });
 
 // 画面の切り替え
@@ -222,6 +238,15 @@ app.get('/api/scene/change/:id',(req,res) => {
         }
         
     } else if (req.params.id === '3') {
+        // if (
+        //     TRUE_COLORS['id' + trueColorId].[0] === vote1ResultColorId &&
+        //     TRUE_COLORS['id' + trueColorId].[1] === vote2ResultColorId
+        //   ){
+        //     // 2回の投票結果がtrueColorになった時
+
+        //   } else {
+        //     // 2回の投票結果がtrueColorにならなかった時
+        //   }
         io.emit('/api/vote/change');
         res.send('change3');
     } else {
