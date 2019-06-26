@@ -236,6 +236,7 @@ app.get('/api/scene/change/:id',(req,res) => {
         
     } else if (req.params.id === '3') {
         if (
+            trueColorId &&
             TRUE_COLORS['id' + trueColorId][0] === vote1ResultColorId &&
             TRUE_COLORS['id' + trueColorId][1] === vote2ResultColorId
           ){
@@ -247,6 +248,7 @@ app.get('/api/scene/change/:id',(req,res) => {
                 colorId: trueColorId,
                 sceneId: 3
             });
+            res.json({ colorId: trueColorId });
           } else {
             // 2回の投票結果がtrueColorにならなかった時
             // const num = trueColorId;
@@ -256,6 +258,7 @@ app.get('/api/scene/change/:id',(req,res) => {
                 colorId: COLORS.sameVote,
                 sceneId: 3
             });
+            res.json({ colorId: COLORS.sameVote });
           }
     } else {
         io.emit('/api/vote/change');
