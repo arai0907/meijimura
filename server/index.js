@@ -246,6 +246,15 @@ app.get('/api/end',(req,res) => {
 io.on('connection',(socket) => {
     console.log('ユーザーが接続しました。');
 
+    // 接続したユーザーにこれまでの投票数を送信する
+    io.emit('vote', {
+        R: red,
+        Y: yellow,
+        B: blue,
+        b: black,
+        w: white
+    });
+
     socket.on('vote',(msg) => {
         console.log('ユーザーからのメッセージを受信しました。');
         // このサーバーに接続しているユーザーに受信したメッセージを配信します
