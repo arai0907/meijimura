@@ -249,8 +249,16 @@ app.get('/api/scene/change/:id',(req,res) => {
             console.log(TRUE_COLORS['id' + num]);
             console.log(TRUE_COLORS['id' + num][1]);
           }
-        io.emit('/api/vote/change');
-        res.send('change3');
+
+        
+        io.emit('/api/vote/change', {
+            colorId: TRUE_COLORS['id' + num][0],
+            sceneId: 3
+        });
+        io.emit('/api/vote/change', {
+            colorId: TRUE_COLORS['id' + num][1],
+            sceneId: 3
+        });
     } else {
         io.emit('/api/vote/change');
         res.send('change4');
