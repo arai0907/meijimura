@@ -60,9 +60,9 @@
 		// サーバーから'vote'といイベントネームのついたメッセージを受け取った時の処理
 		socket.on('vote', function (data) {
 			// サーバーに接続した時と自分や他のユーザーが投票した時に呼び出される
-			const R = data.red;
-			const B = data.blue;
-			const Y = data.yellow;
+			const R = data.R;
+			const B = data.B;
+			const Y = data.Y;
 			const total = R + B + Y;
 
 			if (R === B && R === Y) {
