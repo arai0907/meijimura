@@ -310,11 +310,6 @@ app.get('/api/scene/change/:id',(req,res) => {
     }
 });
 
-// 投票終了3
-app.get('/api/vote/end/3', (req,res) => {
-
-})
-
 // マッピング終了
 app.get('/api/end',(req,res) => {
     io.emit('/api/end');
@@ -371,5 +366,5 @@ io.on('connection',(socket) => {
 });
 
 httpServer.listen(3000,function(){
-    console.log('サーバーが起動しました。URLは http://localhost:3000 です');
+    console.log('サーバーが起動しました。URLは http://192.168.1.102:3000 です');
 });
