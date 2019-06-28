@@ -57,12 +57,17 @@ app.get('/vote-graph', function(req, res){
 //     res.send('test');
 // });
 
-app.get('/api/start',(req,res) => {
+// truecolorをランダムで決定
+app.get('/api/init', (req,res) => {
     const colorsId = [COLORS.green,COLORS.orange,COLORS.purple];
     trueColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
-    // スマホ側に "/api/start" というラベルでデータを送る
-    io.emit('/api/start',{ trueColorId: trueColorId});
+    // スマホ側に "/api/init" というラベルでデータを送る
+    io.emit('/api/init',{ trueColorId: trueColorId});
     res.json({ colorId: trueColorId });
+});
+
+app.get('/api/start',(req,res) => {
+    
 });
 
 // 投票開始１
@@ -366,5 +371,6 @@ io.on('connection',(socket) => {
 });
 
 httpServer.listen(3000,function(){
-    console.log('サーバーが起動しました。URLは http://192.168.1.102:3000 です');
+    // console.log('サーバーが起動しました。URLは http://192.168.1.102:3000 です');
+    console.log('サーバーが起動しました。URLは http://localhost:3000 です');
 });

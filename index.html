@@ -54,6 +54,12 @@
 				window.scrollTo(0, document.body.scrollHeight);
 			});
 
+			socket.on('/api/init', (data) => {
+				// スマホの画面を開始画面に切り替える
+				console.log('サーバーからWebSocketで/api/initのデータを受信しました。')
+				console.log(data);
+			});
+
 			socket.on('/api/start', (data) => {
 				// スマホの画面を開始画面に切り替える
 				console.log('サーバーからWebSocketで/api/startのデータを受信しました。')
