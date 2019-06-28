@@ -54,9 +54,9 @@
 				window.scrollTo(0, document.body.scrollHeight);
 			});
 
-			socket.on('/api/truecolor/init', (data) => {
+			socket.on('/api/init', (data) => {
 				// スマホの画面を開始画面に切り替える
-				console.log('サーバーからWebSocketで/api/truecolor/initのデータを受信しました。')
+				console.log('サーバーからWebSocketで/api/initのデータを受信しました。')
 				console.log(data);
 			});
 
