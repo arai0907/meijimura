@@ -60,15 +60,14 @@
 				console.log(data);
 			});
 
-			socket.on('/api/start', (data) => {
+			socket.on('/api/start', () => {
 				// スマホの画面を開始画面に切り替える
-				console.log('サーバーからWebSocketで/api/startのデータを受信しました。')
-				console.log(data);
+				console.log('サーバーからWebSocketでOPアニメーションをスタートする。')
 			});
 
 			// 投票開始１
 			socket.on('/api/vote/start/1',(data) => {
-				console.log('サーバーからWebSocketで/api/vote/start/1のデータを受信しました。')
+
 				const voteColor0 = data.randomVoteColorId[0];
 				const voteColor1 = data.randomVoteColorId[1];
 
