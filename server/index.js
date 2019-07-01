@@ -69,21 +69,21 @@ app.get('/api/init', (req,res) => {
 app.get('/api/start',(req,res) => {
     console.log(req.params.id);
 
-        const voteColorsId = [
-            [COLORS.red, COLORS.yellow],
-            [COLORS.red, COLORS.blue],
-            [COLORS.yellow, COLORS.blue]
-        ];
-    
-        // 投票１の2色をランダムで決定する
-        randomVoteColorId = voteColorsId[Math.floor(Math.random() * voteColorsId.length)];
-    
-        // 投票１で選ばれた2色を保存
-        vote1colors[0] = randomVoteColorId[0];
-        vote1colors[1] = randomVoteColorId[1];
+    const voteColorsId = [
+        [COLORS.red, COLORS.yellow],
+        [COLORS.red, COLORS.blue],
+        [COLORS.yellow, COLORS.blue]
+    ];
 
-        io.emit('/api/start',{ randomVoteColorId: randomVoteColorId });
-        res.send('start');
+    // 投票１の2色をランダムで決定する
+    randomVoteColorId = voteColorsId[Math.floor(Math.random() * voteColorsId.length)];
+
+    // 投票１で選ばれた2色を保存
+    vote1colors[0] = randomVoteColorId[0];
+    vote1colors[1] = randomVoteColorId[1];
+
+    io.emit('/api/start',{ randomVoteColorId: randomVoteColorId });
+    res.send('start');
 });
 
 // 投票開始１
