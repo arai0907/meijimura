@@ -27,6 +27,8 @@ $(function() {
         $sendMessage.val('');
     });
 
+
+
     socket.on('chat message', (msg) => {
         $messages.append($('<li>' + msg + '</li>'));
         window.scrollTo(0, document.body.scrollHeight);
@@ -38,9 +40,13 @@ $(function() {
         console.log(data);
     });
 
-    socket.on('/api/start', (data) => {
+    socket.on('/api/start', () => {
         // スマホの画面を開始画面に切り替える
-        console.log('サーバーからWebSocketで/api/startのデータを受信しました。')
+        console.log('サーバーからWebSocketでOPアニメーションをスタートする。')
+    });
+
+    // 投票開始１
+    socket.on('/api/vote/start/1',(data) => {
 
         const voteColor0 = data.randomVoteColorId[0];
         const voteColor1 = data.randomVoteColorId[1];
@@ -52,12 +58,6 @@ $(function() {
         } else if (voteColor0 === COLORS.yellow && voteColor1 === COLORS.blue) {
             console.log('黄と青の投票画面を表示');
         }
-    });
-
-    // 投票開始１
-    socket.on('/api/vote/start/1',(data) => {
-        console.log('サーバーからWebSocketで/api/vote/start/1のデータを受信しました。')
-        console.log(data);
     });
 
     // 投票2の終了
