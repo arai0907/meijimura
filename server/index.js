@@ -83,7 +83,7 @@ app.get('/api/start',(req,res) => {
     vote1colors[1] = randomVoteColorId[1];
 
     io.emit('/api/start',{ randomVoteColorId: randomVoteColorId });
-    res.send('start');
+    res.json({ randomVoteColorId: randomVoteColorId });
 });
 
 // 投票開始１
