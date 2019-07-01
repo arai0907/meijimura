@@ -98,7 +98,9 @@ app.get('/api/vote/start/:id',(req,res) => {
     black = 0;
 
     if(req.params.id === '1'){
-        io.emit('/api/vote/start/1');
+        io.emit('/api/vote/start/1', {
+            randomVoteColorId: vote1colors
+        })
         res.send('start1');
     } else if(req.params.id == '2') {
         io.emit('/api/vote/start/2');
