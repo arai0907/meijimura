@@ -69,7 +69,6 @@ app.get('/api/init', (req,res) => {
 app.get('/api/start',(req,res) => {
     console.log(req.params.id);
 
-    if (req.params.id === '0'){
         const voteColorsId = [
             [COLORS.red, COLORS.yellow],
             [COLORS.red, COLORS.blue],
@@ -85,7 +84,6 @@ app.get('/api/start',(req,res) => {
 
         io.emit('/api/start',{ randomVoteColorId: randomVoteColorId });
         res.send('start');
-    }
 });
 
 // 投票開始１
