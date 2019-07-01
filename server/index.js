@@ -38,6 +38,8 @@ const app = express();
 const httpServer = http.Server(app);
 const io = new SocketServer(httpServer);
 
+app.use(express.static('public'));
+
 // 正解の色のIDを入れる
 let trueColorId;
 
