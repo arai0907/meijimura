@@ -147,8 +147,8 @@ var handler5 = function(){
 };
 p5.addEventListener('click', handler5, false);
 
-var wait = document.querySelector('#js-wait');
-var startButton = document.querySelector('#js-start-button');
-startButton.addEventListener('click', function(){
-    TweenMax.to(wait,1.0,{autoAlpha: 1})
-});
+// var wait = document.querySelector('#js-wait');
+// var startButton = document.querySelector('#js-start-button');
+// startButton.addEventListener('click', function(){
+//     TweenMax.to(wait,1.0,{autoAlpha: 1})
+// });

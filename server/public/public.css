@@ -1,3 +1,167 @@
+@font-face {
+    font-family: 'OCR_A_Std';
+    src: url('text/OCRAStd.otf');
+  }
+
+*{
+  margin: 0px;
+  padding: 0px;
+
+}
+
+html,body,#topPage,#topPageContents,#VoteColor{
+  position: relative;
+    width: 100%;
+    height: 100%;
+
+}
+
+#topPageContents{
+  z-index: 1;
+}
+
+#topPage {
+    font-family: 'OCR_A_Std';
+    letter-spacing: 4px;
+    display: block;
+    opacity: 0.0;
+    transition: 1.0s;
+}
+
+.buttonText{
+    font-size: 2.7vh;
+    padding: 2.5vh;
+    opacity: 1.0;
+    transition: 1.0s;
+    letter-spacing: 0.2em;
+
+}
+
+/* #topPage{
+  background-color: black;
+} */
+
+.rectButton{
+  position: absolute;
+  width: 33%;
+  display: inline-block;
+  top: 52%;
+ border-radius: 40px;
+ color: white;
+  box-shadow: 3px 4px 5px #1f5577;
+ background:#3697D4;
+ transition: 0.5s;
+ cursor: pointer;
+ text-align: center;
+}
+
+.rectButton p{
+    transition: 0.3s;
+
+}
+
+.topLogo {
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-top: 16vh;
+  transition: 1.0s;
+  z-index: 1;
+  opacity: 1.0;
+
+}
+
+.topLogo img {
+  width: 34vh;
+}
+
+#topImg{
+ position: absolute;
+ left: 0;
+ right: 0;
+ margin: auto;
+ top: 30%;
+ width: 18vh;
+}
+
+#button00{
+  position: absolute;
+     left: 0;
+     right: 0;
+     margin: auto;
+ top: 62%;
+ width: 63%;
+}
+
+#button01{
+   position: absolute;
+     left: 0;
+     right: 0;
+     margin: auto;
+ top: 75%;
+ width: 63%;
+}
+
+#maru{
+  width: 40vh;
+  transition: 1.0s;
+  top: 20%;
+  opacity: 0.0;
+}
+
+.fadeout {
+  animation : fadeOut 1.0s cubic-bezier(0.55, 0.06, 0.87, 0.21)  infinite;;
+  animation-fill-mode: both;
+
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+#TopArea{
+  position: absolute;
+  height: 100%;
+  top: 0;
+  width: 100%;
+  /* background-color:#F5E328; */
+  background: linear-gradient(349deg,  transparent 45%,#bcbaa8 50%,#F5E328 51%);
+  z-index: 2;
+  transition: 1.0s;
+}
+
+#BottomArea{
+  position: absolute;
+  height: 100%;
+  bottom: 0;
+  width: 100%;
+  /* background-color:#E21E16; */
+  background: linear-gradient(169deg,  transparent 45%,#bcbaa8 50%,#E21E16 51%);
+  z-index: 2;
+  transition: 1.0s;
+}
+
+.smallButton {
+  position: absolute;
+  font-size: 3.5vh;
+  text-align: center;
+  display: none;
+  opacity: 0.0;
+  /* height: 8%; */
+  color: white;
+  border-bottom: 2px solid white;
+  z-index: 1;
+  transition: 1.0s;
+}
+
+
 .wait{
     width: 100%;
     height: 100%;
@@ -8,4 +172,10 @@
     background-color: aquamarine;
     visibility: hidden;
     opacity: 0;
+}
+
+#VoteColor{
+  position: relative;
+  display: none;
+  opacity: 0.0;
 }
