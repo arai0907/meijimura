@@ -53,6 +53,7 @@ html,body,#topPage,#topPageContents,#VoteColor{
  transition: 0.5s;
  cursor: pointer;
  text-align: center;
+ pointer-events: auto;
 }
 
 .rectButton p{
@@ -86,7 +87,7 @@ html,body,#topPage,#topPageContents,#VoteColor{
  width: 18vh;
 }
 
-#button00{
+#button0{
   position: absolute;
      left: 0;
      right: 0;
@@ -95,7 +96,7 @@ html,body,#topPage,#topPageContents,#VoteColor{
  width: 63%;
 }
 
-#button01{
+#button1{
    position: absolute;
      left: 0;
      right: 0;
@@ -104,7 +105,7 @@ html,body,#topPage,#topPageContents,#VoteColor{
  width: 63%;
 }
 
-#maru{
+#js-circle{
   width: 40vh;
   transition: 1.0s;
   top: 20%;

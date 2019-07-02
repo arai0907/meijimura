@@ -1,7 +1,7 @@
 var w = window.innerWidth;
 var h = window.innerHeight;
 
-var maru;
+
 var numButton =4;//onClickナンバーは計４つだよ
 var startButtonNumber = 0;//最初のページのナンバーは０だよ
 var button = new Array (numButton); //ボタンはonClick（０～３）の群にあるよ
@@ -19,9 +19,9 @@ window.addEventListener("load",function()
 {
     console.log("<finish Load>");
     //ボタンの取得
-    for(var i= 0;i < numButton;i++){button[ i ]= document.getElementById('button0'+ i);}
+    for(var i= 0;i < numButton;i++){button[ i ]= document.getElementById('button'+ i);}
 　　allButtonPermissionClickEvent();
-    maru                  =document.getElementById('maru');
+    circle               =document.getElementById('js-circle');
     topPage               =document.getElementById('topPage');
     explainSentence       =document.getElementById('explainSentence');
     $$buttonText          =document.getElementById('buttonText');
@@ -54,7 +54,7 @@ setTimeout(function(){
   setTimeout(function(){
     topPage.style.opacity = 1.0;
     setTimeout(function(){
-      maru.classList.add('fadeout');
+      circle.classList.add('fadeout');
       setTimeout(function(){
 
         console.log('fade');
@@ -72,7 +72,7 @@ function slideshow_timer(){
               else {
                   num ++;
               }
-              document.getElementById("maru").src=images_src[num];
+              document.getElementById("js-circle").src=images_src[num];
               setTimeout("slideshow_timer()",1000);
       }
 
@@ -148,17 +148,17 @@ function expandRect( targetButton ){
   document.getElementById('TopArea').style.height = '100%';
   document.getElementById('BottomArea').style.height = '100%';
 
-  setTimeout(function(){
-  document.getElementById('TopArea').style.height = '20%';
-  document.getElementById('BottomArea').style.height = '20%';
-},1200);
+//   setTimeout(function(){
+//   document.getElementById('TopArea').style.height = '20%';
+//   document.getElementById('BottomArea').style.height = '20%';
+// },1200);
 
 //ボタンのpをフェードアウト
   // for( var i = 0; i < 2; i++ ){ $$buttonText[ i ].style.opacity = 0.0; }
 
   //押したボタンが0.5秒後消えていく
  setTimeout(function()  {
-   button[ targetButton ].style.opacity = 0.0;
+   // button[ targetButton ].style.opacity = 0.0;
    //トップイメージをフェードアウト
 
 topPage.style.opacity = 0.0;
@@ -167,8 +167,23 @@ topPage.style.opacity = 0.0;
 
 if(targetButton == 0){
 
-  TweenMax.to(wait,1.0,{autoAlpha: 1});
+ deleteTop();
+  // TweenMax.to(wait,1.0,{autoAlpha: 1});
+ console.log('wait');
+}
 
 }
+
+function deleteTop(){
+
+  setTimeout(function(){
+  document.getElementById('TopArea').style.height = '0%';
+  document.getElementById('BottomArea').style.height = '0%';
+
+setTimeout(function(){
+  console.log('waitLogo');
+},300);
+
+},1200);
 
 }
