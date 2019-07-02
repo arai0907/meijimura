@@ -330,7 +330,6 @@ app.get('/api/end',(req,res) => {
 // リセット
 app.get('/api/reset',(req,res) => {
     io.emit('/api/reset');
-    res.send('reset');
     res.json({});
 })
 
