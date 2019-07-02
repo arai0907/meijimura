@@ -321,11 +321,17 @@ app.get('/api/scene/change/:id',(req,res) => {
     }
 });
 
-// マッピング終了
+// ED
 app.get('/api/end',(req,res) => {
     io.emit('/api/end');
     res.send('end');
 });
+
+// リセット
+app.get('/api/reset',(req,res) => {
+    io.emit('/api/reset');
+    res.json({});
+})
 
 io.on('connection',(socket) => {
     console.log('ユーザーが接続しました。');
