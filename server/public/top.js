@@ -2,17 +2,12 @@ var w = window.innerWidth;
 var h = window.innerHeight;
 
 
-var numButton =4;//onClickナンバーは計４つだよ
+var numButton = 4;//onClickナンバーは計４つだよ
 var startButtonNumber = 0;//最初のページのナンバーは０だよ
-var button = new Array (numButton); //ボタンはonClick（０～３）の群にあるよ
+var button = new Array(numButton); //ボタンはonClick（０～３）の群にあるよ
 //使うタグとか宣言するよ↓↓
-var $$buttonText;
-var topPage;
-var explainSentence;
 var images_src = new Array('server/public/images/1.png','server/public/images/2.png');
 var num = -1;
-var topLogo;
-
 var wait = document.querySelector('#js-wait');
 
 window.addEventListener("load",function()
@@ -21,13 +16,13 @@ window.addEventListener("load",function()
     //ボタンの取得
     for(var i= 0;i < numButton;i++){button[ i ]= document.getElementById('button'+ i);}
 　　allButtonPermissionClickEvent();
-    circle               =document.getElementById('js-circle');
-    topPage               =document.getElementsByClassName('topPage');
-    explainSentence       =document.getElementById('explainSentence');
-    $$buttonText          =document.getElementById('buttonText');
-    $$rectButton          =document.getElementById('rectButton');
-    $$buttonText          =document.getElementsByClassName( 'buttonText' );
-    topLogo               =document.getElementsByClassName('topLogo');
+    circle                =document.getElementById('js-circle');
+    topPage               =document.getElementsByClassName('top-page');
+    explainSentence       =document.getElementById('explain-sentence');
+    $$buttonText          =document.getElementById('button-text');
+    $$rectButton          =document.getElementById('rect-button');
+    $$buttonText          =document.getElementsByClassName( 'button-text' );
+    topLogo               =document.getElementsByClassName('top-logo');
 
 
 
@@ -105,8 +100,6 @@ function permissionClickEvent( id )
         console.log( targetButton );     //押したボタンがコンソールに出力されるよ
         switch(targetButton)
         {
-
-
           case 0:
           case 1:
           clickeButton = targetButton;
@@ -145,8 +138,8 @@ function expandRect( targetButton ){
   //押してないボタンが消えていく
   button[ otherButton ].style.opacity = 0.0;
   //帯が伸びる
-  document.getElementById('TopArea').style.height = '100%';
-  document.getElementById('BottomArea').style.height = '100%';
+  document.getElementById('top-area').style.height = '100%';
+  document.getElementById('bottom-area').style.height = '100%';
 
 //   setTimeout(function(){
 //   document.getElementById('TopArea').style.height = '20%';
@@ -177,8 +170,8 @@ if(targetButton == 0){
 function deleteTop(){
 
   setTimeout(function(){
-  document.getElementById('TopArea').style.height = '0%';
-  document.getElementById('BottomArea').style.height = '0%';
+  document.getElementById('top-area').style.height = '0%';
+  document.getElementById('bottom-Area').style.height = '0%';
 
 setTimeout(function(){
   console.log('waitLogo');

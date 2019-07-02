@@ -9,17 +9,17 @@
 
 }
 
-html,body,.topPage,.topPageContents,.VoteColor{
+html,body,.top-page,.top-page-contents,.VoteColor{
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.topPageContents{
+.top-page-contents{
   z-index: 1;
 }
 
-.topPage {
+.top-page {
     font-family: 'OCR_A_Std';
     letter-spacing: 4px;
     display: block;
@@ -36,7 +36,7 @@ html,body,.topPage,.topPageContents,.VoteColor{
 }
 
 
-.rectButton{
+.rect-button{
   position: absolute;
   width: 33%;
   display: inline-block;
@@ -51,11 +51,11 @@ html,body,.topPage,.topPageContents,.VoteColor{
   pointer-events: auto;
 }
 
-.rectButton p{
+.rect-button p{
     transition: 0.3s;
 }
 
-.topLogo {
+.top-logo {
   position: absolute;
   text-align: center;
   left: 0;
@@ -67,7 +67,7 @@ html,body,.topPage,.topPageContents,.VoteColor{
   opacity: 1.0;
 }
 
-.topLogo img {
+.top-img {
   width: 34vh;
 }
 
@@ -120,7 +120,7 @@ html,body,.topPage,.topPageContents,.VoteColor{
 }
 
 
-#TopArea{
+#top-area{
   position: absolute;
   height: 100%;
   top: 0;
@@ -131,7 +131,7 @@ html,body,.topPage,.topPageContents,.VoteColor{
   transition: 1.0s;
 }
 
-#BottomArea{
+#bottom-area{
   position: absolute;
   height: 100%;
   bottom: 0;
@@ -142,7 +142,7 @@ html,body,.topPage,.topPageContents,.VoteColor{
   transition: 1.0s;
 }
 
-.smallButton {
+.small-button {
   position: absolute;
   font-size: 3.5vh;
   text-align: center;
@@ -164,11 +164,12 @@ html,body,.topPage,.topPageContents,.VoteColor{
     left: 0;
     z-index: 100;
     background-color: aquamarine;
-    visibility: hidden;
+    visibility: hidden;s
     opacity: 0;
+    display: none;
 }
 
-.VoteColor{
+.vote-color{
   position: relative;
   display: none;
   opacity: 0.0;
