@@ -10,14 +10,13 @@ var images_src = new Array('server/public/images/1.png','server/public/images/2.
 var num = -1;
 var wait = document.querySelector('#js-wait');
 
-window.addEventListener("load",function()
-{
+window.addEventListener("load", function(){
     console.log("<finish Load>");
     //ボタンの取得
     for(var i= 0;i < numButton;i++){button[ i ]= document.getElementById('button'+ i);}
 　　allButtonPermissionClickEvent();
     circle                =document.getElementById('js-circle');
-    topPage               =document.getElementsByClassName('top-page');
+    topPage               =document.querySelector('.top-page');
     explainSentence       =document.getElementById('explain-sentence');
     $$buttonText          =document.getElementById('button-text');
     $$rectButton          =document.getElementById('rect-button');
@@ -40,8 +39,8 @@ window.addEventListener("load",function()
 　　　slideshow_timer();
 
 setTimeout(function(){
-  document.getElementById('TopArea').style.height = '20%';
-  document.getElementById('BottomArea').style.height = '20%';
+  document.getElementById('top-area').style.height = '20%';
+  document.getElementById('bottom-area').style.height = '20%';
 
   for( var i = 0; i < 2; i++ ){ permissionClickEvent( i );}
 
@@ -171,7 +170,7 @@ function deleteTop(){
 
   setTimeout(function(){
   document.getElementById('top-area').style.height = '0%';
-  document.getElementById('bottom-Area').style.height = '0%';
+  document.getElementById('bottom-area').style.height = '0%';
 
 setTimeout(function(){
   console.log('waitLogo');
