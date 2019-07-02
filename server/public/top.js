@@ -22,7 +22,7 @@ window.addEventListener("load",function()
     for(var i= 0;i < numButton;i++){button[ i ]= document.getElementById('button'+ i);}
 　　allButtonPermissionClickEvent();
     circle               =document.getElementById('js-circle');
-    topPage               =document.getElementById('topPage');
+    topPage               =document.getElementsByClassName('topPage');
     explainSentence       =document.getElementById('explainSentence');
     $$buttonText          =document.getElementById('buttonText');
     $$rectButton          =document.getElementById('rectButton');
@@ -33,7 +33,7 @@ window.addEventListener("load",function()
 
 
 
-    topPage.style.display = "block";
+    topPage.style.display == "block";
 
       //説明文の位置を決める
       explainSentence.style.top = ( h - explainSentence.clientHeight ) / 3.5 + "px";
@@ -82,7 +82,7 @@ function allButtonPermissionClickEvent()
         for( var i = 0; i < numButton; i++ ){ button[ i ].style.pointerEvents = "none"; }
         console.log( "＜ Can't touch" );
       }
-      //-----------------------------
+
       //　特定のボタンのイベントを許可
 function permissionClickEvent( id )
       {
