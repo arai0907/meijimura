@@ -243,6 +243,14 @@ app.get('/api/scene/change/:id',(req,res) => {
         // 投票数をリセット
         votesNumberClear();
 
+        io.emit('vote',{
+            R: red,
+            Y: yellow,
+            B: blue,
+            b: black,
+            w: white
+        });
+
     } else if (req.params.id === '2') {
         const maxVoteNumber2 = Math.max(red,yellow,blue);
 
@@ -277,6 +285,14 @@ app.get('/api/scene/change/:id',(req,res) => {
 
         // 投票数をリセット
         votesNumberClear();
+
+        io.emit('vote',{
+            R: red,
+            Y: yellow,
+            B: blue,
+            b: black,
+            w: white
+        });
 
     } else if (req.params.id === '3') {
         if (
