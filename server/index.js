@@ -92,13 +92,6 @@ app.get('/api/start',(req,res) => {
 app.get('/api/vote/start/:id',(req,res) => {
     console.log(req.params.id);
 
-    // 投票数をリセット
-    red = 0;
-    yellow = 0;
-    blue = 0;
-    white = 0;
-    black = 0;
-
     if(req.params.id === '1'){
         io.emit('/api/vote/start/1', {
             randomVoteColorId: vote1colors
@@ -246,6 +239,18 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.sameVote });
         }
+
+        // 投票数をリセット
+        votesNumberClear();
+
+        io.emit('vote',{
+            R: red,
+            Y: yellow,
+            B: blue,
+            b: black,
+            w: white
+        });
+
     } else if (req.params.id === '2') {
         const maxVoteNumber2 = Math.max(red,yellow,blue);
 
@@ -277,7 +282,18 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.blue });
         }
-        
+
+        // 投票数をリセット
+        votesNumberClear();
+
+        io.emit('vote',{
+            R: red,
+            Y: yellow,
+            B: blue,
+            b: black,
+            w: white
+        });
+
     } else if (req.params.id === '3') {
         if (
             trueColorId &&
@@ -320,6 +336,17 @@ app.get('/api/scene/change/:id',(req,res) => {
           }
     }
 });
+
+// 投票数をリセットする関数（処理のかたまり）
+function votesNumberClear() {
+    console.log('投票数をリセットしました')
+
+    red = 0;
+    yellow = 0;
+    blue = 0;
+    white = 0;
+    black = 0;
+};
 
 // ED
 app.get('/api/end',(req,res) => {
