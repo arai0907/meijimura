@@ -13,19 +13,19 @@ var wait = document.querySelector('#js-wait');
 window.addEventListener('load', function(){
   console.log('<finish Load>');
   //ボタンの取得
-  for(var i= 0;i < numButton;i++){button[ i ]= document.getElementById('button'+ i);}
+  for(var i= 0;i < numButton;i++){button[ i ]= document.querySelector('.button'+ i);}
   allButtonPermissionClickEvent();
   circle                =document.querySelector('.js-circle');
   waitCircle            =document.querySelector('.js-wait-circle');
   topPage               =document.querySelector('.top-page');
-  explainSentence       =document.getElementById('explain-sentence');
+  explainSentence       =document.querySelector('.explain-sentence');
   $$buttonText          =document.getElementById('button-text');
-  rectButton            =document.querySelector('.rect-button');
+  rectButton            =document.getElementById('rect-button');
   $$buttonText          =document.getElementsByClassName( 'button-text' );
   topLogo               =document.querySelector('.top-logo');
   waitPage              =document.getElementById('js-wait');
-  topArea               =document.getElementById('top-area');
-  bottomArea            =document.getElementById('bottom-area');
+  topArea               =document.querySelector('.top-area');
+  bottomArea            =document.querySelector('.bottom-area');
 
 
 
