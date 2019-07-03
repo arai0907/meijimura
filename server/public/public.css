@@ -21,7 +21,7 @@
 
 .top-page {
   font-family: 'OCR_A_Std';
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   display: block;
   opacity: 0.0;
   transition: 1.0s;
