@@ -247,6 +247,9 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.sameVote });
         }
 
+        // 呼び出し（使い方）
+        votesNumberClear();
+
     } else if (req.params.id === '2') {
         const maxVoteNumber2 = Math.max(red,yellow,blue);
 
@@ -279,6 +282,9 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.blue });
         }
 
+        // 呼び出し（使い方）
+        votesNumberClear();
+
     } else if (req.params.id === '3') {
         if (
             trueColorId &&
@@ -299,6 +305,10 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.sameVote });
           }
+
+        // 呼び出し（使い方）
+        votesNumberClear();
+
     } else {
         if (
             trueColorId &&
@@ -319,6 +329,9 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.sameVote });
           }
+
+        // 呼び出し（使い方）
+        votesNumberClear();
     }
 });
 
@@ -332,9 +345,6 @@ function votesNumberClear() {
     white = 0;
     black = 0;
 };
-  
-// 呼び出し（使い方）
-votesNumberClear();
 
 // ED
 app.get('/api/end',(req,res) => {
