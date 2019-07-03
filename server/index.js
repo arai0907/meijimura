@@ -52,7 +52,7 @@ app.get('/',(req,res) => {
  * 棒グラフページ
  */
 app.get('/vote-graph', function(req, res){
-    res.sendFile(path.join(__dirname, '../vote-grapth.html'));
+    res.sendFile(path.join(__dirname, '../vote-graph.html'));
 });
 
 // app.get('/test',(req,res) => {

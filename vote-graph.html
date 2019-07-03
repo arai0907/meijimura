@@ -38,6 +38,14 @@
 			background-color: #F8E220;
 			right: 0;
 		}
+
+		.vote-black {
+			background-color: #000000;
+		}
+
+		.vote-white {
+			background-color: #ffffff;
+		}
 	</style>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -48,14 +56,18 @@
 		<div id="js-vote-red" class="vote vote-red"></div>
 		<div id="js-vote-blue" class="vote vote-blue"></div>
 		<div id="js-vote-yellow" class="vote vote-yellow"></div>
+		<div id="js-vote-black" class="vote vote-black"></div>
+		<div id="js-vote-white" class="vote vote-white"></div>
 	</div>
 
 	<script>
 		const socket = io();
 
-		const grapthRed = document.getElementById("js-vote-red");
-		const grapthblue = document.getElementById("js-vote-blue");
-		const grapthyellow = document.getElementById("js-vote-yellow");
+		const graphRed = document.getElementById("js-vote-red");
+		const graphblue = document.getElementById("js-vote-blue");
+		const graphyellow = document.getElementById("js-vote-yellow");
+		const graphblack = document.getElementById("js-vote-black");
+		const graphwhite = document.getElementById("js-vote-white");
 
 		// サーバーから'vote'といイベントネームのついたメッセージを受け取った時の処理
 		socket.on('vote', function (data) {
@@ -63,16 +75,22 @@
 			const R = data.R;
 			const B = data.B;
 			const Y = data.Y;
-			const total = R + B + Y;
+			const b = data.b;
+			const w = data.w;
+			const total = R + B + Y + b + w;
 
-			if (R === B && R === Y) {
-				grapthRed.style.flexGrow = 1;
-				grapthblue.style.flexGrow = 1;
-				grapthyellow.style.flexGrow = 1;
+			if (R === B && R === Y && b === w) {
+				graphRed.style.flexGrow = 1;
+				graphblue.style.flexGrow = 1;
+				graphyellow.style.flexGrow = 1;
+				graphblack.style.flexGrow = 1;
+				graphwhite.style.flexGrow = 1;
 			} else {
-				grapthRed.style.flexGrow = R;
-				grapthblue.style.flexGrow = B;
-				grapthyellow.style.flexGrow = Y;
+				graphRed.style.flexGrow = R;
+				graphblue.style.flexGrow = B;
+				graphyellow.style.flexGrow = Y;
+				graphblack.style.flexGrow = b;
+				graphwhite.style.flexGrow = w;
 			}
 		});
 	</script>
