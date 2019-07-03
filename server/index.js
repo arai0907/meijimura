@@ -92,13 +92,6 @@ app.get('/api/start',(req,res) => {
 app.get('/api/vote/start/:id',(req,res) => {
     console.log(req.params.id);
 
-    // 投票数をリセット
-    // red = 0;
-    // yellow = 0;
-    // blue = 0;
-    // white = 0;
-    // black = 0;
-
     if(req.params.id === '1'){
         io.emit('/api/vote/start/1', {
             randomVoteColorId: vote1colors
@@ -247,7 +240,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.sameVote });
         }
 
-        // 呼び出し（使い方）
+        // 投票数をリセット
         votesNumberClear();
 
     } else if (req.params.id === '2') {
@@ -282,7 +275,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.blue });
         }
 
-        // 呼び出し（使い方）
+        // 投票数をリセット
         votesNumberClear();
 
     } else if (req.params.id === '3') {
@@ -305,10 +298,6 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.sameVote });
           }
-
-        // 呼び出し（使い方）
-        votesNumberClear();
-
     } else {
         if (
             trueColorId &&
@@ -329,9 +318,6 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.sameVote });
           }
-
-        // 呼び出し（使い方）
-        votesNumberClear();
     }
 });
 
