@@ -95,7 +95,7 @@
 }
 
 .fadeout {
-  animation : fadeOut 1.0s cubic-bezier(0.55, 0.06, 0.87, 0.21)  infinite;
+  animation: fadeOut 1.0s cubic-bezier(0.55, 0.06, 0.87, 0.21)  infinite;
   animation-fill-mode: both;
 }
 @keyframes fadeOut {
