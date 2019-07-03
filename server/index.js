@@ -246,6 +246,14 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.sameVote });
         }
+
+        // 変数リセット
+        red = 0;
+        yellow = 0;
+        blue = 0;
+        white = 0;
+        black = 0;
+
     } else if (req.params.id === '2') {
         const maxVoteNumber2 = Math.max(red,yellow,blue);
 
@@ -278,6 +286,13 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.blue });
         }
         
+        // 変数リセット
+        red = 0;
+        yellow = 0;
+        blue = 0;
+        white = 0;
+        black = 0;
+
     } else if (req.params.id === '3') {
         if (
             trueColorId &&
@@ -319,6 +334,14 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.sameVote });
           }
     }
+
+    // 変数リセット
+    red = 0;
+    yellow = 0;
+    blue = 0;
+    white = 0;
+    black = 0;
+    
 });
 
 // ED
