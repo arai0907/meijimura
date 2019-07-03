@@ -1,7 +1,7 @@
 @font-face {
-    font-family: 'OCR_A_Std';
-    src: url('text/OCRAStd.otf');
-  }
+  font-family: 'OCR_A_Std';
+  src: url('text/OCRAStd.otf');
+}
 
 *{
   margin: 0px;
@@ -20,19 +20,19 @@ html,body,.top-page,.top-page-contents,.vote-color{
 }
 
 .top-page {
-    font-family: 'OCR_A_Std';
-    letter-spacing: 4px;
-    display: block;
-    opacity: 0.0;
-    transition: 1.0s;
+  font-family: 'OCR_A_Std';
+  letter-spacing: 4px;
+  display: block;
+  opacity: 0.0;
+  transition: 1.0s;
 }
 
 .button-text{
-    font-size: 2.7vh;
-    padding: 2.5vh;
-    opacity: 1.0;
-    transition: 1.0s;
-    letter-spacing: 0.2em;
+  font-size: 2.7vh;
+  padding: 2.5vh;
+  opacity: 1.0;
+  transition: 1.0s;
+  letter-spacing: 0.2em;
 }
 
 
@@ -52,7 +52,7 @@ html,body,.top-page,.top-page-contents,.vote-color{
 }
 
 .rect-button p{
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
 .top-logo {
@@ -68,28 +68,28 @@ html,body,.top-page,.top-page-contents,.vote-color{
 }
 
 .top-img{
- position: absolute;
- left: 0;
- right: 0;
- margin: auto;
- top: 30%;
- width: 18vh;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 30%;
+  width: 18vh;
 }
 
 #button0{
- left: 0;
- right: 0;
- margin: auto;
- top: 62%;
- width: 63%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 62%;
+  width: 63%;
 }
 
 #button1{
- left: 0;
- right: 0;
- margin: auto;
- top: 75%;
- width: 63%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 75%;
+  width: 63%;
 }
 
 .js-circle{
@@ -204,7 +204,7 @@ html,body,.top-page,.top-page-contents,.vote-color{
   transition: 1.0s;
   z-index: 1;
   opacity: 1.0;
-  }
+}
 
 .wait-logo{
   position: absolute;
