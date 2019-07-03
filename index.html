@@ -1,29 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html class="html">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>宵街映写 -プロジェクションナイト- 2019</title>
-	<link rel="stylesheet" type="text/css" href="ress.min.css">
-	<link rel="stylesheet" type="text/css" href="public.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="server/public/ress.min.css">
+	<link rel="stylesheet" type="text/css" href="server/public/public.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
-	
+	<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+	<script src="server/public/top.js"></script>
+
 </head>
+ <body class="body">
 
-<body>
-	<div class="wait" id="js-wait"></div>
+  <div class="top-page">
+		<div class="top-logo">
+		 <img src="server/public/images/1.png" class="js-circle">
+		 <img src="server/public/images/topLogo.png" class="top-img">
+		</div>
 
-	<div id="js-log"><!-- ここに投票内容が出ます --></div>
+		<div class="top-page-contents">
+		 <div class="button0" id="rect-button" onclick="pushButton(0)">
+		   <p class="button-text">start</p>
+		 </div>
+		 <div class="button1" id="rect-button" onclick="pushButton(1)">
+			 <p class="button-text">read me</p>
+		 </div>
+		   <p class="button2 small-button small-start-button" onclick="pushButton(2)">start</p>
+			 <p class="button3 small-button small-top-button" onclick="pushButton(3)">top</p>
 
-	<p id="red">red</p>
-	<p id="yellow">yellow</p>
-	<p id="blue">blue</p>
-	<p id="white">white</p>
-	<p id="black">black</p>
+		<div class="explain-sentence">
+		  <p class="explain-head">今このページをご覧になっているあなたがオーディエンスとしてプロジェクションマッピングの進行を左右することになります。</p><br>
+			<h2 class="explain-text">⒈ あなたのスマートフォンに表示された色から選択したい色をタップします。</h2><br>
+		　<h2 class="explain-text">⒉ 観客の過半数が選択した色がテーマとなる映像が投影されます。</h2><br>
+		　<h2 class="explain-text">⒊ トゥルーエンディングを目指してプロジェクションマッピングを進行させましょう！</h2><br>
+		　<h1 class="becareful">注意</h1>
+		　<p class="explain-head">プロジェクションマッピングと連動して、スマートフォンの画面にアクションが起こります、
+							「start」ボタンを押して上映時間までお待ち下さい。</p>
+    </div>
+	 </div>
+	</div>
 
-	<button id="js-start-button">start</button>
+	<div class="color-area">
+		<div class="top-area"></div>
+		<div class="bottom-area"></div>
+	</div>
 
-	<script src="receive.js"></script>
-</body>
+  <!-- 待機画面 -->
+  <div class="wait" id="js-wait">
+	 <div class="wait-content">
+	  <div class="js-wait-logo">
+		 <img src="server/public/images/topLogo.png" class="wait-logo">
+     <img src="server/public/images/2.png" class="js-wait-circle">
+		</div>
+		  <!-- waiting-text -->
+	  <div class="textBox">
+		 <p id="waitCaption" class="wait-caption"></p>
+		 <p id="waitMessage1" class="wait-message"></p>
+		 <p id="waitMessage2" class="wait-message"></p>
+		 <p id="waitMessage3" class="wait-message"></p>
+		</div>
+	 </div>
+	</div>
+
+				<!-- <div class="vote-color">
+				<p id="red">red</p>
+				<p id="yellow">yellow</p>
+				<p id="blue">blue</p>
+				<p id="white">white</p>
+				<p id="black">black</p>
+			</div> -->
+			<!-- webAnimetion-Window -->
+  <canvas id="mappingPage" class="mapping-Page" width="414" height="736"></canvas>
+
+	<script src="server/public/receive.js"></script>
+ </body>
 </html>
