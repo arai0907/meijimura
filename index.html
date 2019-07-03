@@ -19,8 +19,8 @@
 
 	<div class="top-page">
 	      <div class="top-logo">
-	              <img src="server/public/images/1.png" id="js-circle">
-	                 <img src="server/public/images/topLogo.png" class = "top-img" >
+	              <img src="server/public/images/1.png" class ="js-circle">
+	                 <img src="server/public/images/topLogo.png" class ="top-img">
 	            </div>
 
 
@@ -32,20 +32,43 @@
 	            <p class="button-text"   onclick="pushButton(1)">read me</p></div>
 
 	            <p id="button2" class="small-button small-start-button"  onclick="pushButton(2)">start</p>
-	            <p id="button3" class="small-button small-read-button"  onclick="pushButton(3)">top</p>
+	            <p id="button3" class="small-button small-top-button"  onclick="pushButton(3)">top</p>
 
 	        <div id="explain-sentence">
-
+						<p>今このページをご覧になっているあなたがオーディエンスとしてプロジェクションマッピングの進行を左右することになります。</p><br>
+         <h2>⒈ あなたのスマートフォンに表示された色から選択したい色をタップします。</h2> <br>
+         <h2>⒉ 観客の過半数が選択した色がテーマとなる映像が投影されます。</h2><br>
+         <h2>⒊ トゥルーエンディングを目指してプロジェクションマッピングを進行させましょう！</h2><br>
+         <h1>注意</h1>
+         <p>プロジェクションマッピングと連動して、スマートフォンの画面にアクションが起こります、
+					 「start」ボタンを押して上映時間までお待ち下さい。</p>
 	        </div>
 	    </div>
 	  </div>
-	  <div id="top-area"></div>
-	  <div id="bottom-area"></div>
+		<div class="color-area">
+	   <div id="top-area"></div>
+	   <div id="bottom-area"></div>
+    </div>
 
 
+	<div class="wait" id="js-wait">
+		<div class="wait-content">
+    <div class="js-wait-logo">
+			<img src="server/public/images/topLogo.png" class="wait-logo">
+			<img src="server/public/images/2.png" class ="js-wait-circle">
+		</div>
+		<!-- waiting-text -->
+		<div class ="textBox">
+				<p id="waitCaption" class="wait-caption"></p>
+				<p id="waitMessage1" class="wait-message"></p>
+				<p id="waitMessage2" class="wait-message"></p>
+				<p id="waitMessage3" class="wait-message"></p>
+			</div>
+		</div>
+	</div>
 
-	<div class="wait" id="js-wait"></div>
-	<!-- <div id="js-log" ここに投票内容が出ます > -->
+	<!-- webAnimetion-Window -->
+
 <div class="vote-color">
 	<p id="red">red</p>
 	<p id="yellow">yellow</p>
@@ -54,6 +77,7 @@
 	<p id="black">black</p>
 </div>
 	<!-- <button id="js-start-button">start</button> -->
+	<canvas id="mappingPage" class="mapping-Page" width="414" height="736"></canvas>
 
 	<!-- <script src="server/public/eceive.js"></script> -->
 </body>

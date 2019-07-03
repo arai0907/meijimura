@@ -15,14 +15,17 @@ window.addEventListener("load", function(){
     //ボタンの取得
     for(var i= 0;i < numButton;i++){button[ i ]= document.getElementById('button'+ i);}
 　　allButtonPermissionClickEvent();
-    circle                =document.getElementById('js-circle');
+    circle                =document.querySelector('.js-circle');
+    waitCircle            =document.querySelector('.js-wait-circle');
     topPage               =document.querySelector('.top-page');
     explainSentence       =document.getElementById('explain-sentence');
     $$buttonText          =document.getElementById('button-text');
     $$rectButton          =document.getElementById('rect-button');
     $$buttonText          =document.getElementsByClassName( 'button-text' );
-    topLogo               =document.getElementsByClassName('top-logo');
-
+    topLogo               =document.querySelector('.top-logo');
+    waitPage              =document.getElementById('js-wait');
+    topArea               =document.getElementById('top-area');
+    bottomArea            =document.getElementById('bottom-area');
 
 
 
@@ -30,17 +33,17 @@ window.addEventListener("load", function(){
     topPage.style.display == "block";
 
       //説明文の位置を決める
-      explainSentence.style.top = ( h - explainSentence.clientHeight ) / 3.5 + "px";
+      explainSentence.style.top = ( h - explainSentence.clientHeight ) / 15 + "vh";
       explainSentence.style.display = "none";
 
 //1.3秒毎に花火点滅させる
 //帯が縮ませる
 
-　　　slideshow_timer();
+change_timer();
 
 setTimeout(function(){
-  document.getElementById('top-area').style.height = '20%';
-  document.getElementById('bottom-area').style.height = '20%';
+  topArea.style.height = '20%';
+  bottomArea.style.height = '20%';
 
   for( var i = 0; i < 2; i++ ){ permissionClickEvent( i );}
 
@@ -59,15 +62,28 @@ setTimeout(function(){
 
 });
 
-function slideshow_timer(){
+function change_timer(){
+
   if (num == 1){
                   num = 0;
               }
               else {
                   num ++;
               }
-              document.getElementById("js-circle").src=images_src[num];
-              setTimeout("slideshow_timer()",1000);
+              circle.src = images_src[num]
+              setTimeout("change_timer()",1000);
+      }
+// .src = images_src[num];
+function wait_timer(){
+
+  if (num == 1){
+                  num = 0;
+              }
+              else {
+                  num ++;
+              }
+              waitCircle.src = images_src[num]
+              setTimeout("wait_timer()",500);
       }
 
       //　全てのボタンのイベントを拒否
@@ -95,7 +111,7 @@ function permissionClickEvent( id )
       {
         var clickedButton;               //clickedButtonをつかうよ（ローカル変数）
         allButtonPermissionClickEvent();　//すべてのボタンのクリックイベントを無効にするよ
-        //flashButton( targetButton );    //押したボタンが光る
+        // flashButton( targetButton );    //押したボタンが光る
         console.log( targetButton );     //押したボタンがコンソールに出力されるよ
         switch(targetButton)
         {
@@ -113,6 +129,7 @@ function permissionClickEvent( id )
           break;
 
           case 3:
+           
           setTimeout( reduceRect, 600 );
           console.log("case 3");
           break;
@@ -136,46 +153,87 @@ function expandRect( targetButton ){
 
   //押してないボタンが消えていく
   button[ otherButton ].style.opacity = 0.0;
-  //帯が伸びる
-  document.getElementById('top-area').style.height = '100%';
-  document.getElementById('bottom-area').style.height = '100%';
-
 //   setTimeout(function(){
-//   document.getElementById('TopArea').style.height = '20%';
-//   document.getElementById('BottomArea').style.height = '20%';
+  topArea.style.height = '100%';
+  bottomArea.style.height = "100%";
 // },1200);
 
 //ボタンのpをフェードアウト
   // for( var i = 0; i < 2; i++ ){ $$buttonText[ i ].style.opacity = 0.0; }
 
   //押したボタンが0.5秒後消えていく
- setTimeout(function()  {
-   // button[ targetButton ].style.opacity = 0.0;
+ setTimeout(function(){
+  button[ targetButton ].style.opacity = 0.0
    //トップイメージをフェードアウト
+},500);
 
-topPage.style.opacity = 0.0;
-
-});
-
+//はじめるボタンを押したら
 if(targetButton == 0){
-
- deleteTop();
   // TweenMax.to(wait,1.0,{autoAlpha: 1});
- console.log('wait');
+ deleteTop( targetButton );
 }
+//説明ボタンをおしたら
+else{
+ console.log("explainSentence");
+ explainSentence.style.display = button[ 2 ].style.display = button[ 3 ].style.display = "block";
+setTimeout(function(){
+ topArea.style.height = '20%';
+ bottomArea.style.height = "20%";
+ topLogo.style.opacity ="0.0";
+ button[ otherButton ].style.display = "none";
+ button[ 2 ].style.opacity = button[ 3 ].style.opacity = explainSentence.style.opacity = 1.0;
+setTimeout( function(){
+  for( var i = 2; i < 4; i++ ){ permissionClickEvent( i ) }
+}, 500 );
+}, 1300 );
 
 }
+}
+function deleteTop( clickedButton ){
 
-function deleteTop(){
+  var otherButton;
+  if( clickedButton == 1 ){ otherButton = 0; }
+  else{ otherButton = 1; }
 
-  setTimeout(function(){
-  document.getElementById('top-area').style.height = '0%';
-  document.getElementById('bottom-area').style.height = '0%';
+  waitPage.style.display = "block";
 
 setTimeout(function(){
-  console.log('waitLogo');
-},300);
+  topPage.style.opacity = 0.0;
+  setTimeout(function(){
+  topArea.style.height = '0%';
+  bottomArea.style.height = '0%';
 
-},1200);
+   setTimeout(function(){
+    waitPage.style.opacity = "1.0";
+    wait_timer();
+    topPage.style.display = "none";
+    console.log('waitPage');
+   },300);
+ },900);
+},700);
+ console.log( "＜ delete TopPage" );
+}
+
+//戻るを押した時の処理
+function reduceRect(){
+
+  var clickedButton = 1;
+  var otherButton   = 0;
+  explainSentence.style.opacity = button[ 2 ].style.opacity = button[ 3 ].style.opacity = 0.0;
+
+setTimeout(function(){
+  button[ otherButton ].style.display = "block";
+  button[ clickeButton ].style.display = "block";
+
+  explainSentence.style.display = button[ 2 ].style.display = button[ 3 ].style.display = "none";
+
+  //トップイメージをフェードイン
+  topLogo.style.display = "block";
+  topLogo.style.opacity = 1.0;
+//クリックイベントを許可
+setTimeout( function(){ for( var i = 0; i < 2; i++ ){ permissionClickEvent( i, true ); } }, 500 );
+console.log("reload Top");
+},550);
+
 
 }
