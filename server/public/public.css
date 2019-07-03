@@ -49,6 +49,7 @@ html,body,.top-page,.top-page-contents,.vote-color{
   cursor: pointer;
   text-align: center;
   pointer-events: auto;
+  z-index: 2;
 }
 
 .rect-button p{
@@ -62,8 +63,8 @@ html,body,.top-page,.top-page-contents,.vote-color{
   right: 0;
   margin: auto;
   margin-top: 16vh;
-  transition: 1.0s;
-  z-index: 1;
+  transition: 0.5s;
+  z-index: 0;
   opacity: 1.0;
 }
 
@@ -132,7 +133,7 @@ html,body,.top-page,.top-page-contents,.vote-color{
   width: 100%;
   /* background-color:#E21E16; */
   background: linear-gradient(169deg,  transparent 45%,#bcbaa8 50%,#E21E16 51%);
-  z-index: 2;
+  z-index: 0;
   transition: 1.0s;
 }
 
@@ -151,18 +152,19 @@ html,body,.top-page,.top-page-contents,.vote-color{
   text-align: center;
   color: white;
   z-index: 1;
+  cursor: pointer;
   transition: 1.0s;
   transform: skewY(-12deg);
   pointer-events: auto;
 }
 
 .small-start-button {
-  bottom: 22vh;
+  bottom: 27vh;
   left: 34%;
 }
 
 .small-top-button {
-  bottom: 16vh;
+  bottom: 22vh;
   right: 16%;
 }
 
@@ -171,7 +173,6 @@ html,body,.top-page,.top-page-contents,.vote-color{
   width:  56.25vh;
   max-height: 100%;
   max-width:  100%;
-
   position: absolute;
   margin: auto;
   top:    0;
@@ -200,7 +201,7 @@ html,body,.top-page,.top-page-contents,.vote-color{
   left: 0;
   right: 0;
   margin: auto;
-  margin-top: 25vh;
+  margin-top: 15vh;
   transition: 1.0s;
   z-index: 1;
   opacity: 1.0;
@@ -224,18 +225,16 @@ html,body,.top-page,.top-page-contents,.vote-color{
 
 #explain-sentence {
   position: absolute;
-  height: 50%;
+  height: 45%;
   padding: 0 22%;
   width: 100%;
   font-size: 16px;
   display: block;
   overflow: auto;
   opacity: 0.0;
-  transition: 1.5s;
+  transition: 1.0s;
   z-index: 1;
   background: #ffffff;
-  transform: skewY(-11deg)
-
 }
 
 #explain-sentence p {
@@ -296,7 +295,6 @@ h2 {
   right: 0;
   bottom: 0;
   left: 0;
-
   display: none;
   opacity: 0.0;
   background-color: #000000;

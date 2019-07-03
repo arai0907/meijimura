@@ -10,8 +10,8 @@ var images_src = new Array('server/public/images/1.png','server/public/images/2.
 var num = -1;
 var wait = document.querySelector('#js-wait');
 
-window.addEventListener("load", function(){
-  console.log("<finish Load>");
+window.addEventListener('load', function(){
+  console.log('<finish Load>');
   //ボタンの取得
   for(var i= 0;i < numButton;i++){button[ i ]= document.getElementById('button'+ i);}
   allButtonPermissionClickEvent();
@@ -20,7 +20,7 @@ window.addEventListener("load", function(){
   topPage               =document.querySelector('.top-page');
   explainSentence       =document.getElementById('explain-sentence');
   $$buttonText          =document.getElementById('button-text');
-  $$rectButton          =document.getElementById('rect-button');
+  rectButton            =document.querySelector('.rect-button');
   $$buttonText          =document.getElementsByClassName( 'button-text' );
   topLogo               =document.querySelector('.top-logo');
   waitPage              =document.getElementById('js-wait');
@@ -30,15 +30,12 @@ window.addEventListener("load", function(){
 
 
 
-  topPage.style.display == "block";
+  topPage.style.display == 'block';
 
   //説明文の位置を決める
-  explainSentence.style.top = ( h - explainSentence.clientHeight ) / 15 + "vh";
-  explainSentence.style.display = "none";
-
-  //1.3秒毎に花火点滅させる
-  //帯が縮ませる
-
+  explainSentence.style.top = ( h - explainSentence.clientHeight ) / 20 + 'vh';
+  explainSentence.style.display = 'none';
+  //1.0秒毎にcircleの中の画像を変える
   change_timer();
 
   setTimeout(function(){
@@ -48,7 +45,7 @@ window.addEventListener("load", function(){
     for( var i = 0; i < 2; i++ ){ permissionClickEvent( i );}
 
 
-    setTimeout(function(){
+    setTimeout(function() {
       topPage.style.opacity = 1.0;
       setTimeout(function(){
         circle.classList.add('fadeout');
@@ -62,7 +59,7 @@ window.addEventListener("load", function(){
 
 });
 
-function change_timer(){
+function change_timer() {
 
   if (num == 1){
     num = 0;
@@ -71,7 +68,7 @@ function change_timer(){
     num ++;
   }
   circle.src = images_src[num]
-  setTimeout("change_timer()",1000);
+  setTimeout('change_timer()',1000);
 }
 // .src = images_src[num];
 function wait_timer(){
@@ -83,21 +80,21 @@ function wait_timer(){
     num ++;
   }
   waitCircle.src = images_src[num]
-  setTimeout("wait_timer()",500);
+  setTimeout('wait_timer()',500);
 }
 
 //　全てのボタンのイベントを拒否
-function allButtonPermissionClickEvent()
-{
-  for( var i = 0; i < numButton; i++ ){ button[ i ].style.pointerEvents = "none"; }
-  console.log( "＜ Can't touch" );
+function allButtonPermissionClickEvent() {
+  for( var i = 0; i < numButton; i++ ){
+    button[ i ].style.pointerEvents = 'none';
+  }
+  console.log( '＜ Cant touch' );
 }
 
 //　特定のボタンのイベントを許可
-function permissionClickEvent( id )
-{
-  button[ id ].style.pointerEvents = "auto";
-  console.log( "＜permission click" + id );
+function permissionClickEvent( id ) {
+  button[ id ].style.pointerEvents = 'auto';
+  console.log( '＜permission click' + id );
 }
 
 //ボタンイベント
@@ -107,31 +104,30 @@ function permissionClickEvent( id )
 //-------------------------
 
 
-function pushButton ( targetButton )
-{
+function pushButton ( targetButton ) {
   var clickedButton;               //clickedButtonをつかうよ（ローカル変数）
   allButtonPermissionClickEvent();　//すべてのボタンのクリックイベントを無効にするよ
   // flashButton( targetButton );    //押したボタンが光る
   console.log( targetButton );     //押したボタンがコンソールに出力されるよ
-  switch(targetButton)
+  switch(　targetButton　)
   {
     case 0:
     case 1:
     clickeButton = targetButton;
     setTimeout( function(){ expandRect( targetButton )}, 300 );
-    console.log("case 1");
+    console.log('case 1');
     break;
 
     case 2:
     clickedButton = 1;
     setTimeout( function(){ deleteTop( clickedButton ) }, 600 );
-    console.log("case 2");
+    console.log('case 2');
     break;
 
     case 3:
 
     setTimeout( reduceRect, 600 );
-    console.log("case 3");
+    console.log('case 3');
     break;
 
     default:
@@ -146,24 +142,22 @@ function pushButton ( targetButton )
 //-----------------------------
 //　四角いボタンを押した時
 
-function expandRect( targetButton ){
+function expandRect( targetButton ) {
   var otherButton;
   if( targetButton != 1){ otherButton = 1; }
   else                   { otherButton = 0; }
 
+  bottomArea.style.zIndex = '2';
   //押してないボタンが消えていく
   button[ otherButton ].style.opacity = 0.0;
   //   setTimeout(function(){
   topArea.style.height = '100%';
-  bottomArea.style.height = "100%";
+  bottomArea.style.height = '100%';
   // },1200);
-
-  //ボタンのpをフェードアウト
-  // for( var i = 0; i < 2; i++ ){ $$buttonText[ i ].style.opacity = 0.0; }
 
   //押したボタンが0.5秒後消えていく
   setTimeout(function(){
-    button[ targetButton ].style.opacity = 0.0
+    button[ targetButton ].style.opacity = 0.0;
     //トップイメージをフェードアウト
   },500);
 
@@ -174,28 +168,29 @@ function expandRect( targetButton ){
   }
   //説明ボタンをおしたら
   else{
-    console.log("explainSentence");
-    explainSentence.style.display = button[ 2 ].style.display = button[ 3 ].style.display = "block";
+    console.log('explainSentence');
+    explainSentence.style.display = button[ 2 ].style.display = button[ 3 ].style.display = 'block';
+    topLogo.style.opacity ='0.0';
     setTimeout(function(){
       topArea.style.height = '20%';
-      bottomArea.style.height = "20%";
-      topLogo.style.opacity ="0.0";
-      button[ otherButton ].style.display = "none";
+      bottomArea.style.height = '20%';
+      button[ otherButton ].style.display = 'none';
       button[ 2 ].style.opacity = button[ 3 ].style.opacity = explainSentence.style.opacity = 1.0;
       setTimeout( function(){
+        bottomArea.style.zIndex = '0';
         for( var i = 2; i < 4; i++ ){ permissionClickEvent( i ) }
       }, 500 );
     }, 1300 );
 
   }
 }
-function deleteTop( clickedButton ){
+function deleteTop( clickedButton ) {
 
   var otherButton;
   if( clickedButton == 1 ){ otherButton = 0; }
   else{ otherButton = 1; }
 
-  waitPage.style.display = "block";
+  waitPage.style.display = 'block';
 
   setTimeout(function(){
     topPage.style.opacity = 0.0;
@@ -204,36 +199,45 @@ function deleteTop( clickedButton ){
       bottomArea.style.height = '0%';
 
       setTimeout(function(){
-        waitPage.style.opacity = "1.0";
+        waitPage.style.opacity = '1.0';
         wait_timer();
-        topPage.style.display = "none";
+        topPage.style.display = 'none';
         console.log('waitPage');
       },300);
     },900);
   },700);
-  console.log( "＜ delete TopPage" );
+  console.log( '＜ delete TopPage' );
 }
 
 //戻るを押した時の処理
-function reduceRect(){
+function reduceRect() {
 
   var clickedButton = 1;
   var otherButton   = 0;
+  bottomArea.style.zIndex = '0';
   explainSentence.style.opacity = button[ 2 ].style.opacity = button[ 3 ].style.opacity = 0.0;
+  topArea.style.height = '100%';
+  bottomArea.style.height = '100%';
 
   setTimeout(function(){
-    button[ otherButton ].style.display = "block";
-    button[ clickeButton ].style.display = "block";
 
-    explainSentence.style.display = button[ 2 ].style.display = button[ 3 ].style.display = "none";
+    button[ otherButton ].style.display = 'block';
+    button[ clickeButton ].style.display = 'block';
 
+    explainSentence.style.display = button[ 2 ].style.display = button[ 3 ].style.display = 'none';
+    setTimeout(function(){
+      topArea.style.height = '20%';
+      bottomArea.style.height = '20%';
+    },300);
     //トップイメージをフェードイン
-    topLogo.style.display = "block";
+    topLogo.style.display = 'block';
     topLogo.style.opacity = 1.0;
     //クリックイベントを許可
-    setTimeout( function(){ for( var i = 0; i < 2; i++ ){ permissionClickEvent( i, true ); } }, 500 );
-    console.log("reload Top");
-  },550);
+    setTimeout( function(){ for( var i = 0; i < 2; i++ ){ permissionClickEvent( i, true ); }
+    //topPageのボタンを復活
+    button[ clickedButton ].style.opacity = button[ otherButton ].style.opacity = 1.0;}, 500 );
+    console.log('reload Top');
+  },1000);
 
 
 }
