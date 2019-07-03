@@ -105,6 +105,11 @@ socket.on('/api/end', (data) => {
     console.log(data);
 });
 
+socket.on('/api/reset', (data) => {
+    console.log('サーバーからWebSocketで/api/resetのデータを受信しました。')
+    console.log(data);
+})
+
 socket.on('vote', (data) => {
     // スマホの画面を終了画面に切り替える
     console.log('サーバーからWebSocketでvoteのデータを受信しました。')
