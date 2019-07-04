@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 const SocketServer = require('socket.io');
+const phase = 0;
 
 // Color番号
 const COLORS = {
@@ -77,6 +78,8 @@ app.get('/api/start',(req,res) => {
         [COLORS.yellow, COLORS.blue]
     ];
 
+    phase = 1;
+
     // 投票１の2色をランダムで決定する
     randomVoteColorId = voteColorsId[Math.floor(Math.random() * voteColorsId.length)];
 
@@ -96,12 +99,15 @@ app.get('/api/vote/start/:id',(req,res) => {
         io.emit('/api/vote/start/1', {
             randomVoteColorId: vote1colors
         })
+        phase = 2;
         res.json({});
     } else if(req.params.id == '2') {
         io.emit('/api/vote/start/2');
+        phase = 5;
         res.send('start2');
     } else {
         io.emit('/api/vote/start/3');
+        phase = 9;
         res.send('start3');
     }
 });
@@ -111,6 +117,8 @@ app.get('/api/vote/end/1',(req,res) => {
     // 投票
     let voteColor0 = 0;
     let voteColor1 = 0;
+
+    phase = 3;
     
     if (vote1colors[0] === COLORS.red && vote1colors[1] === COLORS.yellow) {
         voteColor0 = red;
@@ -154,6 +162,8 @@ app.get('/api/vote/end/1',(req,res) => {
 app.get('/api/vote/end/2',(req,res) => {
     const maxVoteNumber = Math.max(red,yellow,blue);
 
+    phase = 6;
+
     // WebSocket で投票2の終了を通知
     io.emit('/api/vote/end/2');
 
@@ -179,6 +189,8 @@ app.get('/api/vote/end/2',(req,res) => {
 
 // 投票終了3
 app.get('/api/vote/end/3', (req,res) => {
+    phase = 10;
+
     if (white > black) {
         // 白の投票数が多い時の処理
         io.emit('/api/scene/end/3', {
@@ -205,6 +217,8 @@ app.get('/api/scene/change/:id',(req,res) => {
     if (req.params.id === '1') {
         let voteColor0 = 0;
         let voteColor1 = 0;
+
+        phase = 4;
         
         if (vote1colors[0] === COLORS.red && vote1colors[1] === COLORS.yellow) {
             voteColor0 = red;
@@ -254,6 +268,8 @@ app.get('/api/scene/change/:id',(req,res) => {
     } else if (req.params.id === '2') {
         const maxVoteNumber2 = Math.max(red,yellow,blue);
 
+        phase = 7;
+
         if (red === yellow && yellow === blue) {
             // 投票数が同票の時
             io.emit('/api/scene/change', {
@@ -295,6 +311,9 @@ app.get('/api/scene/change/:id',(req,res) => {
         });
 
     } else if (req.params.id === '3') {
+
+        phase = 8;
+
         if (
             trueColorId &&
             TRUE_COLORS['id' + trueColorId][0] === vote1ResultColorId &&
@@ -315,6 +334,8 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.sameVote });
           }
     } else {
+        phase = 11;
+
         if (
             trueColorId &&
             TRUE_COLORS['id' + trueColorId][0] === vote1ResultColorId &&
@@ -357,6 +378,7 @@ app.get('/api/end',(req,res) => {
 // リセット
 app.get('/api/reset',(req,res) => {
     io.emit('/api/reset');
+    phase = 0;
     res.json({});
 })
 
@@ -410,6 +432,5 @@ io.on('connection',(socket) => {
 });
 
 httpServer.listen(3000,function(){
-    // console.log('サーバーが起動しました。URLは http://192.168.1.102:3000 です');
-    console.log('サーバーが起動しました。URLは http://localhost:3000 です');
+    console.log('サーバーが起動しました。URLは http://192.168.1.103:3000 です');
 });
