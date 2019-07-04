@@ -65,15 +65,42 @@
 	 </div>
 	</div>
 
-				<!-- <div class="vote-color">
-				<p id="red">red</p>
-				<p id="yellow">yellow</p>
-				<p id="blue">blue</p>
-				<p id="white">white</p>
-				<p id="black">black</p>
-			</div> -->
+	<div id="first-vote" class="vote-page">
+	 <div id="vote-RY" class="vote">
+		<div id="red01"    class="first-btn btn-red"></div>
+		<div id="yellow01" class="under-btn btn-yellow"></div>
+	 </div>
+
+	 <div id="vote-YB" class="vote">
+	  <div id="yellow02" class="first-btn btn-yellow"></div>
+	  <div id="blue01"   class="under-btn btn-blue"></div>
+	 </div>
+
+	 <div id="vote-BR" class="vote">
+	  <div id="blue02" class="first-btn btn-blue"></div>
+	  <div id="red02"  class="under-btn btn-red"></div>
+	 </div>
+  </div>
+
+  <div id="second-vote" class="vote-page">
+	 <div id="vote-RYB" class="vote vote-RYB">
+	  <div id="red03"    class="second-btn top-btn btn-red"></div>
+	  <div id="yellow03" class="under-btn  btn-yellow"></div>
+	  <div id="blue03"   class="second-btn bottom-btn btn-blue"></div>
+	 </div>
+  </div>
+
+  <div id="third-vote" class="vote-page">
+	 <div id="vote-wb" class="vote">
+		<div id="white01"    class="third-btn btn-white"></div>
+		<div id="black01" class="under-btn btn-black"></div>
+	 </div>
+  </div>
 			<!-- webAnimetion-Window -->
   <canvas id="mappingPage" class="mapping-Page" width="414" height="736"></canvas>
+
+	<!-- Result Window-->
+  <div id="colorPage" class="colorChange"></div> <!-- 多かった色に帰る画面-->
 
 	<script src="server/public/receive.js"></script>
  </body>

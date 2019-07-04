@@ -1,7 +1,12 @@
+@import url("https://p.typekit.net/p.css?s=1&k=lcy5rfc&ht=tk&f=13375&a=14259099&app=typekit&e=css");
+
 @font-face {
-  font-family: 'OCR_A_Std';
-  src: url('text/OCRAStd.otf');
+font-family:"ocr-a-std";
+src:url("https://use.typekit.net/af/3315df/000000000000000000012e5c/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/3315df/000000000000000000012e5c/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/3315df/000000000000000000012e5c/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+font-style:normal;font-weight:400;
 }
+
+.tk-ocr-a-std { font-family: "ocr-a-std",monospace; }
 
 *{
   margin: 0px;
@@ -20,7 +25,7 @@
 }
 
 .top-page {
-  font-family: 'OCR_A_Std';
+  font-family: 'ocr-a-std';
   letter-spacing: 3px;
   display: block;
   opacity: 0.0;
@@ -243,6 +248,12 @@
   color: black;
 }
 
+.color-area{
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
 .explain-text {
   color: black;
   font-size: 14px;
@@ -291,8 +302,104 @@
   transition: 1.0s;
 }
 
-.color-area{
-  max-height: 100%;
-  max-width: 100%;
-  overflow: hidden;
+/* vote-Window */
+.vote-page {
+height: 177.78vw;
+width:  56.25vh;
+max-height: 100%;
+max-width:  100%;
+position: absolute;
+margin: auto;
+top:    0;
+right:  0;
+bottom: 0;
+left:   0;
+overflow: hidden;
+
+display: none;
+opacity: 0.0;
+transition: 1.0s;
+}
+
+.vote {
+height: 100%;
+display: none;
+}
+
+
+.under-btn {
+position: absolute;
+top: 0;
+left: 0;
+right:0;
+height: 100%;
+}
+
+.top-btn {
+bottom: 10%;
+transform: skewY(10deg);
+}
+
+.bottom-btn {
+top: 20%;
+transform: skewY(-10deg);
+}
+
+.first-btn {
+height: 60%;
+position: relative;
+bottom: 10%;
+transform: skewY(10deg);
+transform-origin: top center;
+color: #F2F5FA;
+z-index: 1;
+transition: 1.0s;
+}
+
+.second-btn {
+height: 45%;
+position: relative;
+transform-origin: top center;
+color: #F2F5FA;
+transition: 1.5s;
+z-index: 1;
+}
+
+.third-btn {
+height: 60%;
+position: relative;
+bottom: 10%;
+transform: skewY(10deg);
+transform-origin: top center;
+color: #F2F5FA;
+z-index: 1;
+transition: 1.0s;
+}
+
+.btn-red { background-color: #dc0a14; }
+.btn-yellow { background-color: #ffd20a; }
+.btn-blue { background-color: #001ef0; }
+.btn-white { background-color: #ffffff;}
+.btn-black { background-color: #000000;}
+
+.vote-RYB{
+display: block;
+}
+
+.colorChange {
+height: 177.78vw;
+width:  56.25vh;
+max-height: 100%;
+max-width:  100%;
+position: absolute;
+margin: auto;
+top:    0;
+right:  0;
+bottom: 0;
+left:   0;
+
+opacity: 0.0;
+display: none;
+transition: 1.0s;
+z-index: 2;
 }
