@@ -5,104 +5,104 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>宵街映写 -プロジェクションナイト- 2019</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="server/public/ress.min.css">
-	<link rel="stylesheet" type="text/css" href="server/public/public.css">
+	<link rel="stylesheet" type="text/css" href="/ress.min.css">
+	<link rel="stylesheet" type="text/css" href="/public.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 	<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-	<script src="server/public/top.js"></script>
+	<script src="/top.js"></script>
 
 </head>
- <body class="body">
+<body class="body">
 
-  <div class="top-page">
+	<div class="top-page">
 		<div class="top-logo">
-		 <img src="server/public/images/1.png" class="js-circle">
-		 <img src="server/public/images/topLogo.png" class="top-img">
+			<img src="/images/1.png" class="js-circle">
+			<img src="/images/topLogo.png" class="top-img">
 		</div>
 
 		<div class="top-page-contents">
-		 <div class="button0" id="rect-button" onclick="pushButton(0)">
-		   <p class="button-text">start</p>
-		 </div>
-		 <div class="button1" id="rect-button" onclick="pushButton(1)">
-			 <p class="button-text">read me</p>
-		 </div>
-		   <p class="button2 small-button small-start-button" onclick="pushButton(2)">start</p>
-			 <p class="button3 small-button small-top-button" onclick="pushButton(3)">top</p>
+			<div class="button0" id="rect-button" onclick="pushButton(0)">
+				<p class="button-text">start</p>
+			</div>
+			<div class="button1" id="rect-button" onclick="pushButton(1)">
+				<p class="button-text">read me</p>
+			</div>
+			<p class="button2 small-button small-start-button" onclick="pushButton(2)">start</p>
+			<p class="button3 small-button small-top-button" onclick="pushButton(3)">top</p>
 
-		<div class="explain-sentence">
-		  <p class="explain-head">今このページをご覧になっているあなたがオーディエンスとしてプロジェクションマッピングの進行を左右することになります。</p><br>
-			<h2 class="explain-text">⒈ あなたのスマートフォンに表示された色から選択したい色をタップします。</h2><br>
-		　<h2 class="explain-text">⒉ 観客の過半数が選択した色がテーマとなる映像が投影されます。</h2><br>
-		　<h2 class="explain-text">⒊ トゥルーエンディングを目指してプロジェクションマッピングを進行させましょう！</h2><br>
-		　<h1 class="becareful">注意</h1>
-		　<p class="explain-head">プロジェクションマッピングと連動して、スマートフォンの画面にアクションが起こります、
-							「start」ボタンを押して上映時間までお待ち下さい。</p>
-    </div>
-	 </div>
-	</div>
-
-	<div class="color-area">
-		<div class="top-area"></div>
-		<div class="bottom-area"></div>
-	</div>
-
-  <!-- 待機画面 -->
-  <div class="wait" id="js-wait">
-	 <div class="wait-content">
-	  <div class="js-wait-logo">
-		 <img src="server/public/images/topLogo.png" class="wait-logo">
-     <img src="server/public/images/2.png" class="js-wait-circle">
+			<div class="explain-sentence">
+				<p class="explain-head">今このページをご覧になっているあなたがオーディエンスとしてプロジェクションマッピングの進行を左右することになります。</p><br>
+				<h2 class="explain-text">⒈ あなたのスマートフォンに表示された色から選択したい色をタップします。</h2><br>
+				<h2 class="explain-text">⒉ 観客の過半数が選択した色がテーマとなる映像が投影されます。</h2><br>
+				<h2 class="explain-text">⒊ トゥルーエンディングを目指してプロジェクションマッピングを進行させましょう！</h2><br>
+				<h1 class="becareful">注意</h1>
+				<p class="explain-head">プロジェクションマッピングと連動して、スマートフォンの画面にアクションが起こります、
+					「start」ボタンを押して上映時間までお待ち下さい。</p>
+				</div>
+			</div>
 		</div>
-		  <!-- waiting-text -->
-	  <div class="textBox">
-		 <p id="waitCaption" class="wait-caption"></p>
-		 <p id="waitMessage1" class="wait-message"></p>
-		 <p id="waitMessage2" class="wait-message"></p>
-		 <p id="waitMessage3" class="wait-message"></p>
+
+		<div class="color-area">
+			<div class="top-area"></div>
+			<div class="bottom-area"></div>
 		</div>
-	 </div>
-	</div>
 
-	<div id="first-vote" class="vote-page">
-	 <div id="vote-RY" class="vote">
-		<div id="red01"    class="first-btn btn-red"></div>
-		<div id="yellow01" class="under-btn btn-yellow"></div>
-	 </div>
+		<!-- 待機画面 -->
+		<div class="wait" id="js-wait">
+			<div class="wait-content">
+				<div class="js-wait-logo">
+					<img src="/images/topLogo.png" class="wait-logo">
+					<img src="/images/2.png" class="js-wait-circle">
+				</div>
+				<!-- waiting-text -->
+				<div class="textBox">
+					<p id="waitCaption" class="wait-caption"></p>
+					<p id="waitMessage1" class="wait-message"></p>
+					<p id="waitMessage2" class="wait-message"></p>
+					<p id="waitMessage3" class="wait-message"></p>
+				</div>
+			</div>
+		</div>
 
-	 <div id="vote-YB" class="vote">
-	  <div id="yellow02" class="first-btn btn-yellow"></div>
-	  <div id="blue01"   class="under-btn btn-blue"></div>
-	 </div>
+		<div id="first-vote" class="vote-page">
+			<div id="vote-RY" class="vote">
+				<div id="red1" class="first-btn btn-red"></div>
+				<div id="yellow1" class="under-btn btn-yellow"></div>
+			</div>
 
-	 <div id="vote-BR" class="vote">
-	  <div id="blue02" class="first-btn btn-blue"></div>
-	  <div id="red02"  class="under-btn btn-red"></div>
-	 </div>
-  </div>
+			<div id="vote-YB" class="vote">
+				<div id="yellow2" class="first-btn btn-yellow"></div>
+				<div id="blue1" class="under-btn btn-blue"></div>
+			</div>
 
-  <div id="second-vote" class="vote-page">
-	 <div id="vote-RYB" class="vote vote-RYB">
-	  <div id="red03"    class="second-btn top-btn btn-red"></div>
-	  <div id="yellow03" class="under-btn  btn-yellow"></div>
-	  <div id="blue03"   class="second-btn bottom-btn btn-blue"></div>
-	 </div>
-  </div>
+			<div id="vote-BR" class="vote">
+				<div id="blue2" class="first-btn btn-blue"></div>
+				<div id="red2" class="under-btn btn-red"></div>
+			</div>
+		</div>
 
-  <div id="third-vote" class="vote-page">
-	 <div id="vote-wb" class="vote">
-		<div id="white01"    class="third-btn btn-white"></div>
-		<div id="black01" class="under-btn btn-black"></div>
-	 </div>
-  </div>
-			<!-- webAnimetion-Window -->
-  <canvas id="mappingPage" class="mapping-Page" width="414" height="736"></canvas>
+		<div id="second-vote" class="vote-page">
+			<div id="vote-RYB" class="vote vote-RYB">
+				<div id="red3" class="second-btn top-btn btn-red"></div>
+				<div id="yellow3" class="under-btn btn-yellow"></div>
+				<div id="blue3" class="second-btn bottom-btn btn-blue"></div>
+			</div>
+		</div>
 
-	<!-- Result Window-->
-  <div id="colorPage" class="colorChange"></div> <!-- 多かった色に帰る画面-->
+		<div id="third-vote" class="vote-page">
+			<div id="vote-wb" class="vote">
+				<div id="white1" class="third-btn btn-white"></div>
+				<div id="black1" class="under-btn btn-black"></div>
+			</div>
+		</div>
+		<!-- webAnimetion-Window -->
+		<canvas id="mappingPage" class="mapping-Page" width="414" height="736"></canvas>
 
-	<script src="server/public/receive.js"></script>
-	<script src="server/public/change.js"></script>
- </body>
-</html>
+		<!-- Result Window-->
+		<div id="colorPage" class="colorChange"></div> <!-- 多かった色に帰る画面-->
+
+		<script src="/receive.js"></script>
+		<script src="/change.js"></script>
+	</body>
+	</html>

@@ -27,59 +27,79 @@ var btnw01     = document.getElementById('white01');
 var btnb01     = document.getElementById('black01');
 
 //RY
-    btnR01.onclick = function() {
-        colorPage.style.display = "block";
-        btnR01.style.height = '130%';
-    }
-    btnY01.onclick = function() {
-        colorPage.style.display = "block";
-        btnR01.style.height = '0%';
-    }
+btnR01.onclick = function() {
+ colorPage.style.display = "block";
+ btnR01.style.height = '130%';
+}
+btnY01.onclick = function() {
+ colorPage.style.display = "block";
+ btnR01.style.height = '0%';
+}
 
-    //YB
-    btnY02.onclick = function() {
-        colorPage.style.display = "block";
-        btnY02.style.height = '130%';
-    }
-    btnB01.onclick = function() {
-        colorPage.style.display = "block";
-        btnY02.style.height = '0%';
-    }
+//YB
+btnY02.onclick = function() {
+ colorPage.style.display = "block";
+ btnY02.style.height = '130%';
+}
+btnB01.onclick = function() {
+ colorPage.style.display = "block";
+ btnY02.style.height = '0%';
+}
 
-    //BR
-    btnB02.onclick = function() {
-        colorPage.style.display = "block";
-        btnB02.style.height = '130%';
-    }
-    btnR02.onclick = function() {
-        colorPage.style.display = "block";
-        btnB02.style.height = '0%';
-    }
+//BR
+btnB02.onclick = function() {
+ colorPage.style.display = "block";
+ btnB02.style.height = '130%';
+}
+btnR02.onclick = function() {
+ colorPage.style.display = "block";
+ btnB02.style.height = '0%';
+}
 
-    //RYB
-    btnR03.onclick = function() {
-        colorPage.style.display = "block";
-        btnR03.style.height = '130%';
-        btnB03.style.height = '0%';
-    }
-    btnY03.onclick = function() {
-        colorPage.style.display = "block";
-        btnR03.style.height = '0%';
-        btnB03.style.top = '110%'
-    }
-    btnB03.onclick = function() {
-        colorPage.style.display = "block";
-        btnR03.style.height = '0%';
-        btnB03.style.height = '120%';
-        btnB03.style.top    = '-10%'
-    }
+//RYB
+btnR03.onclick = function() {
+ colorPage.style.display = "block";
+ btnR03.style.height = '130%';
+ btnB03.style.height = '0%';
+}
+btnY03.onclick = function() {
+ colorPage.style.display = "block";
+ btnR03.style.height = '0%';
+ btnB03.style.top = '110%'
+}
+btnB03.onclick = function() {
+ colorPage.style.display = "block";
+ btnR03.style.height = '0%';
+ btnB03.style.height = '120%';
+ btnB03.style.top    = '-10%'
+}
 
-    //wb
-    btnw01.onclick = function() {
-        colorPage.style.display = "block";
-        btnw01.style.height = '130%';
-    }
-    btnb01.onclick = function() {
-        colorPage.style.display = "block";
-        btnw01.style.height = '0%';
-    }
+//wb
+btnw01.onclick = function() {
+ colorPage.style.display = "block";
+ btnw01.style.height = '130%';
+}
+btnb01.onclick = function() {
+ colorPage.style.display = "block";
+ btnw01.style.height = '0%';
+}
+
+//--- 投票画面のスタイルをデフォルトに戻す ---
+function voteReset(){
+ btnR01.style.height = '60%';
+ btnY02.style.height = '60%';
+ btnB02.style.height = '60%';
+
+
+ btnR03.style.height = '45%';
+ btnB03.style.height = '45%';
+
+ btnB03.style.top    = '20%'
+
+ voteRY.style.display = 'none';
+ voteYB.style.display = 'none';
+ voteBR.style.display = 'none';
+
+ firstVotePage.style.display  = 'none';
+ secondVotePage.style.display = 'none';
+}
