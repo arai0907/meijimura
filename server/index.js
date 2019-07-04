@@ -22,7 +22,7 @@ let blue = 0; // blueの投票数を記録する変数
 let black = 0; // blackの投票数を記録する変数
 let white = 0; // whiteの投票数を記録する変数
 
-let phase = 0; //シーン番号 途中から入ってきた人対策
+let phase = ''; //シーン番号 途中から入ってきた人対策
 
 // trueColorの正解の組み合わせ
 const TRUE_COLORS = {
