@@ -10,6 +10,8 @@ var images_src = new Array('server/public/images/1.png','server/public/images/2.
 var num = -1;
 var wait = document.querySelector('#js-wait');
 
+var boolWait = 'false';
+
 window.addEventListener('load', function(){
   console.log('<finish Load>');
   //ボタンの取得
