@@ -93,7 +93,7 @@ socket.on('/api/scene/change', (data) => {
         document.body.style.backgroundColor = "green";
     }
 
-    phase = '/api/vote/change/1';
+    phase = '/api/scene/change';
     console.log(phase);
 });
 
@@ -101,7 +101,7 @@ socket.on('/api/scene/change', (data) => {
 socket.on('/api/scene/change/2', (data) => {
     console.log('サーバーからWebSocketで/api/scene/change/2のデータを受信しました。')
     console.log(data);
-    phase = '/api/vote/change/2';
+    phase = '/api/scene/change/2';
     console.log(phase);
 });
 
@@ -109,7 +109,7 @@ socket.on('/api/scene/change/2', (data) => {
 socket.on('/api/scene/change/3', (data) => {
     console.log('サーバーからWebSocketで/api/scene/change/3のデータを受信しました。')
     console.log(data);
-    phase = '/api/vote/change/3';
+    phase = '/api/scene/change/3';
     console.log(phase);
 });
 
@@ -117,7 +117,7 @@ socket.on('/api/scene/change/3', (data) => {
 socket.on('/api/scene/change/4', (data) => {
     console.log('サーバーからWebSocketで/api/scene/change/4のデータを受信しました。')
     console.log(data);
-    phase = '/api/vote/change/4';
+    phase = '/api/scene/change/4';
     console.log(phase);
 });
 
