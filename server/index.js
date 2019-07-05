@@ -90,6 +90,7 @@ app.get('/api/start',(req,res) => {
     res.json({ randomVoteColorId: randomVoteColorId });
 
     phase = '/api/start';
+    io.emit('/api/start', { phase: phase });
     console.log(phase);
 });
 
@@ -425,7 +426,7 @@ io.on('connection',(socket) => {
         console.log('ユーザーからのメッセージを受信しました。');
         // このサーバーに接続しているユーザーに受信したメッセージを配信します
         phase = 'vote';
-        io.emit({ phase: phase });
+        io.emit('vote', { phase: phase });
         console.log(phase);
 
         switch (msg){
