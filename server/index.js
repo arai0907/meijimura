@@ -88,6 +88,9 @@ app.get('/api/start',(req,res) => {
 
     io.emit('/api/start',{ randomVoteColorId: randomVoteColorId });
     res.json({ randomVoteColorId: randomVoteColorId });
+
+    phase = '/api/start';
+    console.log(phase);
 });
 
 // 投票開始１
@@ -231,6 +234,7 @@ app.get('/api/scene/change/:id',(req,res) => {
                 sceneId: 1
             });
             res.json({ colorId: vote1colors[0] });
+            return;
         } else if (voteColor0 < voteColor1) {
             // 投票数がvoteColor0よりvoteColor1の方が大きい時
             io.emit('/api/scene/change', {
@@ -238,6 +242,7 @@ app.get('/api/scene/change/:id',(req,res) => {
                 sceneId: 1
               });
             res.json({ colorId: vote1colors[1] });
+            return;
         } else {
             // 投票数が同票の時
             io.emit('/api/scene/change', {
@@ -257,6 +262,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             b: black,
             w: white
         });
+        return;
 
     } else if (req.params.id === '2') {
         const maxVoteNumber2 = Math.max(red,yellow,blue);
@@ -268,6 +274,7 @@ app.get('/api/scene/change/:id',(req,res) => {
               sceneId: 2
             });
             res.json({ colorId: COLORS.sameVote });
+            return;
         }
 
         if (maxVoteNumber2 === red) {
@@ -276,12 +283,14 @@ app.get('/api/scene/change/:id',(req,res) => {
                 sceneId: 2
             });
             res.json({ colorId: COLORS.red });
+            return;
         } else if (maxVoteNumber2 === yellow) {
             io.emit('/api/scene/change', {
                 colorId: COLORS.yellow,
                 sceneId: 2
             });
             res.json({ colorId: COLORS.yellow });
+            return;
         } else if (maxVoteNumber2 === blue) {
             io.emit('/api/scene/change', {
                 colorId: COLORS.blue,
@@ -300,6 +309,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             b: black,
             w: white
         });
+        return;
 
     } else if (req.params.id === '3') {
         if (

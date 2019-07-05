@@ -24,7 +24,6 @@ socket.on('/api/start', () => {
     // スマホの画面を開始画面に切り替える
     console.log('サーバーからWebSocketでOPアニメーションをスタートする。')
     phase = '/api/start';
-    console.log(phase);
 });
 
 // 投票開始１
@@ -42,6 +41,14 @@ socket.on('/api/vote/start/1',(data) => {
     }
 
     phase = '/api/vote/start/1';
+    console.log(phase);
+});
+
+// 投票1の終了
+socket.on('/api/vote/end/1', (data) => {
+    console.log('サーバーからWebSocketで/api/vote/end/1のデータを受信しました。')
+    console.log(data);
+    phase = '/api/vote/end/1';
     console.log(phase);
 });
 
