@@ -122,16 +122,22 @@ app.get('/api/vote/end/1',(req,res) => {
     // 投票
     let voteColor0 = 0;
     let voteColor1 = 0;
+
+    phase = '/api/vote/end/1';
+    console.log(phase);
     
     if (vote1colors[0] === COLORS.red && vote1colors[1] === COLORS.yellow) {
         voteColor0 = red;
         voteColor1 = yellow;
+        return;
     } else if (vote1colors[0] === COLORS.red && vote1colors[1] === COLORS.blue) {
         voteColor0 = red;
         voteColor1 = blue;
+        return;
     } else if (vote1colors[0] === COLORS.yellow && vote1colors[1] === COLORS.blue) {
         voteColor0 = yellow;
         voteColor1 = blue;
+        return;
     }
 
     if (voteColor0 > voteColor1) {
@@ -142,6 +148,7 @@ app.get('/api/vote/end/1',(req,res) => {
         });
         vote1ResultColorId = vote1colors[0];
         res.json({ colorId: vote1colors[0] });
+        return;
     } else if (voteColor0 < voteColor1) {
         // 投票数がvoteColor0よりvoteColor1の方が大きい時
         io.emit('/api/scene/end/1', {
@@ -150,6 +157,7 @@ app.get('/api/vote/end/1',(req,res) => {
         });
         vote1ResultColorId = vote1colors[1];
         res.json({ colorId: vote1colors[1] });
+        return;
     } else {
         // 投票数が同票の時
         io.emit('/api/scene/end/1', {
@@ -158,9 +166,8 @@ app.get('/api/vote/end/1',(req,res) => {
         });
         vote1ResultColorId = COLORS.sameVote;
         res.json({ colorId: COLORS.sameVote });
+        return;
     }
-    phase = '/api/scene/end/1';
-    console.log(phase);
 });
 
 // 投票終了2
@@ -418,6 +425,7 @@ io.on('connection',(socket) => {
         console.log('ユーザーからのメッセージを受信しました。');
         // このサーバーに接続しているユーザーに受信したメッセージを配信します
         phase = 'vote';
+        io.emit({ phase: phase });
         console.log(phase);
 
         switch (msg){
