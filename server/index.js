@@ -101,12 +101,18 @@ app.get('/api/vote/start/:id',(req,res) => {
         io.emit('/api/vote/start/1', {
             randomVoteColorId: vote1colors
         })
+        phase = '/api/vote/start/1';
+        console.log(phase);
         res.json({});
     } else if(req.params.id == '2') {
         io.emit('/api/vote/start/2');
+        phase = '/api/vote/start/2';
+        console.log(phase);
         res.send('start2');
     } else {
         io.emit('/api/vote/start/3');
+        phase = '/api/vote/start/3';
+        console.log(phase);
         res.send('start3');
     }
 });
@@ -153,6 +159,8 @@ app.get('/api/vote/end/1',(req,res) => {
         vote1ResultColorId = COLORS.sameVote;
         res.json({ colorId: COLORS.sameVote });
     }
+    phase = '/api/scene/end/1';
+    console.log(phase);
 });
 
 // 投票終了2
@@ -161,6 +169,9 @@ app.get('/api/vote/end/2',(req,res) => {
 
     // WebSocket で投票2の終了を通知
     io.emit('/api/vote/end/2');
+
+    phase = '/api/vote/end/2';
+    console.log(phase);
 
     if (red === yellow && yellow === blue) {
         // 投票数が同票の時
@@ -208,6 +219,8 @@ app.get('/api/vote/end/3', (req,res) => {
         });
         res.json({ colorId: COLORS.sameVote });
     }
+    phase = '/api/vote/end/3';
+    console.log(phase);
 })
 
 // 画面の切り替え
@@ -226,7 +239,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             voteColor0 = yellow;
             voteColor1 = blue;
         }
-    
+
         if (voteColor0 > voteColor1) {
             // 投票数がvoteColor1よりvoteColor0の方が大きい時
             io.emit('/api/scene/change', {
@@ -234,7 +247,6 @@ app.get('/api/scene/change/:id',(req,res) => {
                 sceneId: 1
             });
             res.json({ colorId: vote1colors[0] });
-            return;
         } else if (voteColor0 < voteColor1) {
             // 投票数がvoteColor0よりvoteColor1の方が大きい時
             io.emit('/api/scene/change', {
@@ -242,7 +254,6 @@ app.get('/api/scene/change/:id',(req,res) => {
                 sceneId: 1
               });
             res.json({ colorId: vote1colors[1] });
-            return;
         } else {
             // 投票数が同票の時
             io.emit('/api/scene/change', {
@@ -262,9 +273,15 @@ app.get('/api/scene/change/:id',(req,res) => {
             b: black,
             w: white
         });
-        return;
+        
+        phase = '/api/scene/change/1';
+        console.log(phase);
 
     } else if (req.params.id === '2') {
+
+        phase = '/api/scene/change/2';
+        console.log(phase);
+
         const maxVoteNumber2 = Math.max(red,yellow,blue);
 
         if (red === yellow && yellow === blue) {
@@ -331,6 +348,8 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.sameVote });
           }
+        phase = '/api/scene/change/3';
+        console.log(phase);
     } else {
         if (
             trueColorId &&
@@ -351,6 +370,8 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.sameVote });
           }
+        phase = '/api/scene/change/4';
+        console.log(phase);
     }
 });
 
@@ -369,11 +390,15 @@ function votesNumberClear() {
 app.get('/api/end',(req,res) => {
     io.emit('/api/end');
     res.send('end');
+    phase = '/api/end';
+    console.log(phase);
 });
 
 // リセット
 app.get('/api/reset',(req,res) => {
     io.emit('/api/reset');
+    phase = '/api/reset';
+    console.log(phase);
     res.json({});
 })
 
@@ -392,6 +417,8 @@ io.on('connection',(socket) => {
     socket.on('vote',(msg) => {
         console.log('ユーザーからのメッセージを受信しました。');
         // このサーバーに接続しているユーザーに受信したメッセージを配信します
+        phase = 'vote';
+        console.log(phase);
 
         switch (msg){
             case 'red':

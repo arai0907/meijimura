@@ -24,6 +24,7 @@ socket.on('/api/start', () => {
     // スマホの画面を開始画面に切り替える
     console.log('サーバーからWebSocketでOPアニメーションをスタートする。')
     phase = '/api/start';
+    console.log(phase);
 });
 
 // 投票開始１
@@ -91,6 +92,8 @@ socket.on('/api/scene/change', (data) => {
     // スマホの画面のアニメーションを切り替える
     console.log('サーバーからWebSocketで/api/scene/change/:idのデータを受信しました。')
     console.log(data);
+    phase = '/api/scene/change/1';
+    console.log(phase);
 
     if(data.sceneId === "0") {
         document.body.style.backgroundColor = "red";
@@ -99,9 +102,6 @@ socket.on('/api/scene/change', (data) => {
     } else if(data.sceneId === "2") {
         document.body.style.backgroundColor = "green";
     }
-
-    phase = '/api/scene/change';
-    console.log(phase);
 });
 
 // 画面の切り替え2
@@ -147,6 +147,8 @@ socket.on('vote', (data) => {
     // スマホの画面を終了画面に切り替える
     console.log('サーバーからWebSocketでvoteのデータを受信しました。')
     console.log(data);
+    phase = 'vote';
+    console.log(phase);
 });
 
 // 投票
