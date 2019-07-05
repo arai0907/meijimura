@@ -295,4 +295,108 @@
   max-height: 100%;
   max-width: 100%;
   overflow: hidden;
+  display: block;
+  opacity: 1.0;
+}
+
+  /* vote-Window */
+.vote-page {
+  height: 177.78vw;
+  width:  56.25vh;
+  max-height: 100%;
+  max-width:  100%;
+  position: absolute;
+  margin: auto;
+  top:    0;
+  right:  0;
+  bottom: 0;
+  left:   0;
+  overflow: hidden;
+
+  display: none;
+  opacity: 0.0;
+  transition: 1.0s;
+}
+
+.vote {
+  height: 100%;
+  display: none;
+}
+
+
+.under-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right:0;
+  height: 100%;
+}
+
+.top-btn {
+  bottom: 10%;
+  transform: skewY(10deg);
+}
+
+.bottom-btn {
+  top: 20%;
+  transform: skewY(-10deg);
+}
+
+.first-btn {
+  height: 60%;
+  position: relative;
+  bottom: 10%;
+  transform: skewY(10deg);
+  transform-origin: top center;
+  color: #F2F5FA;
+  z-index: 1;
+  transition: 1.0s;
+}
+
+.second-btn {
+  height: 45%;
+  position: relative;
+  transform-origin: top center;
+  color: #F2F5FA;
+  transition: 1.5s;
+  z-index: 1;
+}
+
+.third-btn {
+  height: 60%;
+  position: relative;
+  bottom: 10%;
+  transform: skewY(10deg);
+  transform-origin: top center;
+  color: #F2F5FA;
+  z-index: 1;
+  transition: 1.0s;
+}
+
+.btn-red { background-color: #dc0a14; }
+.btn-yellow { background-color: #ffd20a; }
+.btn-blue { background-color: #001ef0; }
+.btn-white { background-color: #ffffff;}
+.btn-black { background-color: #000000;}
+
+.vote-RYB{
+  display: block;
+}
+
+.colorChange {
+  height: 177.78vw;
+  width:  56.25vh;
+  max-height: 100%;
+  max-width:  100%;
+  position: absolute;
+  margin: auto;
+  top:    0;
+  right:  0;
+  bottom: 0;
+  left:   0;
+
+  opacity: 0.0;
+  display: none;
+  transition: 1.0s;
+  z-index: 2;
 }

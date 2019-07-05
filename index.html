@@ -5,20 +5,31 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>宵街映写 -プロジェクションナイト- 2019</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="server/public/ress.min.css">
-	<link rel="stylesheet" type="text/css" href="server/public/public.css">
+	<link rel="stylesheet" type="text/css" href="/ress.min.css">
+	<link rel="stylesheet" type="text/css" href="/public.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 	<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-	<script src="server/public/top.js"></script>
+	<script src="/top.js"></script>
+	<!-- animation-js -->
+    <script type="text/javascript" src="/master.js"></script>
+    <script type="text/javascript" src="/opening.js"></script>
+    <script type="text/javascript" src="/red.js"></script>
+    <script type="text/javascript" src="/blue.js"></script>
+    <script type="text/javascript" src="/yellow.js"></script>
+    <script type="text/javascript" src="/purple.js"></script>
+    <script type="text/javascript" src="/green.js"></script>
+    <script type="text/javascript" src="/orange.js"></script>
+    <script type="text/javascript" src="/true.js"></script>
+	<script src="/master.js"></script>
 
 </head>
  <body class="body">
 
   <div class="top-page">
 		<div class="top-logo">
-		 <img src="server/public/images/1.png" class="js-circle">
-		 <img src="server/public/images/topLogo.png" class="top-img">
+		 <img src="/images/1.png" class="js-circle">
+		 <img src="images/topLogo.png" class="top-img">
 		</div>
 
 		<div class="top-page-contents">
@@ -52,8 +63,8 @@
   <div class="wait" id="js-wait">
 	 <div class="wait-content">
 	  <div class="js-wait-logo">
-		 <img src="server/public/images/topLogo.png" class="wait-logo">
-     <img src="server/public/images/2.png" class="js-wait-circle">
+		 <img src="/images/topLogo.png" class="wait-logo">
+     <img src="/images/2.png" class="js-wait-circle">
 		</div>
 		  <!-- waiting-text -->
 	  <div class="textBox">
@@ -65,6 +76,37 @@
 	 </div>
 	</div>
 
+	<div id="FirstVote" class="vote-page">
+		<div id="vote-RY" class="vote">
+		  <div id="red01"    class="first-btn btn-red"></div>
+		  <div id="yellow01" class="under-btn btn-yellow"></div>
+		</div>
+  
+		<div id="vote-YB" class="vote">
+		  <div id="yellow02" class="first-btn btn-yellow"></div>
+		  <div id="blue01"   class="under-btn btn-blue"></div>
+		</div>
+  
+		<div id="vote-BR" class="vote">
+		  <div id="blue02" class="first-btn btn-blue"></div>
+		  <div id="red02"  class="under-btn btn-red"></div>
+		</div>
+	</div>
+  
+	<div id="secondVote" class="vote-page">
+		<div id="vote-RYB" class="vote vote-RYB">
+		<div id="red03"    class="second-btn top-btn btn-red"></div>
+		<div id="yellow03" class="under-btn  btn-yellow"></div>
+		<div id="blue03"   class="second-btn bottom-btn btn-blue"></div>
+		</div>
+	</div>
+
+	<div id="thirdVote" class="vote-page">
+		<div id="vote-wb" class="vote">
+			<div id="white01"    class="third-btn btn-white"></div>
+			<div id="black01" class="under-btn btn-black"></div>
+		</div>
+	</div>
 				<!-- <div class="vote-color">
 				<p id="red">red</p>
 				<p id="yellow">yellow</p>
@@ -75,6 +117,9 @@
 			<!-- webAnimetion-Window -->
   <canvas id="mappingPage" class="mapping-Page" width="414" height="736"></canvas>
 
-	<script src="server/public/receive.js"></script>
+  <!-- Result Window-->
+  <div id="colorPage" class="colorChange"></div> <!-- 多かった色に帰る画面-->
+
+	<script src="/receive.js"></script>
  </body>
 </html>

@@ -6,7 +6,7 @@ var numButton = 4;//onClickナンバーは計４つだよ
 var startButtonNumber = 0;//最初のページのナンバーは０だよ
 var button = new Array(numButton); //ボタンはonClick（０～３）の群にあるよ
 //使うタグとか宣言するよ↓↓
-var images_src = new Array('server/public/images/1.png','server/public/images/2.png');
+var images_src = new Array('/images/1.png','/images/2.png');
 var num = -1;
 var wait = document.querySelector('#js-wait');
 
@@ -23,7 +23,7 @@ window.addEventListener('load', function(){
   rectButton            =document.getElementById('rect-button');
   $$buttonText          =document.getElementsByClassName( 'button-text' );
   topLogo               =document.querySelector('.top-logo');
-  waitPage              =document.getElementById('js-wait');
+  // waitPage              =document.getElementById('js-wait');
   topArea               =document.querySelector('.top-area');
   bottomArea            =document.querySelector('.bottom-area');
 
@@ -207,6 +207,9 @@ function deleteTop( clickedButton ) {
     },900);
   },700);
   console.log( '＜ delete TopPage' );
+
+  boolWait = 'true';
+  console.log(boolWait);
 }
 
 //戻るを押した時の処理
