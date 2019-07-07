@@ -6,9 +6,11 @@ var numButton = 4;//onClickナンバーは計４つだよ
 var startButtonNumber = 0;//最初のページのナンバーは０だよ
 var button = new Array(numButton); //ボタンはonClick（０～３）の群にあるよ
 //使うタグとか宣言するよ↓↓
-var images_src = new Array('server/public/images/1.png','server/public/images/2.png');
+var images_src = new Array('/images/1.png','/images/2.png');
 var num = -1;
 var wait = document.querySelector('#js-wait');
+
+var boolWait = 'false';
 
 window.addEventListener('load', function(){
   console.log('<finish Load>');
