@@ -91,6 +91,7 @@ app.get('/api/start',(req,res) => {
 
     phase = '/api/start';
     io.emit('phase', { phase: phase });
+    console.log(phase);
 });
 
 // 投票開始１
@@ -103,19 +104,16 @@ app.get('/api/vote/start/:id',(req,res) => {
         })
         phase = '/api/vote/start/1';
         io.emit('phase', { phase: phase });
-        console.log(phase);
         res.json({});
     } else if(req.params.id == '2') {
         io.emit('/api/vote/start/2');
         phase = '/api/vote/start/2';
         io.emit('phase', { phase: phase });
-        console.log(phase);
         res.send('start2');
     } else {
         io.emit('/api/vote/start/3');
         phase = '/api/vote/start/3';
         io.emit('phase', { phase: phase });
-        console.log(phase);
         res.send('start3');
     }
 });
@@ -128,7 +126,6 @@ app.get('/api/vote/end/1',(req,res) => {
 
     phase = '/api/vote/end/1';
     io.emit('phase', { phase: phase });
-    console.log(phase);
     
     if (vote1colors[0] === COLORS.red && vote1colors[1] === COLORS.yellow) {
         voteColor0 = red;
@@ -183,7 +180,6 @@ app.get('/api/vote/end/2',(req,res) => {
 
     phase = '/api/vote/end/2';
     io.emit('phase', { phase: phase });
-    console.log(phase);
 
     if (red === yellow && yellow === blue) {
         // 投票数が同票の時
@@ -233,7 +229,6 @@ app.get('/api/vote/end/3', (req,res) => {
     }
     phase = '/api/vote/end/3';
     io.emit('phase', { phase: phase });
-    console.log(phase);
 })
 
 // 画面の切り替え
@@ -289,13 +284,11 @@ app.get('/api/scene/change/:id',(req,res) => {
         
         phase = '/api/scene/change/1';
         io.emit('phase', { phase: phase });
-        console.log(phase);
 
     } else if (req.params.id === '2') {
 
         phase = '/api/scene/change/2';
         io.emit('phase', { phase: phase });
-        console.log(phase);
 
         const maxVoteNumber2 = Math.max(red,yellow,blue);
 
@@ -365,7 +358,6 @@ app.get('/api/scene/change/:id',(req,res) => {
           }
         phase = '/api/scene/change/3';
         io.emit('phase', { phase: phase });
-        console.log(phase);
     } else {
         if (
             trueColorId &&
@@ -388,7 +380,6 @@ app.get('/api/scene/change/:id',(req,res) => {
           }
         phase = '/api/scene/change/4';
         io.emit('phase', { phase: phase });
-        console.log(phase);
     }
 });
 
@@ -409,7 +400,6 @@ app.get('/api/end',(req,res) => {
     res.send('end');
     phase = '/api/end';
     io.emit('phase', { phase: phase });
-    console.log(phase);
 });
 
 // リセット
