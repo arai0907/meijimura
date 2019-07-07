@@ -40,6 +40,12 @@ socket.on('/api/vote/start/1',(data) => {
     }
 });
 
+// 投票1の終了
+socket.on('/api/vote/end/1', (data) => {
+    console.log('サーバーからWebSocketで/api/vote/end/1のデータを受信しました。')
+    console.log(data);
+});
+
 // 投票2の終了
 socket.on('/api/vote/end/2', (data) => {
     console.log('サーバーからWebSocketで/api/vote/end/2のデータを受信しました。')
@@ -108,12 +114,16 @@ socket.on('/api/end', (data) => {
 socket.on('/api/reset', (data) => {
     console.log('サーバーからWebSocketで/api/resetのデータを受信しました。')
     console.log(data);
-})
+});
 
 socket.on('vote', (data) => {
     // スマホの画面を終了画面に切り替える
     console.log('サーバーからWebSocketでvoteのデータを受信しました。')
     console.log(data);
+});
+
+socket.on('phase', (phase) => {
+    console.log(phase);
 });
 
 // 投票
