@@ -23,9 +23,11 @@ socket.on('/api/init', (data) => {
 socket.on('/api/start', () => {
     // スマホの画面を開始画面に切り替える
     console.log('サーバーからWebSocketでOPアニメーションをスタートする。')
-    
-    console.log(phase);
 });
+
+socket.on('/api.start', (phase) => {
+    console.log(phase);
+})
 
 // 投票開始１
 socket.on('/api/vote/start/1',(data) => {
@@ -134,14 +136,20 @@ socket.on('/api/end', (data) => {
 socket.on('/api/reset', (data) => {
     console.log('サーバーからWebSocketで/api/resetのデータを受信しました。')
     console.log(data);
-    
+});
+
+socket.on('/api/reset', (phase) => {
     console.log(phase);
-})
+});
 
 socket.on('vote', (data) => {
     // スマホの画面を終了画面に切り替える
     console.log('サーバーからWebSocketでvoteのデータを受信しました。')
     console.log(data);
+});
+
+socket.on('phase', (phase) => {
+    console.log(phase);
 });
 
 
