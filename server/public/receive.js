@@ -23,7 +23,7 @@ socket.on('/api/init', (data) => {
 socket.on('/api/start', () => {
     // スマホの画面を開始画面に切り替える
     console.log('サーバーからWebSocketでOPアニメーションをスタートする。')
-    phase = '/api/start';
+    
     console.log(phase);
 });
 
@@ -41,7 +41,6 @@ socket.on('/api/vote/start/1',(data) => {
         console.log('黄と青の投票画面を表示');
     }
 
-    phase = '/api/vote/start/1';
     console.log(phase);
 });
 
@@ -49,16 +48,12 @@ socket.on('/api/vote/start/1',(data) => {
 socket.on('/api/vote/end/1', (data) => {
     console.log('サーバーからWebSocketで/api/vote/end/1のデータを受信しました。')
     console.log(data);
-    phase = '/api/vote/end/1';
-    console.log(phase);
 });
 
 // 投票2の終了
 socket.on('/api/vote/end/2', (data) => {
     console.log('サーバーからWebSocketで/api/vote/end/2のデータを受信しました。')
     console.log(data);
-    phase = '/api/vote/end/2';
-    console.log(phase);
 });
 
 // 投票２
@@ -66,7 +61,7 @@ socket.on('/api/vote/start/2',(data) => {
     console.log('サーバーからWebSocketで/api/vote/start/2のデータを受信しました。')
     console.log(data);
     console.log('赤と黄と青の投票画面を表示')
-    phase = '/api/vote/start/2';
+    
     console.log(phase);
 });
 
@@ -75,7 +70,7 @@ socket.on('/api/vote/start/3', (data) => {
     console.log('サーバーからWebSocketで/api/vote/start/3のデータを受信しました。')
     console.log(data);
     console.log('白と黒の投票画面を表示')
-    phase = '/api/vote/start/3';
+    
     console.log(phase);
 });
 
@@ -83,7 +78,7 @@ socket.on('/api/vote/start/3', (data) => {
 socket.on('/api/vote/end/3', (data) => {
     console.log('サーバーからWebSocketで/api/vote/end/3のデータを受信しました。')
     console.log(data);
-    phase = '/api/vote/end/3';
+    
     console.log(phase);
 });
 
@@ -92,7 +87,7 @@ socket.on('/api/scene/change', (data) => {
     // スマホの画面のアニメーションを切り替える
     console.log('サーバーからWebSocketで/api/scene/change/:idのデータを受信しました。')
     console.log(data);
-    phase = '/api/scene/change/1';
+    
     console.log(phase);
 
     if(data.sceneId === "0") {
@@ -108,7 +103,7 @@ socket.on('/api/scene/change', (data) => {
 socket.on('/api/scene/change/2', (data) => {
     console.log('サーバーからWebSocketで/api/scene/change/2のデータを受信しました。')
     console.log(data);
-    phase = '/api/scene/change/2';
+    
     console.log(phase);
 });
 
@@ -116,7 +111,7 @@ socket.on('/api/scene/change/2', (data) => {
 socket.on('/api/scene/change/3', (data) => {
     console.log('サーバーからWebSocketで/api/scene/change/3のデータを受信しました。')
     console.log(data);
-    phase = '/api/scene/change/3';
+    
     console.log(phase);
 });
 
@@ -124,7 +119,7 @@ socket.on('/api/scene/change/3', (data) => {
 socket.on('/api/scene/change/4', (data) => {
     console.log('サーバーからWebSocketで/api/scene/change/4のデータを受信しました。')
     console.log(data);
-    phase = '/api/scene/change/4';
+    
     console.log(phase);
 });
 
@@ -132,14 +127,14 @@ socket.on('/api/end', (data) => {
     // スマホの画面を終了画面に切り替える
     console.log('サーバーからWebSocketで/api/endのデータを受信しました。')
     console.log(data);
-    phase = '/api/end';
+    
     console.log(phase);
 });
 
 socket.on('/api/reset', (data) => {
     console.log('サーバーからWebSocketで/api/resetのデータを受信しました。')
     console.log(data);
-    phase = '/api/reset';
+    
     console.log(phase);
 })
 
@@ -147,9 +142,8 @@ socket.on('vote', (data) => {
     // スマホの画面を終了画面に切り替える
     console.log('サーバーからWebSocketでvoteのデータを受信しました。')
     console.log(data);
-    phase = 'receive';
-    console.log(phase);
 });
+
 
 // 投票
 var p1 = document.getElementById('red');
