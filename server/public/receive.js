@@ -147,7 +147,7 @@ socket.on('vote', (data) => {
     // スマホの画面を終了画面に切り替える
     console.log('サーバーからWebSocketでvoteのデータを受信しました。')
     console.log(data);
-    phase = 'vote';
+    phase = 'receive';
     console.log(phase);
 });
 
