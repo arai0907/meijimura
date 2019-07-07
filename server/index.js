@@ -91,7 +91,6 @@ app.get('/api/start',(req,res) => {
 
     phase = '/api/start';
     io.emit('phase', { phase: phase });
-    console.log(phase);
 });
 
 // 投票開始１
@@ -408,7 +407,7 @@ app.get('/api/reset',(req,res) => {
     res.json({});
     phase = '/api/reset';
     io.emit('phase', { phase: phase });
-})
+});
 
 io.on('connection',(socket) => {
     console.log('ユーザーが接続しました。');
