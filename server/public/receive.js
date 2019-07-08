@@ -127,40 +127,40 @@ socket.on('phase', (phase) => {
 });
 
 // 投票
-var p1 = document.getElementById('red');
-var handler1 = function(){
-    console.log('vote1');
-    socket.emit('vote', 'red');
-};
-p1.addEventListener('click', handler1, false);
+// var p1 = document.getElementById('red');
+// var handler1 = function(){
+//     console.log('vote1');
+//     socket.emit('vote', 'red');
+// };
+// p1.addEventListener('click', handler1, false);
 
-var p2 = document.getElementById('yellow');
-var handler2 = function(){
-    console.log('vote2');
-    socket.emit('vote', 'yellow');
-};
-p2.addEventListener('click', handler2, false);
+// var p2 = document.getElementById('yellow');
+// var handler2 = function(){
+//     console.log('vote2');
+//     socket.emit('vote', 'yellow');
+// };
+// p2.addEventListener('click', handler2, false);
 
-var p3 = document.getElementById('blue');
-var handler3 = function(){
-    console.log('vote3');
-    socket.emit('vote', 'blue');
-};
-p3.addEventListener('click', handler3, false);
+// var p3 = document.getElementById('blue');
+// var handler3 = function(){
+//     console.log('vote3');
+//     socket.emit('vote', 'blue');
+// };
+// p3.addEventListener('click', handler3, false);
 
-var p4 = document.getElementById('white');
-var handler4 = function(){
-    console.log('vote4');
-    socket.emit('vote', 'white');
-};
-p4.addEventListener('click', handler4, false);
+// var p4 = document.getElementById('white');
+// var handler4 = function(){
+//     console.log('vote4');
+//     socket.emit('vote', 'white');
+// };
+// p4.addEventListener('click', handler4, false);
 
-var p5 = document.getElementById('black');
-var handler5 = function(){
-    console.log('vote5');
-    socket.emit('vote', 'black');
-};
-p5.addEventListener('click', handler5, false);
+// var p5 = document.getElementById('black');
+// var handler5 = function(){
+//     console.log('vote5');
+//     socket.emit('vote', 'black');
+// };
+// p5.addEventListener('click', handler5, false);
 
 // var wait = document.querySelector('#js-wait');
 // var startButton = document.querySelector('#js-start-button');
