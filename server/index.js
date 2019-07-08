@@ -220,11 +220,10 @@ app.get('/api/vote/end/3', (req,res) => {
         });
         res.json({ colorId: COLORS.black });
     } else {
-        // 同票の時の処理
-        io.emit('/api/scene/end/3', {
-            colorId: COLORS.sameVote,
-        });
-        res.json({ colorId: COLORS.sameVote });
+        colorsId = [COLORS.white,COLORS.black];
+        trueEndColors = colorsId[Math.floor(Math.random() * colorsId.length)];
+        io.emit('/api/scene/end/3', { trueEndColors: trueEndColors});
+        res.json({ colorId: trueEndColors });
     }
     phase = '/api/vote/end/3';
     io.emit('phase', { phase: phase });
