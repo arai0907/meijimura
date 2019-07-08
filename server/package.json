@@ -5,11 +5,14 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.17.1",
+    "pm2": "^3.5.1",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "pm2 start index.js --watch",
+    "log": "pm2 logs",
+    "stop": "pm2 kill"
   },
   "author": "saaya arai",
   "license": "ISC"

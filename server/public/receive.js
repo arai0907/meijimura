@@ -78,12 +78,15 @@ socket.on('/api/scene/change', (data) => {
     console.log('サーバーからWebSocketで/api/scene/change/:idのデータを受信しました。')
     console.log(data);
 
-    if(data.sceneId === "0") {
+    if(data.sceneId === COLORS.red) {
+        red_animaiton();
         document.body.style.backgroundColor = "red";
-    } else if(data.sceneId === "1") {
+    } else if(data.sceneId === COLORS.blue) {
+        blue_animaiton();
         document.body.style.backgroundColor = "blue";
-    } else if(data.sceneId === "2") {
-        document.body.style.backgroundColor = "green";
+    } else if(data.sceneId === COLORS.yellow) {
+        yellow_animaiton();
+        document.body.style.backgroundColor = "yellow";
     }
 });
 
@@ -167,5 +170,3 @@ socket.on('phase', (phase) => {
 // startButton.addEventListener('click', function(){
 //     TweenMax.to(wait,1.0,{autoAlpha: 1})
 // });
-
-red_animaiton();
