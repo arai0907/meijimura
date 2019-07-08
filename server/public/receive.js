@@ -167,3 +167,5 @@ socket.on('phase', (phase) => {
 // startButton.addEventListener('click', function(){
 //     TweenMax.to(wait,1.0,{autoAlpha: 1})
 // });
+
+red_animaiton();
