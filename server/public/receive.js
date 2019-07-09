@@ -6,8 +6,8 @@ const COLORS = {
     green: 4,
     orange: 5,
     purple: 6,
-    white: 7,
-    black: 8
+    black: 7,
+    white: 8
 };
 
 
