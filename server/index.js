@@ -341,14 +341,14 @@ app.get('/api/scene/change/:id',(req,res) => {
             TRUE_COLORS['id' + trueColorId][1] === vote2ResultColorId
           ){
             // 2回の投票結果がtrueColorになった時
-            io.emit('/api/vote/change', {
+            io.emit('/api/scene/change', {
                 colorId: trueColorId,
                 sceneId: 3
             });
             res.json({ colorId: trueColorId });
           } else {
             // 2回の投票結果がtrueColorにならなかった時
-            io.emit('/api/vote/change', {
+            io.emit('/api/scene/change', {
                 colorId: COLORS.sameVote,
                 sceneId: 3
             });
@@ -363,14 +363,14 @@ app.get('/api/scene/change/:id',(req,res) => {
             TRUE_COLORS['id' + trueColorId][1] === vote2ResultColorId
           ){
             // 2回の投票結果がtrueColorになった時
-            io.emit('/api/vote/change', {
+            io.emit('/api/scene/change', {
                 colorId: trueColorId,
                 sceneId: 4
             });
             res.json({ colorId: trueColorId });
           } else {
             // 2回の投票結果がtrueColorにならなかった時
-            io.emit('/api/vote/change', {
+            io.emit('/api/scene/change', {
                 colorId: COLORS.sameVote,
                 sceneId: 4
             });
