@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html class="html">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>宵街映写 -プロジェクションナイト- 2019</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/ress.min.css">
+  <link rel="stylesheet" type="text/css" href="/test/index.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+  <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+  <!-- animetion-js -->
+  <script type="text/javascript" src="/anime/master.js"></script>
+  <script type="text/javascript" src="/anime/opening.js"></script>
+  <script type="text/javascript" src="/anime/red.js"></script>
+  <script type="text/javascript" src="/anime/blue.js"></script>
+  <script type="text/javascript" src="/anime/yellow.js"></script>
+  <script type="text/javascript" src="/anime/purple.js"></script>
+  <script type="text/javascript" src="/anime/green.js"></script>
+  <script type="text/javascript" src="/anime/orange.js"></script>
+  <script type="text/javascript" src="/anime/true.js"></script>
+  <script type="text/javascript" src="/anime/false.js"></script>
+  <script type="text/javascript" src="/anime/endroll.js"></script>
+</head>
+
+<body class="body">
+  <h1>テスト画面</h1>
+
+  <div class="mixir">
+    <div class="controller">
+      <div class="vote-buttons">
+        <ul class="vote-buttons-list">
+          <li class="vote-buttons-item">
+            <button id="js-button-red" class="vote-button vote-button-red" type="button">
+              <span id="js-button-red-number">0</span>
+            </button>
+          </li>
+          <li class="vote-buttons-item">
+            <button id="js-button-yellow" class="vote-button vote-button-yellow" type="button">
+              <span id="js-button-yellow-number">0</span>
+            </button>
+          </li>
+          <li class="vote-buttons-item">
+            <button id="js-button-blue" class="vote-button vote-button-blue" type="button">
+              <span id="js-button-blue-number">0</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="vote-buttons">
+        <ul class="vote-buttons-list">
+          <li class="vote-buttons-item">
+            <button id="js-button-black" class="vote-button vote-button-black" type="button">
+              <span id="js-button-black-number">0</span>
+            </button>
+          </li>
+          <li class="vote-buttons-item">
+            <button id="js-button-white" class="vote-button vote-button-white" type="button">
+              <span id="js-button-white-number">0</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <canvas id="mappingPage" class="animation-canvas" width="414" height="736"></canvas>
+    </div>
+
+    <div class="api">
+      <ul>
+        <li>
+          <a href="/api/init" target="_blank">/api/init</a>
+        </li>
+        <li>
+          <a href="/api/start" target="_blank">/api/start</a>
+        </li>
+        <li>
+          <a href="/api/vote/start/1" target="_blank">/api/vote/start/1</a>
+        </li>
+        <li>
+          <a href="/api/vote/start/2" target="_blank">/api/vote/start/2</a>
+        </li>
+        <li>
+          <a href="/api/vote/start/3" target="_blank">/api/vote/start/3</a>
+        </li>
+        <li>
+          <a href="/api/vote/end/1" target="_blank">/api/vote/end/1</a>
+        </li>
+        <li>
+          <a href="/api/vote/end/2" target="_blank">/api/vote/end/2</a>
+        </li>
+        <li>
+          <a href="/api/vote/end/2" target="_blank">/api/vote/end/3</a>
+        </li>
+        <li>
+          <a href="/api/scene/change/1" target="_blank">/api/scene/change/1</a>
+        </li>
+        <li>
+          <a href="/api/scene/change/2" target="_blank">/api/scene/change/2</a>
+        </li>
+        <li>
+          <a href="/api/scene/change/3" target="_blank">/api/scene/change/3</a>
+        </li>
+        <li>
+          <a href="/api/scene/change/4" target="_blank">/api/scene/change/4</a>
+        </li>
+        <li>
+          <a href="/api/end" target="_blank">/api/end</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="/test/index.js"></script>
+</body>
+</html>

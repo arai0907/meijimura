@@ -6,8 +6,8 @@ const COLORS = {
     green: 4,
     orange: 5,
     purple: 6,
-    white: 7,
-    black: 8
+    black: 7,
+    white: 8
 };
 
 
@@ -73,17 +73,17 @@ socket.on('/api/vote/end/3', (data) => {
 });
 
 // 画面の切り替え
-socket.on('/api/scene/change', (data) => {
+socket.on('/api/scene/change/1', (data) => {
     // スマホの画面のアニメーションを切り替える
-    console.log('サーバーからWebSocketで/api/scene/change/:idのデータを受信しました。')
+    console.log('サーバーからWebSocketで/api/scene/change/1のデータを受信しました。')
     console.log(data);
 
-    if(data.sceneId === "0") {
-        document.body.style.backgroundColor = "red";
-    } else if(data.sceneId === "1") {
-        document.body.style.backgroundColor = "blue";
-    } else if(data.sceneId === "2") {
-        document.body.style.backgroundColor = "green";
+    if(data.colorId === COLORS.red) {
+        red_animaiton();
+    } else if(data.colorId === COLORS.blue) {
+        blue_animaiton();
+    } else if(data.colorId === COLORS.yellow) {
+        yellow_animaiton();
     }
 });
 
@@ -97,6 +97,14 @@ socket.on('/api/scene/change/2', (data) => {
 socket.on('/api/scene/change/3', (data) => {
     console.log('サーバーからWebSocketで/api/scene/change/3のデータを受信しました。')
     console.log(data);
+
+    if(data.colorId === COLORS.green) {
+        green_animaiton();
+    } else if(data.colorId === COLORS.orange) {
+        orange_animaiton();
+    } else if(data.colorId === COLORS.purple) {
+        purple_animaiton();
+    }
 });
 
 // 画面の切り替え4

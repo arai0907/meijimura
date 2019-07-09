@@ -12,8 +12,8 @@ const COLORS = {
     green: 4,
     orange: 5,
     purple: 6,
-    white: 7,
-    black: 8
+    black: 7,
+    white: 8
 };
 
 let red = 0; // redの投票数を記録する変数
@@ -142,7 +142,7 @@ app.get('/api/vote/end/1',(req,res) => {
 
     if (voteColor0 > voteColor1) {
         // 投票数がvoteColor1よりvoteColor0の方が大きい時
-        io.emit('/api/scene/end/1', {
+        io.emit('/api/vote/end/1', {
             colorId: vote1colors[0],
             sceneId: 1
         });
@@ -151,7 +151,7 @@ app.get('/api/vote/end/1',(req,res) => {
         return;
     } else if (voteColor0 < voteColor1) {
         // 投票数がvoteColor0よりvoteColor1の方が大きい時
-        io.emit('/api/scene/end/1', {
+        io.emit('/api/vote/end/1', {
             colorId: vote1colors[1],
             sceneId: 1
         });
@@ -160,7 +160,7 @@ app.get('/api/vote/end/1',(req,res) => {
         return;
     } else {
         // 投票数が同票の時
-        io.emit('/api/scene/end/1', {
+        io.emit('/api/vote/end/1', {
             colorId: COLORS.sameVote,
             sceneId: 1
         });
@@ -215,14 +215,14 @@ app.get('/api/vote/end/3', (req,res) => {
         res.json({ colorId: COLORS.white });
     } else if (white < black) {
         // 黒の投票数が多い時の処理
-        io.emit('/api/scene/end/3', {
+        io.emit('/api/vote/end/3', {
             colorId: COLORS.black,
         });
         res.json({ colorId: COLORS.black });
     } else {
-        colorsId = [COLORS.white,COLORS.black];
+        colorsId = [COLORS.black,COLORS.white];
         trueEndColors = colorsId[Math.floor(Math.random() * colorsId.length)];
-        io.emit('/api/scene/end/3', { trueEndColors: trueEndColors});
+        io.emit('/api/vote/end/3', { trueEndColors: trueEndColors});
         res.json({ colorId: trueEndColors });
     }
     phase = '/api/vote/end/3';
@@ -248,21 +248,21 @@ app.get('/api/scene/change/:id',(req,res) => {
 
         if (voteColor0 > voteColor1) {
             // 投票数がvoteColor1よりvoteColor0の方が大きい時
-            io.emit('/api/scene/change', {
+            io.emit('/api/scene/change/1', {
                 colorId: vote1colors[0],
                 sceneId: 1
             });
             res.json({ colorId: vote1colors[0] });
         } else if (voteColor0 < voteColor1) {
             // 投票数がvoteColor0よりvoteColor1の方が大きい時
-            io.emit('/api/scene/change', {
+            io.emit('/api/scene/change/1', {
                 colorId: vote1colors[1],
                 sceneId: 1
               });
             res.json({ colorId: vote1colors[1] });
         } else {
             // 投票数が同票の時
-            io.emit('/api/scene/change', {
+            io.emit('/api/scene/change/1', {
                 colorId: COLORS.sameVote,
                 sceneId: 1
             });
@@ -292,7 +292,7 @@ app.get('/api/scene/change/:id',(req,res) => {
 
         if (red === yellow && yellow === blue) {
             // 投票数が同票の時
-            io.emit('/api/scene/change', {
+            io.emit('/api/scene/change/2', {
               colorId: COLORS.sameVote,
               sceneId: 2
             });
@@ -301,21 +301,21 @@ app.get('/api/scene/change/:id',(req,res) => {
         }
 
         if (maxVoteNumber2 === red) {
-            io.emit('/api/scene/change', {
+            io.emit('/api/scene/change/2', {
                 colorId: COLORS.red,
                 sceneId: 2
             });
             res.json({ colorId: COLORS.red });
             return;
         } else if (maxVoteNumber2 === yellow) {
-            io.emit('/api/scene/change', {
+            io.emit('/api/scene/change/2', {
                 colorId: COLORS.yellow,
                 sceneId: 2
             });
             res.json({ colorId: COLORS.yellow });
             return;
         } else if (maxVoteNumber2 === blue) {
-            io.emit('/api/scene/change', {
+            io.emit('/api/scene/change/2', {
                 colorId: COLORS.blue,
                 sceneId: 2
             });
@@ -341,14 +341,14 @@ app.get('/api/scene/change/:id',(req,res) => {
             TRUE_COLORS['id' + trueColorId][1] === vote2ResultColorId
           ){
             // 2回の投票結果がtrueColorになった時
-            io.emit('/api/vote/change', {
+            io.emit('/api/scene/change/3', {
                 colorId: trueColorId,
                 sceneId: 3
             });
             res.json({ colorId: trueColorId });
           } else {
             // 2回の投票結果がtrueColorにならなかった時
-            io.emit('/api/vote/change', {
+            io.emit('/api/scene/change/3', {
                 colorId: COLORS.sameVote,
                 sceneId: 3
             });
@@ -363,14 +363,14 @@ app.get('/api/scene/change/:id',(req,res) => {
             TRUE_COLORS['id' + trueColorId][1] === vote2ResultColorId
           ){
             // 2回の投票結果がtrueColorになった時
-            io.emit('/api/vote/change', {
+            io.emit('/api/scene/change/4', {
                 colorId: trueColorId,
                 sceneId: 4
             });
             res.json({ colorId: trueColorId });
           } else {
             // 2回の投票結果がtrueColorにならなかった時
-            io.emit('/api/vote/change', {
+            io.emit('/api/scene/change/4', {
                 colorId: COLORS.sameVote,
                 sceneId: 4
             });
@@ -388,8 +388,8 @@ function votesNumberClear() {
     red = 0;
     yellow = 0;
     blue = 0;
-    white = 0;
     black = 0;
+    white = 0;
 };
 
 // ED
