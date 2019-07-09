@@ -73,9 +73,9 @@ socket.on('/api/vote/end/3', (data) => {
 });
 
 // 画面の切り替え
-socket.on('/api/scene/change', (data) => {
+socket.on('/api/scene/change/1', (data) => {
     // スマホの画面のアニメーションを切り替える
-    console.log('サーバーからWebSocketで/api/scene/change/:idのデータを受信しました。')
+    console.log('サーバーからWebSocketで/api/scene/change/1のデータを受信しました。')
     console.log(data);
 
     if(data.colorId === COLORS.red) {
