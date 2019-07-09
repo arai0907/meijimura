@@ -1,0 +1,37 @@
+
+.mixir {
+  display: flex;
+}
+
+.controller {
+  flex-basis: 60%;
+}
+
+.api {
+  flex-basis: 40%;
+}
+
+.vote-buttons-list {
+  display: flex;
+  list-style: none;
+}
+
+.vote-buttons-item {
+  padding: 20px;
+}
+
+.vote-button {
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+
+.vote-button-red { background-color: red; }
+.vote-button-yellow { background-color: yellow; }
+.vote-button-blue { background-color: blue; }
+.vote-button-black { color: white; background-color: black; }
+.vote-button-white { outline: solid 1px black; background-color: white; }
+
+.animation-canvas {
+  background-color: gray;
+}
