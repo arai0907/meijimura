@@ -78,15 +78,12 @@ socket.on('/api/scene/change', (data) => {
     console.log('サーバーからWebSocketで/api/scene/change/:idのデータを受信しました。')
     console.log(data);
 
-    if(data.sceneId === COLORS.red) {
+    if(data.colorId === COLORS.red) {
         red_animaiton();
-        document.body.style.backgroundColor = "red";
-    } else if(data.sceneId === COLORS.blue) {
+    } else if(data.colorId === COLORS.blue) {
         blue_animaiton();
-        document.body.style.backgroundColor = "blue";
-    } else if(data.sceneId === COLORS.yellow) {
+    } else if(data.colorId === COLORS.yellow) {
         yellow_animaiton();
-        document.body.style.backgroundColor = "yellow";
     }
 });
 
@@ -101,15 +98,12 @@ socket.on('/api/scene/change/3', (data) => {
     console.log('サーバーからWebSocketで/api/scene/change/3のデータを受信しました。')
     console.log(data);
 
-    if(data.sceneId === COLORS.green) {
+    if(data.colorId === COLORS.green) {
         green_animaiton();
-        document.body.style.backgroundColor = "green";
-    } else if(data.sceneId === COLORS.orange) {
+    } else if(data.colorId === COLORS.orange) {
         orange_animaiton();
-        document.body.style.backgroundColor = "orange";
-    } else if(data.sceneId === COLORS.purple) {
+    } else if(data.colorId === COLORS.purple) {
         purple_animaiton();
-        document.body.style.backgroundColor = "purple";
     }
 });
 
