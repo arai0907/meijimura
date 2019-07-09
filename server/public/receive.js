@@ -84,6 +84,8 @@ socket.on('/api/scene/change/1', (data) => {
         blue_animaiton();
     } else if(data.colorId === COLORS.yellow) {
         yellow_animaiton();
+    } else if(data.colorId === COLORS.sameVote) {
+        false_animaiton();
     }
 });
 
@@ -104,6 +106,8 @@ socket.on('/api/scene/change/3', (data) => {
         orange_animaiton();
     } else if(data.colorId === COLORS.purple) {
         purple_animaiton();
+    } else if(data.colorId === COLORS.sameVote) {
+        false_animaiton();
     }
 });
 
