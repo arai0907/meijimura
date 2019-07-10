@@ -93,6 +93,16 @@ socket.on('/api/scene/change/1', (data) => {
 socket.on('/api/scene/change/2', (data) => {
     console.log('サーバーからWebSocketで/api/scene/change/2のデータを受信しました。')
     console.log(data);
+
+    if(data.colorId === COLORS.red) {
+        red_animaiton();
+    } else if(data.colorId === COLORS.blue) {
+        blue_animaiton();
+    } else if(data.colorId === COLORS.yellow) {
+        yellow_animaiton();
+    } else if(data.colorId === COLORS.sameVote) {
+        false_animaiton();
+    }
 });
 
 // 画面の切り替え3
