@@ -104,29 +104,3 @@ function voteReset(){
  firstVotePage.style.display  = 'none';
  secondVotePage.style.display = 'none';
 }
-
-// //待機画面背景色
-// function waitBackColor(COLORS){
-//   console.log(COLORS);
-//   switch ( COLORS ) {
-//     case 5:
-//     waitPage.style.backgroundColor = "rgb(255,105,0)";
-//     console.log('orange');
-//     break;
-
-//     case 6:
-//     waitPage.style.backgroundColor = "rgb(150,115,255)";
-//     console.log('purple');
-//     break;
-
-//     case 4:
-//     waitPage.style.backgroundColor = "rgb(30,170,0)";
-//     console.log('green');
-//     break;
-
-//     default:
-//     waitPage.style.backgroundColor = "rgb(0,0,0)";
-//     console.log('white');
-//     break;
-//   }
-// }

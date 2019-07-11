@@ -13,7 +13,7 @@ const COLORS = {
 
 const socket = io();
 let trueColorId;
-const waitColor   = document.querySelector('.wait-content');
+const waitColor   = document.querySelector('#wait-content');
 
 
 socket.on('/api/init', (data) => {
@@ -22,31 +22,31 @@ socket.on('/api/init', (data) => {
     console.log(data);
 });
 
-// socket.on('/api/init',( _treuColorId ) =>{
-//     //待機画面背景色
-//     console.log(_treuColorId);
-//     switch ( _treuColorId) {
-//       case 'trueColorId: 5':
-//       waitPage.style.backgroundColor = "rgb(255,105,0)";
-//       console.log('orange');
-//       break;
+socket.on('/api/init',( _treuColorId ) =>{
+    //待機画面背景色
+    console.log(_treuColorId);
+    switch ( _treuColorId) {
+      case 'trueColorId: 5':
+      waitPage.style.backgroundColor = "rgb(255,105,0)";
+      console.log('orange');
+      break;
   
-//       case 'trueColorId: 6':
-//       waitPage.style.backgroundColor = "rgb(150,115,255)";
-//       console.log('purple');
-//       break;
+      case 'trueColorId: 6':
+      waitPage.style.backgroundColor = "rgb(150,115,255)";
+      console.log('purple');
+      break;
   
-//       case 'trueColorId: 4':
-//       waitPage.style.backgroundColor = "rgb(30,170,0)";
-//       console.log('green');
-//       break;
+      case 'trueColorId: 4':
+      waitPage.style.backgroundColor = "rgb(30,170,0)";
+      console.log('green');
+      break;
   
-//       default:
-//       waitPage.style.backgroundColor = "rgb(0,0,0)";
-//       console.log('white');
-//       break;
-//     }
-// });
+      default:
+      waitPage.style.backgroundColor = "rgb(0,0,0)";
+      console.log('white');
+      break;
+    }
+});
 
 socket.on('/api/start', () => {
     // スマホの画面を開始画面に切り替える
