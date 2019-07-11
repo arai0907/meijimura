@@ -68,7 +68,7 @@ app.get('/api/init', (req,res) => {
     // スマホ側に "/api/init" というラベルでデータを送る
     io.emit('/api/init',{ trueColorId: trueColorId});
     res.json({ colorId: trueColorId });
-    waitBackColor( trueColorId );
+    // console.log(trueColorId);
 });
 
 app.get('/api/start',(req,res) => {

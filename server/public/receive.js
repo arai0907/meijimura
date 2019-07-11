@@ -10,14 +10,38 @@ const COLORS = {
     white: 8
 };
 
-
 const socket = io();
-
+const waitColor = document.querySelector('#wait-content');
 
 socket.on('/api/init', (data) => {
     // スマホの画面を開始画面に切り替える
     console.log('サーバーからWebSocketで/api/initのデータを受信しました。')
     console.log(data);
+
+    const trueColorId = data.trueColorId; // 4, 5, 6 のいずれか
+
+    // 待機画面の背景色
+    switch (trueColorId) {
+        case COLORS.orange:
+        waitPage.style.backgroundColor = "rgb(255,105,0)";
+        console.log('orange');
+        break;
+    
+        case COLORS.purple:
+        waitPage.style.backgroundColor = "rgb(150,115,255)";
+        console.log('purple');
+        break;
+    
+        case COLORS.green:
+        waitPage.style.backgroundColor = "rgb(30,170,0)";
+        console.log('green');
+        break;
+    
+        default:
+        waitPage.style.backgroundColor = "rgb(0,0,0)";
+        console.log('white');
+        break;
+      }
 });
 
 socket.on('/api/start', () => {
