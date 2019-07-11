@@ -13,6 +13,12 @@ const COLORS = {
 
 const socket = io();
 
+// 待機
+let waitMsg;
+let wCaption = document.getElementById('waitCaption');//メッセージ切り替え
+let wMsg1    = document.getElementById('waitMessage1');//メッセージ切り替え
+let wMsg2    = document.getElementById('waitMessage2');//メッセージ切り替え
+let wMsg3    = document.getElementById('waitMessage3');//メッセージ切り替え
 
 socket.on('/api/init', (data) => {
     // スマホの画面を開始画面に切り替える
@@ -147,6 +153,61 @@ socket.on('vote', (data) => {
 socket.on('phase', (phase) => {
     console.log(phase);
 });
+
+// 待機画面のメッセージ切り替え
+socket.on('waitMsg', function(text) {
+    waitMsg = text.msg;
+    wCaption.innerHTML = waitMsg;
+  switch( waitMsg ){
+    case 'マッピング開始前':
+    wMsg1.innerHTML = 'マッピング開始までしばらくお待ちください';
+    wMsg2.innerHTML = '';
+    wMsg3.innerHTML = '';
+    break;
+
+    case '投票中':
+    wMsg1.innerHTML = '投票終了時に画面が切り替わります';
+    wMsg2.innerHTML = 'ブラウザを切り替えずそのままの状態で';
+    wMsg3.innerHTML = 'お待ちください';
+    break;
+
+    case '投票終了':
+    wMsg1.innerHTML = 'しばらくお待ちください';
+    wMsg2.innerHTML = '';
+    wMsg3.innerHTML = '';
+    break;
+
+    case 'falseEnd上映中':
+    wMsg1.innerHTML = 'ありがとうございました';
+    wMsg2.innerHTML = '';
+    wMsg3.innerHTML = '';
+    break;
+
+    case 'trueEnd上映中':
+    wMsg1.innerHTML = 'ありがとうございました';
+    wMsg2.innerHTML = '';
+    wMsg3.innerHTML = '';
+    break;
+
+    case '同票falseEnd上映中':
+    wMsg1.innerHTML = '投票の結果選ばれた色が2色以上だった為';
+    wMsg2.innerHTML = 'マッピングを終了します';
+    wMsg3.innerHTML = 'ありがとうございました';
+    break;
+
+    // case 'マッピング終了':
+    // wMsg1.innerHTML = 'ありがとうございました';
+    // wMsg2.innerHTML = '';
+    // wMsg3.innerHTML = '';
+    // break;
+
+    default:
+    wMsg1.innerHTML = '次のシーンから携帯連携の参加ができます';
+    wMsg2.innerHTML = 'ブラウザを切り替えずそのままの状態で';
+    wMsg3.innerHTML = 'マッピングをお楽しみください';
+    break;
+  }
+  });
 
 // 投票
 // var p1 = document.getElementById('red');

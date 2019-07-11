@@ -23,6 +23,7 @@ let black = 0; // blackの投票数を記録する変数
 let white = 0; // whiteの投票数を記録する変数
 
 let phase = ''; //シーン番号 途中から入ってきた人対策
+let whead = 'マッピング開始前'; //途中から入ってきた人へ待機画面のテキストを表示
 
 // trueColorの正解の組み合わせ
 const TRUE_COLORS = {
@@ -115,6 +116,9 @@ app.get('/api/vote/start/:id',(req,res) => {
         io.emit('phase', { phase: phase });
         res.send('start3');
     }
+
+    whead = '投票中';
+    io.emit('waitMsg', { msg : wHead });
 });
 
 // 投票終了１
@@ -125,6 +129,8 @@ app.get('/api/vote/end/1',(req,res) => {
 
     phase = '/api/vote/end/1';
     io.emit('phase', { phase: phase });
+    whead = '投票終了';
+    io.emit('waitMsg', { msg : wHead });
     
     if (vote1colors[0] === COLORS.red && vote1colors[1] === COLORS.yellow) {
         voteColor0 = red;
@@ -166,6 +172,8 @@ app.get('/api/vote/end/1',(req,res) => {
         });
         vote1ResultColorId = COLORS.sameVote;
         res.json({ colorId: COLORS.sameVote });
+        whead = '同票falseEnd上映中';
+        io.emit('waitMsg', { msg : wHead });
         return;
     }
 });
@@ -179,6 +187,8 @@ app.get('/api/vote/end/2',(req,res) => {
 
     phase = '/api/vote/end/2';
     io.emit('phase', { phase: phase });
+    whead = '投票終了';
+    io.emit('waitMsg', { msg : wHead });
 
     if (red === yellow && yellow === blue) {
         // 投票数が同票の時
@@ -201,6 +211,8 @@ app.get('/api/vote/end/2',(req,res) => {
     } else {
         // 投票数が同票の時
         res.json({ colorId: COLORS.sameVote });
+        whead = '同票falseEnd上映中';
+        io.emit('waitMsg', { msg : wHead });
         return;
     }
 });
@@ -227,6 +239,8 @@ app.get('/api/vote/end/3', (req,res) => {
     }
     phase = '/api/vote/end/3';
     io.emit('phase', { phase: phase });
+    whead = '投票終了';
+    io.emit('waitMsg', { msg : wHead });
 })
 
 // 画面の切り替え
@@ -398,6 +412,9 @@ app.get('/api/end',(req,res) => {
     res.send('end');
     phase = '/api/end';
     io.emit('phase', { phase: phase });
+
+    whead = 'falseEnd上映中';
+    io.emit('waitMsg', { msg : wHead });
 });
 
 // リセット
@@ -406,6 +423,9 @@ app.get('/api/reset',(req,res) => {
     res.json({});
     phase = '/api/reset';
     io.emit('phase', { phase: phase });
+
+    whead = 'マッピング開始前';
+    io.emit('waitMsg', { msg : wHead });
 });
 
 io.on('connection',(socket) => {
