@@ -209,7 +209,7 @@ app.get('/api/vote/end/2',(req,res) => {
 app.get('/api/vote/end/3', (req,res) => {
     if (white > black) {
         // 白の投票数が多い時の処理
-        io.emit('/api/scene/end/3', {
+        io.emit('/api/vote/end/3', {
             colorId: COLORS.white,
         });
         res.json({ colorId: COLORS.white });
