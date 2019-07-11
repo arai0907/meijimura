@@ -209,7 +209,7 @@ app.get('/api/vote/end/2',(req,res) => {
 app.get('/api/vote/end/3', (req,res) => {
     if (white > black) {
         // 白の投票数が多い時の処理
-        io.emit('/api/scene/end/3', {
+        io.emit('/api/vote/end/3', {
             colorId: COLORS.white,
         });
         res.json({ colorId: COLORS.white });
@@ -220,10 +220,13 @@ app.get('/api/vote/end/3', (req,res) => {
         });
         res.json({ colorId: COLORS.black });
     } else {
-        colorsId = [COLORS.black,COLORS.white];
-        trueEndColors = colorsId[Math.floor(Math.random() * colorsId.length)];
-        io.emit('/api/vote/end/3', { trueEndColors: trueEndColors});
-        res.json({ colorId: trueEndColors });
+        const colorsId = [COLORS.black,COLORS.white];
+        const colorId = colorsId[Math.floor(Math.random() * colorsId.length)];
+        
+        io.emit('/api/vote/end/3', { 
+            colorId: colorId
+        });
+        res.json({ colorId: colorId });
     }
     phase = '/api/vote/end/3';
     io.emit('phase', { phase: phase });
