@@ -31,10 +31,6 @@ const TRUE_COLORS = {
     ['id' + COLORS.purple]: [COLORS.red,COLORS.blue]
 };
 
-// 白と黒
-const colorsId = [COLORS.black,COLORS.white];
-const colorId = colorsId[Math.floor(Math.random() * colorsId.length)];
-
 let vote1ResultColorId; // 1回目の投票結果の色IDを保持する
 let vote2ResultColorId; // 2回目の投票結果の色IDを保持する
 
@@ -224,6 +220,9 @@ app.get('/api/vote/end/3', (req,res) => {
         });
         res.json({ colorId: COLORS.black });
     } else {
+        const colorsId = [COLORS.black,COLORS.white];
+        const colorId = colorsId[Math.floor(Math.random() * colorsId.length)];
+        
         io.emit('/api/vote/end/3', { 
             colorId: colorId
         });
