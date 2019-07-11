@@ -222,7 +222,10 @@ app.get('/api/vote/end/3', (req,res) => {
     } else {
         colorsId = [COLORS.black,COLORS.white];
         trueEndColors = colorsId[Math.floor(Math.random() * colorsId.length)];
-        io.emit('/api/vote/end/3', { trueEndColors: trueEndColors});
+        io.emit('/api/vote/end/3', { 
+            colorId: COLORS.sameVote,
+            trueEndColors: trueEndColors
+        });
         res.json({ colorId: trueEndColors });
     }
     phase = '/api/vote/end/3';
