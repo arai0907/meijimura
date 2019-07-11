@@ -63,12 +63,12 @@ app.get('/vote-graph', function(req, res){
 
 // truecolorをランダムで決定
 app.get('/api/init', (req,res) => {
-    const colorsId = [COLORS.green,COLORS.orange,COLORS.purple];
+    var colorsId = [COLORS.green,COLORS.orange,COLORS.purple];
     trueColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
     // スマホ側に "/api/init" というラベルでデータを送る
     io.emit('/api/init',{ trueColorId: trueColorId});
     res.json({ colorId: trueColorId });
-    waitBackColor( trueColorId );
+    // console.log(trueColorId);
 });
 
 app.get('/api/start',(req,res) => {
