@@ -11,7 +11,6 @@ const COLORS = {
 };
 
 const socket = io();
-let trueColorId;
 const waitColor = document.querySelector('#wait-content');
 
 socket.on('/api/init', (data) => {
