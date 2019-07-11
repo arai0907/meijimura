@@ -11,20 +11,20 @@ var voteBR = document.getElementById('vote-BR'); //bule_red
 var voteRYB  = document.getElementById('vote-RYB'); //red_yellow_blue
 var votewb   = document.getElementById('vote-wb'); //white_black
 
-var btnR01     = document.getElementById('red01');
-var btnR02     = document.getElementById('red02');
-var btnR03     = document.getElementById('red03');
+var btnR01     = document.getElementById('red1');
+var btnR02     = document.getElementById('red2');
+var btnR03     = document.getElementById('red3');
 
-var btnY01     = document.getElementById('yellow01');
-var btnY02     = document.getElementById('yellow02');
-var btnY03     = document.getElementById('yellow03');
+var btnY01     = document.getElementById('yellow1');
+var btnY02     = document.getElementById('yellow2');
+var btnY03     = document.getElementById('yellow3');
 
-var btnB01     = document.getElementById('blue01');
-var btnB02     = document.getElementById('blue02');
-var btnB03     = document.getElementById('blue03');
+var btnB01     = document.getElementById('blue1');
+var btnB02     = document.getElementById('blue2');
+var btnB03     = document.getElementById('blue3');
 
-var btnw01     = document.getElementById('white01');
-var btnb01     = document.getElementById('black01');
+var btnw01     = document.getElementById('white1');
+var btnb01     = document.getElementById('black1');
 
 //RY
 btnR01.onclick = function() {
@@ -77,11 +77,11 @@ btnB03.onclick = function() {
 //wb
 btnw01.onclick = function() {
  colorPage.style.display = "block";
- btnw01.style.height = '130%';
+ btnb01.style.height = '0%';
 }
 btnb01.onclick = function() {
  colorPage.style.display = "block";
- btnw01.style.height = '0%';
+ btnwb1.style.height = '130%';
 }
 
 //--- 投票画面のスタイルをデフォルトに戻す ---
