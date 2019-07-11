@@ -25,7 +25,7 @@ var btnB03     = document.getElementById('blue3');
 
 var btnw01     = document.getElementById('white1');
 var btnb01     = document.getElementById('black1');
-// var waitPage   = document.querySelector('.wait-content');
+// var waitPage   = document.querySelector('#wait-content');
 
 //RY
 btnR01.onclick = function() {
