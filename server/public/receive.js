@@ -13,7 +13,7 @@ const COLORS = {
 
 const socket = io();
 let trueColorId;
-const waitPage = document.querySelector('#wait-content');
+const waitColor = document.querySelector('#wait-content');
 
 
 socket.on('/api/init', (data) => {
@@ -22,10 +22,10 @@ socket.on('/api/init', (data) => {
     console.log(data);
 });
 
-socket.on('/api/init',( _treuColorId ) =>{
+socket.on('/api/init',( waitColor ) =>{
     //待機画面背景色
     console.log('trueColor');
-    switch (wait) {
+    switch (waitColor) {
       case 5:
       waitPage.style.backgroundColor = "rgb(255,105,0)";
       console.log('orange');
