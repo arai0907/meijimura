@@ -21,6 +21,7 @@ socket.on('/api/init', (data) => {
 
     const trueColorId = data.trueColorId; // 4, 5, 6 のいずれか
 
+    // 待機画面の背景色
     switch (trueColorId) {
         case COLORS.orange:
         waitPage.style.backgroundColor = "rgb(255,105,0)";
