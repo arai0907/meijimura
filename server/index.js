@@ -35,6 +35,7 @@ let vote1ResultColorId; // 1回目の投票結果の色IDを保持する
 let vote2ResultColorId; // 2回目の投票結果の色IDを保持する
 
 const vote1colors = [] // 投票１でランダムで選択された2色のID
+const colorId = colorsId[Math.floor(Math.random() * colorsId.length)] ;
 
 const app = express();
 const httpServer = http.Server(app);
@@ -221,12 +222,10 @@ app.get('/api/vote/end/3', (req,res) => {
         res.json({ colorId: COLORS.black });
     } else {
         colorsId = [COLORS.black,COLORS.white];
-        trueEndColors = colorsId[Math.floor(Math.random() * colorsId.length)];
         io.emit('/api/vote/end/3', { 
-            colorId: COLORS.sameVote,
-            trueEndColors: trueEndColors
+            colorId: colorsId[Math.floor(Math.random() * colorsId.length)]
         });
-        res.json({ colorId: trueEndColors });
+        res.json({ colorId: [Math.floor(Math.random() * colorsId.length)]  });
     }
     phase = '/api/vote/end/3';
     io.emit('phase', { phase: phase });
