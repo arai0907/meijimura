@@ -26,8 +26,7 @@ window.addEventListener('load', function(){
   $$buttonText          =document.getElementsByClassName( 'button-text' );
   topLogo               =document.querySelector('.top-logo');
   waitPage              =document.getElementById('js-wait');
-  topArea               =document.querySelector('.top-area');
-  bottomArea            =document.querySelector('.bottom-area');
+
 
 
 
@@ -41,8 +40,7 @@ window.addEventListener('load', function(){
   change_timer();
 
   setTimeout(function(){
-    topArea.style.height = '20%';
-    bottomArea.style.height = '20%';
+
 
     for( var i = 0; i < 2; i++ ){ permissionClickEvent( i );}
 
@@ -149,13 +147,8 @@ function expandRect( targetButton ) {
   if( targetButton != 1){ otherButton = 1; }
   else                   { otherButton = 0; }
 
-  bottomArea.style.zIndex = '2';
   //押してないボタンが消えていく
   button[ otherButton ].style.opacity = 0.0;
-  //   setTimeout(function(){
-  topArea.style.height = '100%';
-  bottomArea.style.height = '100%';
-  // },1200);
 
   //押したボタンが0.5秒後消えていく
   setTimeout(function(){
@@ -174,12 +167,9 @@ function expandRect( targetButton ) {
     explainSentence.style.display = button[ 2 ].style.display = button[ 3 ].style.display = 'block';
     topLogo.style.opacity ='0.0';
     setTimeout(function(){
-      topArea.style.height = '20%';
-      bottomArea.style.height = '20%';
       button[ otherButton ].style.display = 'none';
       button[ 2 ].style.opacity = button[ 3 ].style.opacity = explainSentence.style.opacity = 1.0;
       setTimeout( function(){
-        bottomArea.style.zIndex = '0';
         for( var i = 2; i < 4; i++ ){ permissionClickEvent( i ) }
       }, 500 );
     }, 1300 );
@@ -197,9 +187,6 @@ function deleteTop( clickedButton ) {
   setTimeout(function(){
     topPage.style.opacity = 0.0;
     setTimeout(function(){
-      topArea.style.height = '0%';
-      bottomArea.style.height = '0%';
-
       setTimeout(function(){
         waitPage.style.opacity = '1.0';
         wait_timer();
@@ -216,10 +203,7 @@ function reduceRect() {
 
   var clickedButton = 1;
   var otherButton   = 0;
-  bottomArea.style.zIndex = '0';
   explainSentence.style.opacity = button[ 2 ].style.opacity = button[ 3 ].style.opacity = 0.0;
-  topArea.style.height = '100%';
-  bottomArea.style.height = '100%';
 
   setTimeout(function(){
 
@@ -227,10 +211,6 @@ function reduceRect() {
     button[ clickeButton ].style.display = 'block';
 
     explainSentence.style.display = button[ 2 ].style.display = button[ 3 ].style.display = 'none';
-    setTimeout(function(){
-      topArea.style.height = '20%';
-      bottomArea.style.height = '20%';
-    },300);
     //トップイメージをフェードイン
     topLogo.style.display = 'block';
     topLogo.style.opacity = 1.0;
