@@ -361,24 +361,20 @@ app.get('/api/scene/change/:id',(req,res) => {
         phase = '/api/scene/change/3';
         io.emit('phase', { phase: phase });
     } else {
-        if (
-            trueColorId &&
-            TRUE_COLORS['id' + trueColorId][0] === vote1ResultColorId &&
-            TRUE_COLORS['id' + trueColorId][1] === vote2ResultColorId
-          ){
-            // 2回の投票結果がtrueColorになった時
+        if (COLORS.black > COLORS.white){
+            // 黒の投票数が多かった場合
             io.emit('/api/scene/change/4', {
-                colorId: trueColorId,
+                colorId: COLORS.black,
                 sceneId: 4
             });
-            res.json({ colorId: trueColorId });
-          } else {
-            // 2回の投票結果がtrueColorにならなかった時
+            res.json({ colorId: COLORS.black });
+          } else if(COLORS.black < COLORS.white) {
+            // 白の投票数が多かった場合
             io.emit('/api/scene/change/4', {
-                colorId: COLORS.sameVote,
+                colorId: COLORS.white,
                 sceneId: 4
             });
-            res.json({ colorId: COLORS.sameVote });
+            res.json({ colorId: COLORS.white });
           }
         phase = '/api/scene/change/4';
         io.emit('phase', { phase: phase });
