@@ -67,7 +67,7 @@ font-style:normal;font-weight:400;
   left: 0;
   right: 0;
   margin: auto;
-  top: 30%;
+  top: 31%;
   width: 18vh;
 }
 
@@ -109,37 +109,31 @@ font-style:normal;font-weight:400;
 
 .small-button {
   position: absolute;
-  /* font-size: 2.7vh; */
-  text-align: center;
+  display: inline-block;
+  color: black;
+  transition: 0.5s;
   display: none;
   opacity: 0.0;
-  /* height: 8%; */
-  width: 40%;
-  display: inline-block;
-  text-align: center;
-  color: black;
-  z-index: 1;
   cursor: pointer;
-  transition: 1.0s;
+  text-align: center;
   pointer-events: auto;
+  z-index: 2;
 }
 
 .small-start-button {
-  text-align: center;
   left: 0;
   right: 0;
   margin: auto;
   top: 66%;
-  transition: 0.5s;
+  width: 63%;
 }
 
 .small-top-button {
-  text-align: center;
   left: 0;
   right: 0;
   margin: auto;
   top: 75%;
-  transition: 0.5s;
+  width: 63%;
 }
 
 .wait{
@@ -175,7 +169,7 @@ font-style:normal;font-weight:400;
   left: 0;
   right: 0;
   margin: auto;
-  margin-top: 15vh;
+  margin-top: 19vh;
   transition: 1.0s;
   z-index: 1;
   opacity: 1.0;
@@ -187,14 +181,7 @@ font-style:normal;font-weight:400;
   right: 0;
   margin: auto;
   top: 30%;
-  width: 18vh;
-}
-
-.js-wait-circle{
-  width: 40vh;
-  transition: 1.0s;
-  top: 20%;
-  opacity: 1.0;
+  width: 35vh;
 }
 
 .explain-sentence {

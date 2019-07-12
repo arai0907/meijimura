@@ -34,7 +34,7 @@ window.addEventListener('load', function(){
   topPage.style.display == 'block';
 
   //説明文の位置を決める
-  explainSentence.style.top = ( h - explainSentence.clientHeight ) / 20 + 'vh';
+  explainSentence.style.top = ( h - explainSentence.clientHeight ) / 21 + 'vh';
   explainSentence.style.display = 'none';
   //1.0秒毎にcircleの中の画像を変える
   change_timer();
@@ -71,17 +71,17 @@ function change_timer() {
   setTimeout('change_timer()',1000);
 }
 // .src = images_src[num];
-function wait_timer(){
-
-  if (num == 1){
-    num = 0;
-  }
-  else {
-    num ++;
-  }
-  waitCircle.src = images_src[num]
-  setTimeout('wait_timer()',500);
-}
+// function wait_timer(){
+//
+//   if (num == 1){
+//     num = 0;
+//   }
+//   else {
+//     num ++;
+//   }
+//   waitCircle.src = images_src[num]
+//   setTimeout('wait_timer()',500);
+// }
 
 //　全てのボタンのイベントを拒否
 function allButtonPermissionClickEvent() {
@@ -189,7 +189,6 @@ function deleteTop( clickedButton ) {
     setTimeout(function(){
       setTimeout(function(){
         waitPage.style.opacity = '1.0';
-        wait_timer();
         topPage.style.display = 'none';
         console.log('waitPage');
       },300);
