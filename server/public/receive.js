@@ -206,17 +206,17 @@ socket.on('phase', (phase) => {
 // 投票
 var p1 = document.getElementsByClassName('red1','red2','red3');
 var handler1 = function(){
-    console.log('vote1');
+    console.log('p1');
     socket.emit('vote', 'red');
 };
-p1.addEventListener('click', handler1, false);
+p1.addEventListener('p1', handler1, false);
 
 var p2 = document.getElementsByClassName('yellow1','yellow2','yellow3');
 var handler2 = function(){
-    console.log('vote2');
+    console.log('p2');
     socket.emit('vote', 'yellow');
 };
-p2.addEventListener('click', handler2, false);
+p2.addEventListener('p2', handler2, false);
 
 var p3 = document.getElementsByClassName('blue1','blue2','blue3');
 var handler3 = function(){
