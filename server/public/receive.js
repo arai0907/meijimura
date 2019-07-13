@@ -204,35 +204,35 @@ socket.on('phase', (phase) => {
 });
 
 // 投票
-var p1 = document.getElementById('red');
+var p1 = document.getElementsByClassName('red1','red2','red3');
 var handler1 = function(){
     console.log('vote1');
     socket.emit('vote', 'red');
 };
 p1.addEventListener('click', handler1, false);
 
-var p2 = document.getElementById('yellow');
+var p2 = document.getElementsByClassName('yellow1','yellow2','yellow3');
 var handler2 = function(){
     console.log('vote2');
     socket.emit('vote', 'yellow');
 };
 p2.addEventListener('click', handler2, false);
 
-var p3 = document.getElementById('blue');
+var p3 = document.getElementsByClassName('blue1','blue2','blue3');
 var handler3 = function(){
     console.log('vote3');
     socket.emit('vote', 'blue');
 };
 p3.addEventListener('click', handler3, false);
 
-var p4 = document.getElementById('black');
+var p4 = document.getElementsByClassName('black1');
 var handler4 = function(){
     console.log('vote4');
     socket.emit('vote', 'black');
 };
 p4.addEventListener('click', handler4, false);
 
-var p5 = document.getElementById('white');
+var p5 = document.getElementsByClassName('white1');
 var handler5 = function(){
     console.log('vote5');
     socket.emit('vote', 'white');
