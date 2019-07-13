@@ -1,8 +1,6 @@
 var firstVotePage = document.getElementById('first-vote');
 var secondVotePage = document.getElementById('second-vote');
 var thirdVotePage = document.getElementById('third-vote');
-var colorPage = document.getElementById('colorPage')
-
 //--- 投票 ---
 var voteRY = document.getElementById('vote-RY'); //red_yellow
 var voteYB = document.getElementById('vote-YB'); //yellow_blue
@@ -25,7 +23,9 @@ var btnB03     = document.getElementById('blue3');
 
 var btnw01     = document.getElementById('white1');
 var btnb01     = document.getElementById('black1');
-// var waitPage   = document.querySelector('#wait-content');
+
+var mpPage     =document.getElementById('mappingPage');
+var colorPage  =document.getElementById('js-color-page');
 
 //RY
 btnR01.onclick = function() {
@@ -103,4 +103,54 @@ function voteReset(){
 
  firstVotePage.style.display  = 'none';
  secondVotePage.style.display = 'none';
+}
+
+function callMpPage(){
+  mpPage.style.display = 'block';
+  mpPage.style.opacity = 1.0;
+}
+
+function deleteMpPage(){
+  mpPage.style.opacity = 0.0;
+  mpPage.style.display = 'none';
+}
+
+function callColorPage(){
+  colorPage.style.display = "block";
+  colorPage.style.opacity = 1.0;
+}
+
+function deletelColorPage(){
+  colorPage.style.opacity = 0.0;
+  colorPage.style.display = 'none';
+}
+
+function callFirstVote(){
+  firstVotePage.style.display = 'block';
+  firstVotePage.style.opacity = 1.0;
+}
+
+function callSecondVote(){
+  secondVotePage.style.display = 'block';
+  secondVotePage.style.opacity = 1.0;
+}
+
+function callThirdVote(){
+  thirdVotePage.style.display = 'block';
+  thirdVotePage.style.opacity = 1.0;
+}
+
+function deleteFirstVote(){
+  firstVotePage.style.display = 'none';
+  firstVotePage.style.opacity = 0.0;
+}
+
+function deleteSecondVote(){
+  secondVotePage.style.display = 'none';
+  secondVotePage.style.opacity = 0.0;
+}
+
+function deleteThirdVote(){
+  thirdVotePage.style.display = 'none';
+  thirdVotePage.style.opacity = 0.0;
 }

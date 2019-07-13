@@ -11,7 +11,6 @@ const COLORS = {
 };
 
 const socket = io();
-const waitColor = document.querySelector('#wait-content');
 
 socket.on('/api/init', (data) => {
     // スマホの画面を開始画面に切り替える
@@ -26,17 +25,17 @@ socket.on('/api/init', (data) => {
         waitPage.style.backgroundColor = "rgb(255,105,0)";
         console.log('orange');
         break;
-    
+
         case COLORS.purple:
         waitPage.style.backgroundColor = "rgb(150,115,255)";
         console.log('purple');
         break;
-    
+
         case COLORS.green:
         waitPage.style.backgroundColor = "rgb(30,170,0)";
         console.log('green');
         break;
-    
+
         default:
         waitPage.style.backgroundColor = "rgb(0,0,0)";
         console.log('white');
@@ -46,38 +45,52 @@ socket.on('/api/init', (data) => {
 
 socket.on('/api/start', () => {
     // スマホの画面を開始画面に切り替える
+    waitPage.style.opacity = 0.0;
+    waitPage.style.display = 'none';
+    callMpPage();
+    opening();
     console.log('サーバーからWebSocketでOPアニメーションをスタートする。')
 });
 
 // 投票開始１
 socket.on('/api/vote/start/1',(data) => {
-
+    deleteMpPage();
+    callFirstVote();
     const voteColor0 = data.randomVoteColorId[0];
     const voteColor1 = data.randomVoteColorId[1];
 
     if (voteColor0 === COLORS.red && voteColor1 === COLORS.yellow) {
+        voteRY.style.display = 'block';
         console.log('赤と黄の投票画面を表示');
     } else if (voteColor0 === COLORS.red && voteColor1 === COLORS.blue) {
+        voteBR.style.display = 'block';
         console.log('赤と青の投票画面を表示');
     } else if (voteColor0 === COLORS.yellow && voteColor1 === COLORS.blue) {
+        voteYB.style.display = 'block';
         console.log('黄と青の投票画面を表示');
     }
 });
 
 // 投票1の終了
 socket.on('/api/vote/end/1', (data) => {
+    callColorPage();
+    deleteFirstVote();
     console.log('サーバーからWebSocketで/api/vote/end/1のデータを受信しました。')
     console.log(data);
 });
 
 // 投票2の終了
 socket.on('/api/vote/end/2', (data) => {
+    callColorPage();
+    deleteFirstVote();
     console.log('サーバーからWebSocketで/api/vote/end/2のデータを受信しました。')
     console.log(data);
 });
 
 // 投票２
 socket.on('/api/vote/start/2',(data) => {
+    deleteMpPage();
+    callSecondVote();
     console.log('サーバーからWebSocketで/api/vote/start/2のデータを受信しました。')
     console.log(data);
     console.log('赤と黄と青の投票画面を表示')
@@ -85,6 +98,10 @@ socket.on('/api/vote/start/2',(data) => {
 
 // 投票3
 socket.on('/api/vote/start/3', (data) => {
+    deleteMpPage();
+    votewb.style.display = 'block';
+    votewb.style.opacity = 1.0;
+    callThirdVote();
     console.log('サーバーからWebSocketで/api/vote/start/3のデータを受信しました。')
     console.log(data);
     console.log('白と黒の投票画面を表示')
@@ -92,12 +109,16 @@ socket.on('/api/vote/start/3', (data) => {
 
 // 投票3の終了
 socket.on('/api/vote/end/3', (data) => {
+    callColorPage();
+    deleteThirdVote();
     console.log('サーバーからWebSocketで/api/vote/end/3のデータを受信しました。')
     console.log(data);
 });
 
 // 画面の切り替え
 socket.on('/api/scene/change/1', (data) => {
+    deletelColorPage();
+    callMpPage();
     // スマホの画面のアニメーションを切り替える
     console.log('サーバーからWebSocketで/api/scene/change/1のデータを受信しました。')
     console.log(data);
@@ -115,6 +136,8 @@ socket.on('/api/scene/change/1', (data) => {
 
 // 画面の切り替え2
 socket.on('/api/scene/change/2', (data) => {
+    deletelColorPage();
+    callMpPage();
     console.log('サーバーからWebSocketで/api/scene/change/2のデータを受信しました。')
     console.log(data);
 
@@ -131,6 +154,8 @@ socket.on('/api/scene/change/2', (data) => {
 
 // 画面の切り替え3
 socket.on('/api/scene/change/3', (data) => {
+    deletelColorPage();
+    callMpPage();
     console.log('サーバーからWebSocketで/api/scene/change/3のデータを受信しました。')
     console.log(data);
 
@@ -147,17 +172,23 @@ socket.on('/api/scene/change/3', (data) => {
 
 // 画面の切り替え4
 socket.on('/api/scene/change/4', (data) => {
+    callMpPage();
     console.log('サーバーからWebSocketで/api/scene/change/4のデータを受信しました。')
     console.log(data);
 });
 
 socket.on('/api/end', (data) => {
+    callMpPage();
     // スマホの画面を終了画面に切り替える
     console.log('サーバーからWebSocketで/api/endのデータを受信しました。')
     console.log(data);
 });
 
 socket.on('/api/reset', (data) => {
+    deleteMpPage();
+    deletelColorPage();
+    waitPage.style.display = 'block';
+    waitPage.style.opacity = 1.0;
     console.log('サーバーからWebSocketで/api/resetのデータを受信しました。')
     console.log(data);
 });

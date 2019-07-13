@@ -91,10 +91,10 @@ font-style:normal;font-weight:400;
   width: 40vh;
   transition: 1.0s;
   top: 20%;
-  opacity: 0.0;
+  opacity: 1.0;
 }
 
-.fadeout {
+/* .fadeout {
   animation: fadeOut 1.0s cubic-bezier(0.55, 0.06, 0.87, 0.21)  infinite;
   animation-fill-mode: both;
 }
@@ -105,7 +105,7 @@ font-style:normal;font-weight:400;
   100% {
     opacity: 0;
   }
-}
+} */
 
 .small-button {
   position: absolute;
@@ -262,7 +262,7 @@ font-style:normal;font-weight:400;
   display: none;
   opacity: 0.0;
   background-color: #000000;
-  transition: 1.0s;
+  /* transition: 1.0s; */
 }
 
 /* vote-Window */
