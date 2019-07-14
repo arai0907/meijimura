@@ -259,8 +259,8 @@ const handler5 = function(){
 console.log(whiteButtons);
 p5.addEventListener('click', handler5, false);
 
-const wait = document.querySelector('#js-wait');
+const waitStart = document.querySelector('#js-wait');
 const startButton = document.querySelector('#js-start-button');
 startButton.addEventListener('click', function(){
-    TweenMax.to(wait,1.0,{autoAlpha: 1})
+    TweenMax.to(waitStart,1.0,{autoAlpha: 1})
 });
