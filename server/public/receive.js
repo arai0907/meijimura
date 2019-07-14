@@ -207,8 +207,6 @@ socket.on('phase', (phase) => {
 // 赤
 const redButtons = document.getElementsByClassName('btn-red');
 for (let i = 0; i < redButtons.length; i++) {
-    console.log('取得したボタンの数だけこの中の処理が繰り返されます');
-    
     // ひとつづつ addEventListener していく
     redButtons[i].addEventListener("click", function (){
         socket.emit('vote', 'red');
@@ -220,8 +218,6 @@ console.log(redButtons);
 // 黄
 const yellowButtons = document.getElementsByClassName('btn-yellow');
 for (let i = 0; i < yellowButtons.length; i++) {
-    console.log('取得したボタンの数だけこの中の処理が繰り返されます');
-    
     // ひとつづつ addEventListener していく
     yellowButtons[i].addEventListener("click", function (){
         socket.emit('vote', 'yellow');
@@ -233,8 +229,6 @@ console.log(yellowButtons);
 // 青
 const blueButtons = document.getElementsByClassName('btn-blue');
 for (let i = 0; i < blueButtons.length; i++) {
-    console.log('取得したボタンの数だけこの中の処理が繰り返されます');
-    
     // ひとつづつ addEventListener していく
     blueButtons[i].addEventListener("click", function (){
         socket.emit('vote', 'blue');
@@ -246,8 +240,6 @@ console.log(blueButtons);
 // 黒
 const blackButtons = document.getElementsByClassName('btn-black');
 for (let i = 0; i < blackButtons.length; i++) {
-    console.log('取得したボタンの数だけこの中の処理が繰り返されます');
-    
     // ひとつづつ addEventListener していく
     blackButtons[i].addEventListener("click", function (){
         socket.emit('vote', 'black');
@@ -259,8 +251,6 @@ console.log(blackButtons);
 // 白
 const whiteButtons = document.getElementsByClassName('btn-white');
 for (let i = 0; i < whiteButtons.length; i++) {
-    console.log('取得したボタンの数だけこの中の処理が繰り返されます');
-    
     // ひとつづつ addEventListener していく
     whiteButtons[i].addEventListener("click", function (){
         socket.emit('vote', 'white');
@@ -269,8 +259,8 @@ for (let i = 0; i < whiteButtons.length; i++) {
 console.log(whiteButtons);
 // p5.addEventListener('click', handler5, false);
 
-const waitStart = document.querySelector('#js-wait');
-const startButton = document.querySelector('#js-start-button');
-startButton.addEventListener('click', function(){
-    TweenMax.to(waitStart,1.0,{autoAlpha: 1})
-});
+// const waitStart = document.querySelector('#js-wait');
+// const startButton = document.querySelector('#js-start-button');
+// startButton.addEventListener('click', function(){
+//     TweenMax.to(waitStart,1.0,{autoAlpha: 1})
+// });
