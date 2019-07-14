@@ -250,7 +250,7 @@ for (let i = 0; i < blackButtons.length; i++) {
     
     // ひとつづつ addEventListener していく
     blackButtons[i].addEventListener("click", function (){
-        socket.emit('vote', 'blue');
+        socket.emit('vote', 'black');
     }, false);
 }
 console.log(blackButtons);
@@ -263,7 +263,7 @@ for (let i = 0; i < whiteButtons.length; i++) {
     
     // ひとつづつ addEventListener していく
     whiteButtons[i].addEventListener("click", function (){
-        socket.emit('vote', 'blue');
+        socket.emit('vote', 'white');
     }, false);
 }
 console.log(whiteButtons);
