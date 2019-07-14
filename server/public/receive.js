@@ -204,43 +204,63 @@ socket.on('phase', (phase) => {
 });
 
 // 投票
-// var p1 = document.getElementById('red');
-// var handler1 = function(){
-//     console.log('vote1');
-//     socket.emit('vote', 'red');
-// };
+// 赤
+const redButtons = document.getElementsByClassName('btn-red');
+for (let i = 0; i < redButtons.length; i++) {
+    // ひとつづつ addEventListener していく
+    redButtons[i].addEventListener("click", function (){
+        socket.emit('vote', 'red');
+    }, false);
+}
+console.log(redButtons);
 // p1.addEventListener('click', handler1, false);
 
-// var p2 = document.getElementById('yellow');
-// var handler2 = function(){
-//     console.log('vote2');
-//     socket.emit('vote', 'yellow');
-// };
+// 黄
+const yellowButtons = document.getElementsByClassName('btn-yellow');
+for (let i = 0; i < yellowButtons.length; i++) {
+    // ひとつづつ addEventListener していく
+    yellowButtons[i].addEventListener("click", function (){
+        socket.emit('vote', 'yellow');
+    }, false);
+}
+console.log(yellowButtons);
 // p2.addEventListener('click', handler2, false);
 
-// var p3 = document.getElementById('blue');
-// var handler3 = function(){
-//     console.log('vote3');
-//     socket.emit('vote', 'blue');
-// };
+// 青
+const blueButtons = document.getElementsByClassName('btn-blue');
+for (let i = 0; i < blueButtons.length; i++) {
+    // ひとつづつ addEventListener していく
+    blueButtons[i].addEventListener("click", function (){
+        socket.emit('vote', 'blue');
+    }, false);
+}
+console.log(blueButtons);
 // p3.addEventListener('click', handler3, false);
 
-// var p4 = document.getElementById('white');
-// var handler4 = function(){
-//     console.log('vote4');
-//     socket.emit('vote', 'white');
-// };
+// 黒
+const blackButtons = document.getElementsByClassName('btn-black');
+for (let i = 0; i < blackButtons.length; i++) {
+    // ひとつづつ addEventListener していく
+    blackButtons[i].addEventListener("click", function (){
+        socket.emit('vote', 'black');
+    }, false);
+}
+console.log(blackButtons);
 // p4.addEventListener('click', handler4, false);
 
-// var p5 = document.getElementById('black');
-// var handler5 = function(){
-//     console.log('vote5');
-//     socket.emit('vote', 'black');
-// };
+// 白
+const whiteButtons = document.getElementsByClassName('btn-white');
+for (let i = 0; i < whiteButtons.length; i++) {
+    // ひとつづつ addEventListener していく
+    whiteButtons[i].addEventListener("click", function (){
+        socket.emit('vote', 'white');
+    }, false);
+}
+console.log(whiteButtons);
 // p5.addEventListener('click', handler5, false);
 
-// var wait = document.querySelector('#js-wait');
-// var startButton = document.querySelector('#js-start-button');
+// const waitStart = document.querySelector('#js-wait');
+// const startButton = document.querySelector('#js-start-button');
 // startButton.addEventListener('click', function(){
-//     TweenMax.to(wait,1.0,{autoAlpha: 1})
+//     TweenMax.to(waitStart,1.0,{autoAlpha: 1})
 // });
