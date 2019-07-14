@@ -244,7 +244,7 @@ console.log(blueButtons);
 // p3.addEventListener('click', handler3, false);
 
 // 黒
-const blackButtons = document.getElementsByClassName('black1');
+const blackButtons = document.getElementsByClassName('btn-black');
 for (let i = 0; i < blackButtons.length; i++) {
     console.log('取得したボタンの数だけこの中の処理が繰り返されます');
     
@@ -257,7 +257,7 @@ console.log(blackButtons);
 // p4.addEventListener('click', handler4, false);
 
 // 白
-const whiteButtons = document.getElementsByClassName('white1');
+const whiteButtons = document.getElementsByClassName('btn-white');
 for (let i = 0; i < whiteButtons.length; i++) {
     console.log('取得したボタンの数だけこの中の処理が繰り返されます');
     
