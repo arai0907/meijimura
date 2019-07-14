@@ -245,19 +245,29 @@ console.log(blueButtons);
 
 // 黒
 const blackButtons = document.getElementsByClassName('black1');
-const handler4 = function(){
-    socket.emit('vote', 'black');
-};
+for (let i = 0; i < blackButtons.length; i++) {
+    console.log('取得したボタンの数だけこの中の処理が繰り返されます');
+    
+    // ひとつづつ addEventListener していく
+    blackButtons[i].addEventListener("click", function (){
+        socket.emit('vote', 'blue');
+    }, false);
+}
 console.log(blackButtons);
-p4.addEventListener('click', handler4, false);
+// p4.addEventListener('click', handler4, false);
 
 // 白
 const whiteButtons = document.getElementsByClassName('white1');
-const handler5 = function(){
-    socket.emit('vote', 'white');
-};
+for (let i = 0; i < whiteButtons.length; i++) {
+    console.log('取得したボタンの数だけこの中の処理が繰り返されます');
+    
+    // ひとつづつ addEventListener していく
+    whiteButtons[i].addEventListener("click", function (){
+        socket.emit('vote', 'blue');
+    }, false);
+}
 console.log(whiteButtons);
-p5.addEventListener('click', handler5, false);
+// p5.addEventListener('click', handler5, false);
 
 const waitStart = document.querySelector('#js-wait');
 const startButton = document.querySelector('#js-start-button');
