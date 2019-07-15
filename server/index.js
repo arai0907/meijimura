@@ -169,34 +169,53 @@ app.get('/api/vote/end/1',(req,res) => {
 app.get('/api/vote/end/2',(req,res) => {
     const maxVoteNumber = Math.max(red,yellow,blue);
 
-    // WebSocket で投票2の終了を通知
-    io.emit('/api/vote/end/2');
-
     phase = '/api/vote/end/2';
     io.emit('phase', { phase: phase });
 
     if (red === yellow && yellow === blue) {
         // 投票数が同票の時
+        io.emit('/api/vote/end/2', {
+            colorId: COLORS.sameVote,
+            sceneId: 2
+        });
         res.json({ colorId: COLORS.sameVote });
         return; // return 以降は処理されない
     }
 
     if (maxVoteNumber === red) {
         vote2ResultColorId = COLORS.red;
+        io.emit('/api/vote/end/2', {
+            colorId: COLORS.red,
+            sceneId: 2
+        });
+        console.log('end');
         res.json({ colorId: COLORS.red });
         return;
     } else if (maxVoteNumber === yellow) {
         vote2ResultColorId = COLORS.yellow;
+        io.emit('/api/vote/end/2', {
+            colorId: COLORS.yellow,
+            sceneId: 2
+        });
         res.json({ colorId: COLORS.yellow });
         return;
     } else if (maxVoteNumber === blue) {
         vote2ResultColorId = COLORS.blue;
+        io.emit('/api/vote/end/2', {
+            colorId: COLORS.blue,
+            sceneId: 2
+        });
         res.json({ colorId: COLORS.blue });
         return;
-    } else {
-        // 投票数が同票の時
-        res.json({ colorId: COLORS.sameVote });
-        return;
+    // } else {
+    //     // 投票数が同票の時
+    //     io.emit('/api/vote/end/2', {
+    //         colorId: COLORS.sameVote,
+    //         sceneId: 2
+    //     });
+    //     res.json({ colorId: COLORS.sameVote });
+    //     return;
+    // }
     }
 });
 
