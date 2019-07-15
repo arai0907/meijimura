@@ -63,6 +63,7 @@ app.get('/test',(req,res) => {
 
 // truecolorをランダムで決定
 app.get('/api/init', (req,res) => {
+    console.log('【GET】/api/init');
     const colorsId = [COLORS.green,COLORS.orange,COLORS.purple];
     trueColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
     // スマホ側に "/api/init" というラベルでデータを送る
@@ -72,7 +73,7 @@ app.get('/api/init', (req,res) => {
 });
 
 app.get('/api/start',(req,res) => {
-    console.log(req.params.id);
+    console.log('【GET】/api/start');
 
     const voteColorsId = [
         [COLORS.red, COLORS.yellow],
@@ -96,7 +97,7 @@ app.get('/api/start',(req,res) => {
 
 // 投票開始１
 app.get('/api/vote/start/:id',(req,res) => {
-    console.log(req.params.id);
+    console.log(`【GET】/api/vote/start/${req.params.id}`);
 
     if(req.params.id === '1'){
         io.emit('/api/vote/start/1', {
@@ -120,6 +121,8 @@ app.get('/api/vote/start/:id',(req,res) => {
 
 // 投票終了１
 app.get('/api/vote/end/1',(req,res) => {
+    console.log('【GET】/api/vote/end/1');
+
     // 投票
     let voteColor0 = 0;
     let voteColor1 = 0;
@@ -167,6 +170,8 @@ app.get('/api/vote/end/1',(req,res) => {
 
 // 投票終了2
 app.get('/api/vote/end/2',(req,res) => {
+    console.log('【GET】/api/vote/end/2');
+
     const maxVoteNumber = Math.max(red,yellow,blue);
 
     phase = '/api/vote/end/2';
@@ -221,6 +226,8 @@ app.get('/api/vote/end/2',(req,res) => {
 
 // 投票終了3
 app.get('/api/vote/end/3', (req,res) => {
+    console.log('【GET】/api/vote/end/3');
+
     if (white > black) {
         // 白の投票数が多い時の処理
         io.emit('/api/vote/end/3', {
@@ -249,6 +256,8 @@ app.get('/api/vote/end/3', (req,res) => {
 
 // 画面の切り替え
 app.get('/api/scene/change/:id',(req,res) => {
+    console.log(`【GET】/api/scene/change/${req.params.id}`);
+
     if (req.params.id === '1') {
         let voteColor0 = 0;
         let voteColor1 = 0;
@@ -353,6 +362,10 @@ app.get('/api/scene/change/:id',(req,res) => {
         return;
 
     } else if (req.params.id === '3') {
+        console.log('----------------------------------------');
+        console.log(`trueColorIdのIDは ${ trueColorId } です。正解の組み合わせは ${ TRUE_COLORS["id" + trueColorId][0] }, ${ TRUE_COLORS["id" + trueColorId][1] }`);
+        console.log(`1回目の投票結果 - ${ vote1ResultColorId }, 2回目の投票結果 -  ${ vote2ResultColorId }`);
+        console.log('----------------------------------------');
         if (
             trueColorId &&
             TRUE_COLORS['id' + trueColorId][0] === vote1ResultColorId &&
@@ -408,6 +421,8 @@ function votesNumberClear() {
 
 // ED
 app.get('/api/end',(req,res) => {
+    console.log('【GET】/api/end');
+
     io.emit('/api/end');
     res.send('end');
     phase = '/api/end';
@@ -416,6 +431,8 @@ app.get('/api/end',(req,res) => {
 
 // リセット
 app.get('/api/reset',(req,res) => {
+    console.log('【GET】/api/reset');
+
     io.emit('/api/reset');
     res.json({});
     phase = '/api/reset';
