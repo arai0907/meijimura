@@ -73,18 +73,38 @@ socket.on('/api/vote/start/1',(data) => {
 
 // 投票1の終了
 socket.on('/api/vote/end/1', (data) => {
-    callColorPage();
-    deleteFirstVote();
     console.log('サーバーからWebSocketで/api/vote/end/1のデータを受信しました。')
     console.log(data);
+
+    deleteFirstVote();
+    if(data.colorId === COLORS.red) {
+       colorPage.style.backgroundColor = "#f5001e";
+    } else if(data.colorId === COLORS.blue) {
+       colorPage.style.backgroundColor = "#32a0ff";
+    } else if(data.colorId === COLORS.yellow) {
+       colorPage.style.backgroundColor = "#f5e628";
+    } else if(data.colorId === COLORS.sameVote) {
+       colorPage.style.backgroundColor = "#000000";
+    }
+    callColorPage();
 });
 
 // 投票2の終了
 socket.on('/api/vote/end/2', (data) => {
-    callColorPage();
-    deleteFirstVote();
     console.log('サーバーからWebSocketで/api/vote/end/2のデータを受信しました。')
     console.log(data);
+
+    deleteSecondVote();
+    // if(data.colorId === COLORS.red) {
+    //    colorPage.style.backgroundColor = "#f5001e";
+    // } else if(data.colorId === COLORS.blue) {
+    //    colorPage.style.backgroundColor = "#32a0ff";
+    // } else if(data.colorId === COLORS.yellow) {
+    //    colorPage.style.backgroundColor = "#f5e628";
+    // } else if(data.colorId === COLORS.sameVote) {
+    //    colorPage.style.backgroundColor = "#000000";
+    // }
+    callColorPage();
 });
 
 // 投票２
@@ -109,10 +129,18 @@ socket.on('/api/vote/start/3', (data) => {
 
 // 投票3の終了
 socket.on('/api/vote/end/3', (data) => {
-    callColorPage();
-    deleteThirdVote();
     console.log('サーバーからWebSocketで/api/vote/end/3のデータを受信しました。')
     console.log(data);
+
+    deleteThirdVote();
+    if(data.colorId === COLORS.white) {
+       colorPage.style.backgroundColor = "#ffffff";
+    } else if(data.colorId === COLORS.black) {
+       colorPage.style.backgroundColor = "#000000";
+    } else if(data.colorId === COLORS.sameVote) {
+       colorPage.style.backgroundColor = "#000000";
+    }
+    callColorPage();
 });
 
 // 画面の切り替え

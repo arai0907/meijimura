@@ -338,9 +338,9 @@ font-style:normal;font-weight:400;
   transition: 1.0s;
 }
 
-.btn-red { background-color: #dc0a14; }
-.btn-yellow { background-color: #ffd20a; }
-.btn-blue { background-color: #001ef0; }
+.btn-red { background-color: #f5001e; }
+.btn-yellow { background-color: #f5e628; }
+.btn-blue { background-color: #32a0ff; }
 .btn-white { background-color: #ffffff;}
 .btn-black { background-color: #000000;}
 
