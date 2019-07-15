@@ -90,7 +90,7 @@ function voteReset(){
  btnR01.style.height = '60%';
  btnY02.style.height = '60%';
  btnB02.style.height = '60%';
-
+ btnb01.style.height = '60%';
 
  btnR03.style.height = '45%';
  btnB03.style.height = '45%';
@@ -103,6 +103,7 @@ function voteReset(){
 
  firstVotePage.style.display  = 'none';
  secondVotePage.style.display = 'none';
+ thirdVotePage.style.display = 'none';
 }
 
 function callMpPage(){

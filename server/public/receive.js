@@ -215,6 +215,7 @@ socket.on('/api/end', (data) => {
 socket.on('/api/reset', (data) => {
     deleteMpPage();
     deletelColorPage();
+    voteReset();
     waitPage.style.display = 'block';
     waitPage.style.opacity = 1.0;
     console.log('サーバーからWebSocketで/api/resetのデータを受信しました。')
