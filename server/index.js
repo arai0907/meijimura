@@ -443,6 +443,12 @@ io.on('connection',(socket) => {
     console.log('ユーザーが接続しました。');
 
     // 接続したユーザーにこれまでの投票数を送信する
+
+    io.emit('phase', {
+        phase: 'connection',
+        colorId: trueColorId
+    });
+
     io.emit('vote', {
         R: red,
         Y: yellow,
