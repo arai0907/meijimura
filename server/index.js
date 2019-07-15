@@ -368,8 +368,10 @@ app.get('/api/scene/change/:id',(req,res) => {
         console.log('----------------------------------------');
         if (
             trueColorId &&
-            TRUE_COLORS['id' + trueColorId][0] === vote1ResultColorId &&
-            TRUE_COLORS['id' + trueColorId][1] === vote2ResultColorId
+            (TRUE_COLORS['id' + trueColorId][0] === vote1ResultColorId ||
+            TRUE_COLORS['id' + trueColorId][1] === vote1ResultColorId) &&
+            (TRUE_COLORS['id' + trueColorId][0] === vote2ResultColorId ||
+            TRUE_COLORS['id' + trueColorId][1] === vote2ResultColorId)
           ){
             // 2回の投票結果がtrueColorになった時
             io.emit('/api/scene/change/3', {
