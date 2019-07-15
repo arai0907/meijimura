@@ -57,9 +57,9 @@ app.get('/vote-graph', function(req, res){
     res.sendFile(path.join(__dirname, '../vote-graph.html'));
 });
 
-// app.get('/test',(req,res) => {
-//     res.send('test');
-// });
+app.get('/test',(req,res) => {
+    res.sendFile(path.join(__dirname, '../test.html'));
+});
 
 // truecolorをランダムで決定
 app.get('/api/init', (req,res) => {
