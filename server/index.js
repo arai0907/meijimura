@@ -33,6 +33,7 @@ const TRUE_COLORS = {
 
 let vote1ResultColorId; // 1回目の投票結果の色IDを保持する
 let vote2ResultColorId; // 2回目の投票結果の色IDを保持する
+let vote3ResultColorId; // 3回目の投票結果の色IDを保持する
 
 const vote1colors = [] // 投票１でランダムで選択された2色のID
 
@@ -243,12 +244,12 @@ app.get('/api/vote/end/3', (req,res) => {
     } else {
         // 同票の場合黒か白ランダムで決める
         const colorsId = [COLORS.black,COLORS.white];
-        const colorId = colorsId[Math.floor(Math.random() * colorsId.length)];
+        vote3ResultColorId = colorsId[Math.floor(Math.random() * colorsId.length)];
         
         io.emit('/api/vote/end/3', { 
-            colorId: colorId
+            colorId: vote3ResultColorId
         });
-        res.json({ colorId: colorId });
+        res.json({ colorId: vote3ResultColorId });
     }
     phase = '/api/vote/end/3';
     io.emit('phase', { phase: phase });
@@ -298,14 +299,6 @@ app.get('/api/scene/change/:id',(req,res) => {
 
         // 投票数をリセット
         votesNumberClear();
-
-        io.emit('vote',{
-            R: red,
-            Y: yellow,
-            B: blue,
-            b: black,
-            w: white
-        });
         
         phase = '/api/scene/change/1';
         io.emit('phase', { phase: phase });
@@ -324,6 +317,8 @@ app.get('/api/scene/change/:id',(req,res) => {
               sceneId: 2
             });
             res.json({ colorId: COLORS.sameVote });
+            // 投票数をリセット
+            votesNumberClear();
             return;
         }
 
@@ -333,6 +328,8 @@ app.get('/api/scene/change/:id',(req,res) => {
                 sceneId: 2
             });
             res.json({ colorId: COLORS.red });
+            // 投票数をリセット
+            votesNumberClear();
             return;
         } else if (maxVoteNumber2 === yellow) {
             io.emit('/api/scene/change/2', {
@@ -340,6 +337,8 @@ app.get('/api/scene/change/:id',(req,res) => {
                 sceneId: 2
             });
             res.json({ colorId: COLORS.yellow });
+            // 投票数をリセット
+            votesNumberClear();
             return;
         } else if (maxVoteNumber2 === blue) {
             io.emit('/api/scene/change/2', {
@@ -347,20 +346,10 @@ app.get('/api/scene/change/:id',(req,res) => {
                 sceneId: 2
             });
             res.json({ colorId: COLORS.blue });
+            // 投票数をリセット
+            votesNumberClear();
+            return;
         }
-
-        // 投票数をリセット
-        votesNumberClear();
-
-        io.emit('vote',{
-            R: red,
-            Y: yellow,
-            B: blue,
-            b: black,
-            w: white
-        });
-        return;
-
     } else if (req.params.id === '3') {
         console.log('----------------------------------------');
         console.log(`trueColorIdのIDは ${ trueColorId } です。正解の組み合わせは ${ TRUE_COLORS["id" + trueColorId][0] }, ${ TRUE_COLORS["id" + trueColorId][1] }`);
@@ -404,6 +393,12 @@ app.get('/api/scene/change/:id',(req,res) => {
                 sceneId: 4
             });
             res.json({ colorId: COLORS.white });
+          } else {
+            io.emit('/api/scene/change/4', {
+                colorId: vote3ResultColorId,
+                sceneId: 4
+            });
+            res.json({ colorId: vote3ResultColorId });
           }
         phase = '/api/scene/change/4';
         io.emit('phase', { phase: phase });
@@ -419,6 +414,14 @@ function votesNumberClear() {
     blue = 0;
     black = 0;
     white = 0;
+
+    io.emit('vote',{
+        R: red,
+        Y: yellow,
+        B: blue,
+        b: black,
+        w: white
+    });
 };
 
 // ED
