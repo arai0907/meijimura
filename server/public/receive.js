@@ -95,15 +95,15 @@ socket.on('/api/vote/end/2', (data) => {
     console.log(data);
 
     deleteSecondVote();
-    // if(data.colorId === COLORS.red) {
-    //    colorPage.style.backgroundColor = "#f5001e";
-    // } else if(data.colorId === COLORS.blue) {
-    //    colorPage.style.backgroundColor = "#32a0ff";
-    // } else if(data.colorId === COLORS.yellow) {
-    //    colorPage.style.backgroundColor = "#f5e628";
-    // } else if(data.colorId === COLORS.sameVote) {
-    //    colorPage.style.backgroundColor = "#000000";
-    // }
+    if(data.colorId === COLORS.red) {
+       colorPage.style.backgroundColor = "#f5001e";
+    } else if(data.colorId === COLORS.blue) {
+       colorPage.style.backgroundColor = "#32a0ff";
+    } else if(data.colorId === COLORS.yellow) {
+       colorPage.style.backgroundColor = "#f5e628";
+    } else if(data.colorId === COLORS.sameVote) {
+       colorPage.style.backgroundColor = "#000000";
+    }
     callColorPage();
 });
 
@@ -227,8 +227,38 @@ socket.on('vote', (data) => {
     console.log(data);
 });
 
-socket.on('phase', (phase) => {
-    console.log(phase);
+socket.on('phase', (data) => {
+    console.log(data);
+    if(data.phase === 'connection') {
+        if (!(typeof data.colorId === 'undefined')) {
+            // ユーザーが接続した時にtrueColorが決まっていた時の処理
+            const trueColorId = data.colorId; // 4, 5, 6 のいずれか
+            const waitEl = document.getElementById('js-wait');
+
+            // 待機画面の背景色
+            switch (trueColorId) {
+                case COLORS.orange:
+                    waitEl.style.backgroundColor = "rgb(255,105,0)";
+                    console.log('orange');
+                    break;
+
+                case COLORS.purple:
+                    waitEl.style.backgroundColor = "rgb(150,115,255)";
+                    console.log('purple');
+                    break;
+
+                case COLORS.green:
+                    waitEl.style.backgroundColor = "rgb(30,170,0)";
+                    console.log('green');
+                    break;
+
+                default:
+                    waitEl.style.backgroundColor = "rgb(0,0,0)";
+                    console.log('white');
+                    break;
+            }
+        }
+    }
 });
 
 // 投票
