@@ -95,15 +95,15 @@ socket.on('/api/vote/end/2', (data) => {
     console.log(data);
 
     deleteSecondVote();
-    // if(data.colorId === COLORS.red) {
-    //    colorPage.style.backgroundColor = "#f5001e";
-    // } else if(data.colorId === COLORS.blue) {
-    //    colorPage.style.backgroundColor = "#32a0ff";
-    // } else if(data.colorId === COLORS.yellow) {
-    //    colorPage.style.backgroundColor = "#f5e628";
-    // } else if(data.colorId === COLORS.sameVote) {
-    //    colorPage.style.backgroundColor = "#000000";
-    // }
+    if(data.colorId === COLORS.red) {
+       colorPage.style.backgroundColor = "#f5001e";
+    } else if(data.colorId === COLORS.blue) {
+       colorPage.style.backgroundColor = "#32a0ff";
+    } else if(data.colorId === COLORS.yellow) {
+       colorPage.style.backgroundColor = "#f5e628";
+    } else if(data.colorId === COLORS.sameVote) {
+       colorPage.style.backgroundColor = "#000000";
+    }
     callColorPage();
 });
 
