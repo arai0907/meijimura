@@ -82,7 +82,7 @@ btnw01.onclick = function() {
 }
 btnb01.onclick = function() {
  colorPage.style.display = "block";
- btnwb1.style.height = '130%';
+ btnb01.style.height = '130%';
 }
 
 //--- 投票画面のスタイルをデフォルトに戻す ---
