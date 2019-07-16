@@ -398,7 +398,6 @@ app.get('/api/scene/change/:id',(req,res) => {
             // 投票数をリセット
             votesNumberClear();
           } else {
-            // 投票数が同票だった場合
             io.emit('/api/scene/change/4', {
                 colorId: vote3ResultColorId,
                 sceneId: 4
