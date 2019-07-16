@@ -11,6 +11,7 @@
 		}
 	
 		.vote-container {
+			background-color: #000000;
 			line-height: 100px;
 			height: 100px;
 			display: flex;
@@ -19,24 +20,20 @@
 		.vote {
 			height: 100%;
 			top: 0;
-			transition: flex-grow 2s ease;
+			transition: width 2s ease;
 		}
 	
 		.vote-red {
-			background-color: #F41F1F;
-			left: 0;
+			background-color: #f5001e;
 		}
 	
 		.vote-blue {
-			background-color: #0000FF;
-			right: 0;
-			left: 0;
+			background-color: #32a0ff;
 			margin: auto auto;
 		}
 	
 		.vote-yellow {
-			background-color: #F8E220;
-			right: 0;
+			background-color: #f5e628;
 		}
 
 		.vote-black {
@@ -79,18 +76,63 @@
 			const w = data.w;
 			const total = R + B + Y + b + w;
 
-			if (R === B && R === Y && b === w) {
-				graphRed.style.flexGrow = 0;
-				graphblue.style.flexGrow = 0;
-				graphyellow.style.flexGrow = 0;
-				graphblack.style.flexGrow = 0;
-				graphwhite.style.flexGrow = 0;
+			if (total > 0) {
+			// 全体の投票数が1以上の時の処理
+				if (R > 0) {
+					// 赤の投票数が1票以上の時の処理
+					graphRed.style.width = `${R / total * 100}%`;
+				} else {
+					// 赤の投票数が0以下の時の処理
+					// バーの幅（width）を0にして見えないようにする
+					graphRed.style.width = '0%';
+				}
+			
+				// 青
+				if (B > 0) {
+					// 青の投票数が1票以上の時の処理
+					graphblue.style.width = `${B / total * 100}%`;
+				} else {
+					// 青の投票数が0以下の時の処理
+					// バーの幅（width）を0にして見えないようにする
+					graphblue.style.width = '0%';
+				}
+
+				// 黄
+				if (Y > 0) {
+					// 黄の投票数が1票以上の時の処理
+					graphyellow.style.width = `${Y / total * 100}%`;
+				} else {
+					// 黄の投票数が0以下の時の処理
+					// バーの幅（width）を0にして見えないようにする
+					graphyellow.style.width = '0%';
+				}
+
+				// 黒
+				if (b > 0) {
+					// 黒の投票数が1票以上の時の処理
+					graphblack.style.width = `${b / total * 100}%`;
+				} else {
+					// 黒の投票数が0以下の時の処理
+					// バーの幅（width）を0にして見えないようにする
+					graphblack.style.width = '0%';
+				}
+
+				// 白
+				if (w > 0) {
+					// 白の投票数が1票以上の時の処理
+					graphwhite.style.width = `${w / total * 100}%`;
+				} else {
+					// 白の投票数が0以下の時の処理
+					// バーの幅（width）を0にして見えないようにする
+					graphwhite.style.width = '0%';
+				}
 			} else {
-				graphRed.style.flexGrow = R;
-				graphblue.style.flexGrow = B;
-				graphyellow.style.flexGrow = Y;
-				graphblack.style.flexGrow = b;
-				graphwhite.style.flexGrow = w;
+				// 投票数が全て0の時
+				graphRed.style.width = '0%';
+				graphblue.style.width = '0%';
+				graphyellow.style.width = '0%';
+				graphblack.style.width = '0%';
+				graphwhite.style.width = '0%';
 			}
 		});
 	</script>
