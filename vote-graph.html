@@ -8,12 +8,12 @@
 		.main {
 			width: 100%;
 			margin: auto;
+			background-color: #000000;
 		}
 	
 		.vote-container {
 			line-height: 100px;
 			height: 100px;
-			background-color: #000000;
 			display: flex;
 		}
 	
@@ -24,28 +24,30 @@
 		}
 	
 		.vote-red {
-			background-color: #F41F1F;
+			background-color: #f5001e;
 			left: 0;
 		}
 	
 		.vote-blue {
-			background-color: #0000FF;
+			background-color: #32a0ff;
 			right: 0;
 			left: 0;
 			margin: auto auto;
 		}
 	
 		.vote-yellow {
-			background-color: #F8E220;
+			background-color: #f5e628;
 			right: 0;
 		}
 
 		.vote-black {
 			background-color: #000000;
+			left: 0;
 		}
 
 		.vote-white {
 			background-color: #ffffff;
+			right: 0;
 		}
 	</style>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
@@ -80,19 +82,25 @@
 			const w = data.w;
 			const total = R + B + Y + b + w;
 
-			if (R === B && R === Y && b === w) {
-				graphRed.style.flexGrow = 0;
-				graphblue.style.flexGrow = 0;
-				graphyellow.style.flexGrow = 0;
-				graphblack.style.flexGrow = 0;
-				graphwhite.style.flexGrow = 0;
-			} else {
-				graphRed.style.flexGrow = R;
-				graphblue.style.flexGrow = B;
-				graphyellow.style.flexGrow = Y;
-				graphblack.style.flexGrow = b;
-				graphwhite.style.flexGrow = w;
-			}
+			// if (R === B && R === Y && B === Y && b === w) {
+			// 	graphRed.style.flexGrow = 1;
+			// 	graphblue.style.flexGrow = 1;
+			// 	graphyellow.style.flexGrow = 1;
+			// 	graphblack.style.flexGrow = 1;
+			// 	graphwhite.style.flexGrow = 1;
+			// } else {
+			// 	graphRed.style.flexGrow = R;
+			// 	graphblue.style.flexGrow = B;
+			// 	graphyellow.style.flexGrow = Y;
+			// 	graphblack.style.flexGrow = b;
+			// 	graphwhite.style.flexGrow = w;
+			// }
+
+			graphRed.style.width = `${ R / total * 100 }%`;
+			graphblue.style.width = `${ B / total * 100 }%`;
+			graphyellow.style.width = `${ Y / total * 100 }%`;
+			graphblack.style.width = `${ b / total * 100 }%`;
+			graphwhite.style.width = `${ w / total * 100 }%`;
 		});
 	</script>
 </body>
