@@ -386,6 +386,8 @@ app.get('/api/scene/change/:id',(req,res) => {
                 sceneId: 4
             });
             res.json({ colorId: COLORS.black });
+            // 投票数をリセット
+            votesNumberClear();
           } else if(COLORS.black < COLORS.white) {
             // 白の投票数が多かった場合
             io.emit('/api/scene/change/4', {
@@ -393,12 +395,17 @@ app.get('/api/scene/change/:id',(req,res) => {
                 sceneId: 4
             });
             res.json({ colorId: COLORS.white });
+            // 投票数をリセット
+            votesNumberClear();
           } else {
+            // 投票数が同票だった場合
             io.emit('/api/scene/change/4', {
                 colorId: vote3ResultColorId,
                 sceneId: 4
             });
             res.json({ colorId: vote3ResultColorId });
+            // 投票数をリセット
+            votesNumberClear();
           }
         phase = '/api/scene/change/4';
         io.emit('phase', { phase: phase });
