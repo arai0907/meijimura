@@ -249,6 +249,12 @@ socket.on('/api/scene/change/4', (data) => {
     callMpPage();
     console.log('サーバーからWebSocketで/api/scene/change/4のデータを受信しました。')
     console.log(data);
+
+    if(data.colorId === COLORS.black) {
+      alert('黒のアニメーション');
+    } else if(data.colorId === COLORS.white) {
+      alert('白のアニメーション');
+    }
   }
 });
 
