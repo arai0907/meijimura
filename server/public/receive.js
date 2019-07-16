@@ -329,7 +329,7 @@ socket.on('phase', (data) => {
     }
 
     switch(data.phase){
-        case 'マッピング開始前':
+        case '/api/init':
         wMsg1.innerHTML = 'マッピング開始までしばらくお待ちください';
         wMsg2.innerHTML = '';
         wMsg3.innerHTML = '';
@@ -359,17 +359,23 @@ socket.on('phase', (data) => {
         wMsg3.innerHTML = '';
         break;
 
+        case '/api/scene/change/4':
+        wMsg1.innerHTML = 'ありがとうございました';
+        wMsg2.innerHTML = '';
+        wMsg3.innerHTML = '';
+        break;
+
         case '/api/end':
         wMsg1.innerHTML = 'ありがとうございました';
         wMsg2.innerHTML = '';
         wMsg3.innerHTML = '';
         break;
 
-        default:
-        wMsg1.innerHTML = '次のシーンから携帯連携の参加ができます';
-        wMsg2.innerHTML = 'ブラウザを切り替えずそのままの状態で';
-        wMsg3.innerHTML = 'マッピングをお楽しみください';
-        break;
+        // default:
+        // wMsg1.innerHTML = '次のシーンから携帯連携の参加ができます';
+        // wMsg2.innerHTML = 'ブラウザを切り替えずそのままの状態で';
+        // wMsg3.innerHTML = 'マッピングをお楽しみください';
+        // break;
     }
 });
 
