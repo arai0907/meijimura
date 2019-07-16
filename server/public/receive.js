@@ -13,6 +13,13 @@ const COLORS = {
 
 const socket = io();
 
+//--- 待機 ---
+var waitMsg;
+var wCaption = document.getElementById('waitCaption');//メッセージ切り替え
+var wMsg1     = document.getElementById('waitMessage1');//メッセージ切り替え
+var wMsg2    = document.getElementById('waitMessage2');//メッセージ切り替え
+var wMsg3     = document.getElementById('waitMessage3');//メッセージ切り替え
+
 socket.on('/api/init', (data) => {
     // スマホの画面を開始画面に切り替える
     console.log('サーバーからWebSocketで/api/initのデータを受信しました。')
@@ -319,6 +326,50 @@ socket.on('phase', (data) => {
                     break;
             }
         }
+    }
+
+    switch(data.phase){
+        case 'マッピング開始前':
+        wMsg1.innerHTML = 'マッピング開始までしばらくお待ちください';
+        wMsg2.innerHTML = '';
+        wMsg3.innerHTML = '';
+        break;
+
+        case '/api/vote/start/:id':
+        wMsg1.innerHTML = '投票終了時に画面が切り替わります';
+        wMsg2.innerHTML = 'ブラウザを切り替えずそのままの状態で';
+        wMsg3.innerHTML = 'お待ちください';
+        break;
+
+        case '/api/vote/end/1':
+        wMsg1.innerHTML = 'しばらくお待ちください';
+        wMsg2.innerHTML = '';
+        wMsg3.innerHTML = '';
+        break;
+
+        case '/api/vote/end/2':
+        wMsg1.innerHTML = 'しばらくお待ちください';
+        wMsg2.innerHTML = '';
+        wMsg3.innerHTML = '';
+        break;
+
+        case '/api/vote/end/3':
+        wMsg1.innerHTML = 'しばらくお待ちください';
+        wMsg2.innerHTML = '';
+        wMsg3.innerHTML = '';
+        break;
+
+        case '/api/end':
+        wMsg1.innerHTML = 'ありがとうございました';
+        wMsg2.innerHTML = '';
+        wMsg3.innerHTML = '';
+        break;
+
+        default:
+        wMsg1.innerHTML = '次のシーンから携帯連携の参加ができます';
+        wMsg2.innerHTML = 'ブラウザを切り替えずそのままの状態で';
+        wMsg3.innerHTML = 'マッピングをお楽しみください';
+        break;
     }
 });
 
