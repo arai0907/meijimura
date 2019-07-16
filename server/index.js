@@ -220,18 +220,18 @@ app.get('/api/vote/end/2',(req,res) => {
 app.get('/api/vote/end/3', (req,res) => {
     console.log('【GET】/api/vote/end/3');
 
-    if (white > black) {
-        // 白の投票数が多い時の処理
-        io.emit('/api/vote/end/3', {
-            colorId: COLORS.white,
-        });
-        res.json({ colorId: COLORS.white });
-    } else if (white < black) {
+    if (black > white) {
         // 黒の投票数が多い時の処理
         io.emit('/api/vote/end/3', {
             colorId: COLORS.black,
         });
         res.json({ colorId: COLORS.black });
+    } else if (black < white) {
+        // 白の投票数が多い時の処理
+        io.emit('/api/vote/end/3', {
+            colorId: COLORS.white,
+        });
+        res.json({ colorId: COLORS.white });
     } else {
         // 同票の場合黒か白ランダムで決める
         const colorsId = [COLORS.black,COLORS.white];
@@ -370,22 +370,22 @@ app.get('/api/scene/change/:id',(req,res) => {
         phase = '/api/scene/change/3';
         io.emit('phase', { phase: phase });
     } else {
-        if (COLORS.black > COLORS.white){
+        if (black > white){
             // 黒の投票数が多かった場合
             io.emit('/api/scene/change/4', {
-                colorId: COLORS.black,
+                colorId: 7,
                 sceneId: 4
             });
-            res.json({ colorId: COLORS.black });
+            res.json({ colorId: 7 });
             // 投票数をリセット
             votesNumberClear();
-          } else if(COLORS.black < COLORS.white) {
+          } else if(black < white) {
             // 白の投票数が多かった場合
             io.emit('/api/scene/change/4', {
-                colorId: COLORS.white,
+                colorId: 8,
                 sceneId: 4
             });
-            res.json({ colorId: COLORS.white });
+            res.json({ colorId: 8 });
             // 投票数をリセット
             votesNumberClear();
           } else {

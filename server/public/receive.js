@@ -146,7 +146,7 @@ socket.on('/api/vote/start/3', (data) => {
     callThirdVote();
     console.log('サーバーからWebSocketで/api/vote/start/3のデータを受信しました。')
     console.log(data);
-    console.log('白と黒の投票画面を表示')
+    console.log('黒と白の投票画面を表示')
   }
 });
 
