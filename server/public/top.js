@@ -192,6 +192,7 @@ function deleteTop( clickedButton ) {
       },300);
     },900);
   },700);
+  boolWait = 'true';
   console.log( '＜ delete TopPage' );
 }
 
