@@ -371,11 +371,11 @@ socket.on('phase', (data) => {
         wMsg3.innerHTML = '';
         break;
 
-        // default:
-        // wMsg1.innerHTML = '次のシーンから携帯連携の参加ができます';
-        // wMsg2.innerHTML = 'ブラウザを切り替えずそのままの状態で';
-        // wMsg3.innerHTML = 'マッピングをお楽しみください';
-        // break;
+        default:
+        wMsg1.innerHTML = '次のシーンから携帯連携の参加ができます';
+        wMsg2.innerHTML = 'ブラウザを切り替えずそのままの状態で';
+        wMsg3.innerHTML = 'マッピングをお楽しみください';
+        break;
     }
 });
 
