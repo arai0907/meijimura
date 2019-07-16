@@ -213,15 +213,6 @@ app.get('/api/vote/end/2',(req,res) => {
         });
         res.json({ colorId: COLORS.blue });
         return;
-    // } else {
-    //     // 投票数が同票の時
-    //     io.emit('/api/vote/end/2', {
-    //         colorId: COLORS.sameVote,
-    //         sceneId: 2
-    //     });
-    //     res.json({ colorId: COLORS.sameVote });
-    //     return;
-    // }
     }
 });
 
