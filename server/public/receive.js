@@ -1,3 +1,4 @@
+
 const COLORS = {
     sameVote: 0,
     red: 1,
@@ -44,16 +45,19 @@ socket.on('/api/init', (data) => {
 });
 
 socket.on('/api/start', () => {
+  if( boolWait == 'true'){
     // スマホの画面を開始画面に切り替える
     waitPage.style.opacity = 0.0;
     waitPage.style.display = 'none';
     callMpPage();
     opening();
     console.log('サーバーからWebSocketでOPアニメーションをスタートする。')
+  }
 });
 
 // 投票開始１
 socket.on('/api/vote/start/1',(data) => {
+  if( boolWait == 'true'){
     deleteMpPage();
     callFirstVote();
     const voteColor0 = data.randomVoteColorId[0];
@@ -69,13 +73,19 @@ socket.on('/api/vote/start/1',(data) => {
         voteYB.style.display = 'block';
         console.log('黄と青の投票画面を表示');
     }
+    waitPage.style.opacity = 0.0;
+    waitPage.style.display = 'none';
+  }
 });
 
 // 投票1の終了
 socket.on('/api/vote/end/1', (data) => {
+  if( boolWait == 'true'){
     console.log('サーバーからWebSocketで/api/vote/end/1のデータを受信しました。')
     console.log(data);
 
+    waitPage.style.opacity = 0.0;
+    waitPage.style.display = 'none';
     deleteFirstVote();
     if(data.colorId === COLORS.red) {
        colorPage.style.backgroundColor = "#f5001e";
@@ -87,13 +97,17 @@ socket.on('/api/vote/end/1', (data) => {
        colorPage.style.backgroundColor = "#000000";
     }
     callColorPage();
+  }
 });
 
 // 投票2の終了
 socket.on('/api/vote/end/2', (data) => {
+  if( boolWait == 'true'){
     console.log('サーバーからWebSocketで/api/vote/end/2のデータを受信しました。')
     console.log(data);
 
+    waitPage.style.opacity = 0.0;
+    waitPage.style.display = 'none';
     deleteSecondVote();
     if(data.colorId === COLORS.red) {
        colorPage.style.backgroundColor = "#f5001e";
@@ -105,19 +119,27 @@ socket.on('/api/vote/end/2', (data) => {
        colorPage.style.backgroundColor = "#000000";
     }
     callColorPage();
+  }
 });
 
 // 投票２
 socket.on('/api/vote/start/2',(data) => {
+  if( boolWait == 'true'){
+    waitPage.style.opacity = 0.0;
+    waitPage.style.display = 'none';
     deleteMpPage();
     callSecondVote();
     console.log('サーバーからWebSocketで/api/vote/start/2のデータを受信しました。')
     console.log(data);
     console.log('赤と黄と青の投票画面を表示')
+  }
 });
 
 // 投票3
 socket.on('/api/vote/start/3', (data) => {
+  if( boolWait == 'true'){
+    waitPage.style.opacity = 0.0;
+    waitPage.style.display = 'none';
     deleteMpPage();
     votewb.style.display = 'block';
     votewb.style.opacity = 1.0;
@@ -125,13 +147,17 @@ socket.on('/api/vote/start/3', (data) => {
     console.log('サーバーからWebSocketで/api/vote/start/3のデータを受信しました。')
     console.log(data);
     console.log('白と黒の投票画面を表示')
+  }
 });
 
 // 投票3の終了
 socket.on('/api/vote/end/3', (data) => {
+  if( boolWait == 'true'){
     console.log('サーバーからWebSocketで/api/vote/end/3のデータを受信しました。')
     console.log(data);
 
+    waitPage.style.opacity = 0.0;
+    waitPage.style.display = 'none';
     deleteThirdVote();
     if(data.colorId === COLORS.white) {
        colorPage.style.backgroundColor = "#ffffff";
@@ -141,10 +167,15 @@ socket.on('/api/vote/end/3', (data) => {
        colorPage.style.backgroundColor = "#000000";
     }
     callColorPage();
+  }
 });
 
 // 画面の切り替え
 socket.on('/api/scene/change/1', (data) => {
+  if( boolWait == 'true'){
+
+    waitPage.style.opacity = 0.0;
+    waitPage.style.display = 'none';
     deletelColorPage();
     callMpPage();
     // スマホの画面のアニメーションを切り替える
@@ -160,10 +191,15 @@ socket.on('/api/scene/change/1', (data) => {
     } else if(data.colorId === COLORS.sameVote) {
         false_animaiton();
     }
+  }
 });
 
 // 画面の切り替え2
 socket.on('/api/scene/change/2', (data) => {
+  if( boolWait == 'true'){
+
+    waitPage.style.opacity = 0.0;
+    waitPage.style.display = 'none';
     deletelColorPage();
     callMpPage();
     console.log('サーバーからWebSocketで/api/scene/change/2のデータを受信しました。')
@@ -178,10 +214,15 @@ socket.on('/api/scene/change/2', (data) => {
     } else if(data.colorId === COLORS.sameVote) {
         false_animaiton();
     }
+  }
 });
 
 // 画面の切り替え3
 socket.on('/api/scene/change/3', (data) => {
+  if( boolWait == 'true'){
+
+    waitPage.style.opacity = 0.0;
+    waitPage.style.display = 'none';
     deletelColorPage();
     callMpPage();
     console.log('サーバーからWebSocketで/api/scene/change/3のデータを受信しました。')
@@ -196,23 +237,35 @@ socket.on('/api/scene/change/3', (data) => {
     } else if(data.colorId === COLORS.sameVote) {
         false_animaiton();
     }
+  }
 });
 
 // 画面の切り替え4
 socket.on('/api/scene/change/4', (data) => {
+  if( boolWait == 'true'){
+
+    waitPage.style.opacity = 0.0;
+    waitPage.style.display = 'none';
     callMpPage();
     console.log('サーバーからWebSocketで/api/scene/change/4のデータを受信しました。')
     console.log(data);
+  }
 });
 
 socket.on('/api/end', (data) => {
+  if( boolWait == 'true'){
+
+    waitPage.style.opacity = 0.0;
+    waitPage.style.display = 'none';
     callMpPage();
     // スマホの画面を終了画面に切り替える
     console.log('サーバーからWebSocketで/api/endのデータを受信しました。')
     console.log(data);
+  }
 });
 
 socket.on('/api/reset', (data) => {
+  if( boolWait == 'true'){
     deleteMpPage();
     deletelColorPage();
     voteReset();
@@ -220,6 +273,7 @@ socket.on('/api/reset', (data) => {
     waitPage.style.opacity = 1.0;
     console.log('サーバーからWebSocketで/api/resetのデータを受信しました。')
     console.log(data);
+  }
 });
 
 socket.on('vote', (data) => {
