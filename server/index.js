@@ -70,7 +70,6 @@ app.get('/api/init', (req,res) => {
     // スマホ側に "/api/init" というラベルでデータを送る
     io.emit('/api/init',{ trueColorId: trueColorId});
     res.json({ colorId: trueColorId });
-    // console.log(trueColorId);
 });
 
 app.get('/api/start',(req,res) => {
@@ -449,6 +448,10 @@ io.on('connection',(socket) => {
     io.emit('phase', {
         phase: 'connection',
         colorId: trueColorId
+    });
+
+    io.emit('phase', {
+        phase: phase
     });
 
     io.emit('vote', {

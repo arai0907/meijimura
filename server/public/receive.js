@@ -25,6 +25,8 @@ socket.on('/api/init', (data) => {
     console.log('サーバーからWebSocketで/api/initのデータを受信しました。')
     console.log(data);
 
+    phase = '/api/init';
+
     const trueColorId = data.trueColorId; // 4, 5, 6 のいずれか
 
     // 待機画面の背景色
@@ -335,7 +337,7 @@ socket.on('phase', (data) => {
         wMsg3.innerHTML = '';
         break;
 
-        case '/api/vote/start/:id':
+        case '/api/vote/start/1':
         wMsg1.innerHTML = '投票終了時に画面が切り替わります';
         wMsg2.innerHTML = 'ブラウザを切り替えずそのままの状態で';
         wMsg3.innerHTML = 'お待ちください';
