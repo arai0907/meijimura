@@ -20,7 +20,7 @@
 		.vote {
 			height: 100%;
 			top: 0;
-			transition: flex-grow 2s ease;
+			transition: width 2s ease;
 		}
 	
 		.vote-red {
@@ -82,25 +82,64 @@
 			const w = data.w;
 			const total = R + B + Y + b + w;
 
-			// if (R === B && R === Y && B === Y && b === w) {
-			// 	graphRed.style.flexGrow = 1;
-			// 	graphblue.style.flexGrow = 1;
-			// 	graphyellow.style.flexGrow = 1;
-			// 	graphblack.style.flexGrow = 1;
-			// 	graphwhite.style.flexGrow = 1;
-			// } else {
-			// 	graphRed.style.flexGrow = R;
-			// 	graphblue.style.flexGrow = B;
-			// 	graphyellow.style.flexGrow = Y;
-			// 	graphblack.style.flexGrow = b;
-			// 	graphwhite.style.flexGrow = w;
-			// }
+			if (total > 0) {
+			// 全体の投票数が1以上の時の処理
+				if (R > 0) {
+					// 赤の投票数が1票以上の時の処理
+					graphRed.style.width = `${R / total * 100}%`;
+				} else {
+					// 赤の投票数が0以下の時の処理
+					// バーの幅（width）を0にして見えないようにする
+					graphRed.style.width = '0%';
+				}
+			
+				// 青
+				if (B > 0) {
+					// 青の投票数が1票以上の時の処理
+					graphblue.style.width = `${B / total * 100}%`;
+				} else {
+					// 青の投票数が0以下の時の処理
+					// バーの幅（width）を0にして見えないようにする
+					graphblue.style.width = '0%';
+				}
 
-			graphRed.style.width = `${ R / total * 100 }%`;
-			graphblue.style.width = `${ B / total * 100 }%`;
-			graphyellow.style.width = `${ Y / total * 100 }%`;
-			graphblack.style.width = `${ b / total * 100 }%`;
-			graphwhite.style.width = `${ w / total * 100 }%`;
+				// 黄
+				if (Y > 0) {
+					// 黄の投票数が1票以上の時の処理
+					graphyellow.style.width = `${Y / total * 100}%`;
+				} else {
+					// 黄の投票数が0以下の時の処理
+					// バーの幅（width）を0にして見えないようにする
+					graphyellow.style.width = '0%';
+				}
+
+				// 黒
+				if (b > 0) {
+					// 黒の投票数が1票以上の時の処理
+					graphblack.style.width = `${b / total * 100}%`;
+				} else {
+					// 黒の投票数が0以下の時の処理
+					// バーの幅（width）を0にして見えないようにする
+					graphblack.style.width = '0%';
+				}
+
+				// 白
+				if (w > 0) {
+					// 白の投票数が1票以上の時の処理
+					graphwhite.style.width = `${w / total * 100}%`;
+				} else {
+					// 白の投票数が0以下の時の処理
+					// バーの幅（width）を0にして見えないようにする
+					graphwhite.style.width = '0%';
+				}
+			} else {
+				// 投票数が全て0の時
+				graphRed.style.width = '0%';
+				graphblue.style.width = '0%';
+				graphyellow.style.width = '0%';
+				graphblack.style.width = '0%';
+				graphwhite.style.width = '0%';
+			}
 		});
 	</script>
 </body>
