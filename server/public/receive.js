@@ -343,10 +343,16 @@ socket.on('phase', (data) => {
         wMsg3.innerHTML = 'お待ちください';
         break;
 
-        case '/api/vote/end/1':
-        wMsg1.innerHTML = 'しばらくお待ちください';
-        wMsg2.innerHTML = '';
-        wMsg3.innerHTML = '';
+        case '/api/scene/change/1':
+        if (data.isFalseEnd === 1) {
+          wMsg1.innerHTML = '投票の結果選ばれた色が2色以上だった為';
+          wMsg2.innerHTML = 'マッピングを終了します';
+          wMsg3.innerHTML = 'ありがとうございました';
+        } else {
+          wMsg1.innerHTML = "しばらくお待ちください";
+          wMsg2.innerHTML = "";
+          wMsg3.innerHTML = "";
+        }
         break;
 
         case '/api/vote/end/2':
@@ -367,6 +373,12 @@ socket.on('phase', (data) => {
         wMsg3.innerHTML = '';
         break;
 
+        case '/api/scene/change/False':
+        wMsg1.innerHTML = '投票の結果選ばれた色が2色以上だった為';
+        wMsg2.innerHTML = 'マッピングを終了します';
+        wMsg3.innerHTML = 'ありがとうございました';
+        break;
+
         case '/api/end':
         wMsg1.innerHTML = 'ありがとうございました';
         wMsg2.innerHTML = '';
@@ -378,6 +390,7 @@ socket.on('phase', (data) => {
         wMsg2.innerHTML = 'ブラウザを切り替えずそのままの状態で';
         wMsg3.innerHTML = 'マッピングをお楽しみください';
         break;
+        
     }
 });
 
