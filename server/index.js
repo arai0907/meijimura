@@ -70,7 +70,9 @@ app.get('/api/init', (req,res) => {
     // スマホ側に "/api/init" というラベルでデータを送る
     io.emit('/api/init',{ trueColorId: trueColorId});
     res.json({ colorId: trueColorId });
-    // console.log(trueColorId);
+
+    phase = '/api/init';
+    io.emit('phase', { phase: phase});
 });
 
 app.get('/api/start',(req,res) => {
@@ -147,6 +149,10 @@ app.get('/api/vote/end/1',(req,res) => {
         });
         vote1ResultColorId = vote1colors[0];
         res.json({ colorId: vote1colors[0] });
+        phase = '/api/vote/end/1';
+        io.emit('phase', { 
+            phase: phase
+        });
     } else if (voteColor0 < voteColor1) {
         // 投票数がvoteColor0よりvoteColor1の方が大きい時
         io.emit('/api/vote/end/1', {
@@ -155,6 +161,10 @@ app.get('/api/vote/end/1',(req,res) => {
         });
         vote1ResultColorId = vote1colors[1];
         res.json({ colorId: vote1colors[1] });
+        phase = '/api/vote/end/1';
+        io.emit('phase', { 
+            phase: phase
+        });
     } else {
         // 投票数が同票の時
         io.emit('/api/vote/end/1', {
@@ -163,10 +173,11 @@ app.get('/api/vote/end/1',(req,res) => {
         });
         vote1ResultColorId = COLORS.sameVote;
         res.json({ colorId: COLORS.sameVote });
+        phase = '/api/vote/end/1/False';
+        io.emit('phase', { 
+            phase: phase
+        });
     }
-
-    phase = '/api/vote/end/1';
-    io.emit('phase', { phase: phase });
 });
 
 // 投票終了2
@@ -176,7 +187,9 @@ app.get('/api/vote/end/2',(req,res) => {
     const maxVoteNumber = Math.max(red,yellow,blue);
 
     phase = '/api/vote/end/2';
-    io.emit('phase', { phase: phase });
+    io.emit('phase', { 
+        phase: phase
+    });
 
     if (red === yellow && yellow === blue) {
         // 投票数が同票の時
@@ -185,6 +198,10 @@ app.get('/api/vote/end/2',(req,res) => {
             sceneId: 2
         });
         res.json({ colorId: COLORS.sameVote });
+        phase = '/api/vote/end/2/False';
+        io.emit('phase', { 
+            phase: phase
+        });
         return; // return 以降は処理されない
     }
 
@@ -196,6 +213,10 @@ app.get('/api/vote/end/2',(req,res) => {
         });
         console.log('end');
         res.json({ colorId: COLORS.red });
+        phase = '/api/vote/end/2';
+        io.emit('phase', { 
+            phase: phase
+        });
         return;
     } else if (maxVoteNumber === yellow) {
         vote2ResultColorId = COLORS.yellow;
@@ -204,6 +225,10 @@ app.get('/api/vote/end/2',(req,res) => {
             sceneId: 2
         });
         res.json({ colorId: COLORS.yellow });
+        phase = '/api/vote/end/2';
+        io.emit('phase', { 
+            phase: phase
+        });
         return;
     } else if (maxVoteNumber === blue) {
         vote2ResultColorId = COLORS.blue;
@@ -212,6 +237,10 @@ app.get('/api/vote/end/2',(req,res) => {
             sceneId: 2
         });
         res.json({ colorId: COLORS.blue });
+        phase = '/api/vote/end/2';
+        io.emit('phase', { 
+            phase: phase
+        });
         return;
     }
 });
@@ -449,6 +478,10 @@ io.on('connection',(socket) => {
     io.emit('phase', {
         phase: 'connection',
         colorId: trueColorId
+    });
+
+    io.emit('phase', {
+        phase: phase
     });
 
     io.emit('vote', {
