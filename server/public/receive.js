@@ -353,7 +353,7 @@ socket.on('phase', (data) => {
         wMsg3.innerHTML = 'お待ちください';
         break;
 
-        case '/api/vote/end/1':
+        case '/api/vote/end/1/False':
         wMsg1.innerHTML = '投票の結果選ばれた色が2色以上だった為';
         wMsg2.innerHTML = 'マッピングを終了します';
         wMsg3.innerHTML = 'ありがとうございました';
@@ -365,7 +365,7 @@ socket.on('phase', (data) => {
         wMsg3.innerHTML = '';
         break;
 
-        case '/api/vote/end/2':
+        case '/api/vote/end/2/False':
         wMsg1.innerHTML = '投票の結果選ばれた色が2色以上だった為';
         wMsg2.innerHTML = 'マッピングを終了します';
         wMsg3.innerHTML = 'ありがとうございました';

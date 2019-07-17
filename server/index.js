@@ -149,6 +149,11 @@ app.get('/api/vote/end/1',(req,res) => {
         });
         vote1ResultColorId = vote1colors[0];
         res.json({ colorId: vote1colors[0] });
+        phase = '/api/vote/end/1';
+        io.emit('phase', { 
+            phase: phase,
+            isFalseEnd: 1
+        });
     } else if (voteColor0 < voteColor1) {
         // 投票数がvoteColor0よりvoteColor1の方が大きい時
         io.emit('/api/vote/end/1', {
@@ -157,6 +162,11 @@ app.get('/api/vote/end/1',(req,res) => {
         });
         vote1ResultColorId = vote1colors[1];
         res.json({ colorId: vote1colors[1] });
+        phase = '/api/vote/end/1';
+        io.emit('phase', { 
+            phase: phase,
+            isFalseEnd: 1
+        });
     } else {
         // 投票数が同票の時
         io.emit('/api/vote/end/1', {
@@ -165,13 +175,12 @@ app.get('/api/vote/end/1',(req,res) => {
         });
         vote1ResultColorId = COLORS.sameVote;
         res.json({ colorId: COLORS.sameVote });
+        phase = '/api/vote/end/1/False';
+        io.emit('phase', { 
+            phase: phase,
+            isFalseEnd: 1
+        });
     }
-
-    phase = '/api/vote/end/1';
-    io.emit('phase', { 
-        phase: phase,
-        isFalseEnd: 1
-    });
 });
 
 // 投票終了2
@@ -193,6 +202,11 @@ app.get('/api/vote/end/2',(req,res) => {
             sceneId: 2
         });
         res.json({ colorId: COLORS.sameVote });
+        phase = '/api/vote/end/2/False';
+        io.emit('phase', { 
+            phase: phase,
+            isFalseEnd: 1
+        });
         return; // return 以降は処理されない
     }
 
@@ -204,6 +218,11 @@ app.get('/api/vote/end/2',(req,res) => {
         });
         console.log('end');
         res.json({ colorId: COLORS.red });
+        phase = '/api/vote/end/2';
+        io.emit('phase', { 
+            phase: phase,
+            isFalseEnd: 1
+        });
         return;
     } else if (maxVoteNumber === yellow) {
         vote2ResultColorId = COLORS.yellow;
@@ -212,6 +231,11 @@ app.get('/api/vote/end/2',(req,res) => {
             sceneId: 2
         });
         res.json({ colorId: COLORS.yellow });
+        phase = '/api/vote/end/2';
+        io.emit('phase', { 
+            phase: phase,
+            isFalseEnd: 1
+        });
         return;
     } else if (maxVoteNumber === blue) {
         vote2ResultColorId = COLORS.blue;
@@ -220,6 +244,11 @@ app.get('/api/vote/end/2',(req,res) => {
             sceneId: 2
         });
         res.json({ colorId: COLORS.blue });
+        phase = '/api/vote/end/2';
+        io.emit('phase', { 
+            phase: phase,
+            isFalseEnd: 1
+        });
         return;
     }
 });
