@@ -137,8 +137,6 @@ font-style:normal;font-weight:400;
 }
 
 .wait{
-  height: 177.78vw;
-  width: 56.25vh;
   max-height: 100%;
   max-width: 100%;
   position: absolute;
@@ -234,6 +232,7 @@ font-style:normal;font-weight:400;
   margin: auto;
   text-align: center;
   color: #ffffff;
+  margin-top: 61vh;
 }
 
 .wait-caption {
