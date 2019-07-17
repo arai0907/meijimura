@@ -168,7 +168,10 @@ app.get('/api/vote/end/1',(req,res) => {
     }
 
     phase = '/api/vote/end/1';
-    io.emit('phase', { phase: phase });
+    io.emit('phase', { 
+        phase: phase,
+        isFalseEnd: 1
+    });
 });
 
 // 投票終了2
@@ -178,7 +181,10 @@ app.get('/api/vote/end/2',(req,res) => {
     const maxVoteNumber = Math.max(red,yellow,blue);
 
     phase = '/api/vote/end/2';
-    io.emit('phase', { phase: phase });
+    io.emit('phase', { 
+        phase: phase,
+        isFalseEnd: 1
+    });
 
     if (red === yellow && yellow === blue) {
         // 投票数が同票の時
