@@ -27,13 +27,13 @@
 			background-color: #f5001e;
 		}
 	
-		.vote-blue {
-			background-color: #32a0ff;
+		.vote-yellow {
+			background-color: #f5e628;
 			margin: auto auto;
 		}
 	
-		.vote-yellow {
-			background-color: #f5e628;
+		.vote-blue {
+			background-color: #32a0ff;
 		}
 
 		.vote-black {
@@ -51,8 +51,8 @@
 <body>
 	<div class="vote-container">
 		<div id="js-vote-red" class="vote vote-red"></div>
-		<div id="js-vote-blue" class="vote vote-blue"></div>
 		<div id="js-vote-yellow" class="vote vote-yellow"></div>
+		<div id="js-vote-blue" class="vote vote-blue"></div>
 		<div id="js-vote-black" class="vote vote-black"></div>
 		<div id="js-vote-white" class="vote vote-white"></div>
 	</div>
@@ -61,8 +61,8 @@
 		const socket = io();
 
 		const graphRed = document.getElementById("js-vote-red");
-		const graphblue = document.getElementById("js-vote-blue");
 		const graphyellow = document.getElementById("js-vote-yellow");
+		const graphblue = document.getElementById("js-vote-blue");
 		const graphblack = document.getElementById("js-vote-black");
 		const graphwhite = document.getElementById("js-vote-white");
 
@@ -70,11 +70,11 @@
 		socket.on('vote', function (data) {
 			// サーバーに接続した時と自分や他のユーザーが投票した時に呼び出される
 			const R = data.R;
-			const B = data.B;
 			const Y = data.Y;
+			const B = data.B;
 			const b = data.b;
 			const w = data.w;
-			const total = R + B + Y + b + w;
+			const total = R + Y + B + b + w;
 
 			if (total > 0) {
 			// 全体の投票数が1以上の時の処理
@@ -86,16 +86,6 @@
 					// バーの幅（width）を0にして見えないようにする
 					graphRed.style.width = '0%';
 				}
-			
-				// 青
-				if (B > 0) {
-					// 青の投票数が1票以上の時の処理
-					graphblue.style.width = `${B / total * 100}%`;
-				} else {
-					// 青の投票数が0以下の時の処理
-					// バーの幅（width）を0にして見えないようにする
-					graphblue.style.width = '0%';
-				}
 
 				// 黄
 				if (Y > 0) {
@@ -105,6 +95,16 @@
 					// 黄の投票数が0以下の時の処理
 					// バーの幅（width）を0にして見えないようにする
 					graphyellow.style.width = '0%';
+				}
+			
+				// 青
+				if (B > 0) {
+					// 青の投票数が1票以上の時の処理
+					graphblue.style.width = `${B / total * 100}%`;
+				} else {
+					// 青の投票数が0以下の時の処理
+					// バーの幅（width）を0にして見えないようにする
+					graphblue.style.width = '0%';
 				}
 
 				// 黒
@@ -129,8 +129,8 @@
 			} else {
 				// 投票数が全て0の時
 				graphRed.style.width = '0%';
-				graphblue.style.width = '0%';
 				graphyellow.style.width = '0%';
+				graphblue.style.width = '0%';
 				graphblack.style.width = '0%';
 				graphwhite.style.width = '0%';
 			}
