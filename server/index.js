@@ -378,6 +378,8 @@ app.get('/api/scene/change/:id',(req,res) => {
         console.log(`1回目の投票結果 - ${ vote1ResultColorId }, 2回目の投票結果 -  ${ vote2ResultColorId }`);
         console.log('----------------------------------------');
 
+        const mixColor = Math.max(green,orange,purple);
+
         if (
             trueColorId &&
             (TRUE_COLORS['id' + trueColorId][0] === vote1ResultColorId ||
@@ -399,10 +401,37 @@ app.get('/api/scene/change/:id',(req,res) => {
         //     });
         //     res.json({ colorId: COLORS.sameVote });
         //   }
-        ) {
-            // True End の時  
-            isTrueEnd = true;
-            } else {
+        ) if (mixColor === green) {
+            io.emit('/api/scene/change/2', {
+                colorId: COLORS.green,
+                sceneId: 2
+            });
+            res.json({ colorId: COLORS.green });
+            // 投票数をリセット
+            votesNumberClear();
+            return;
+        } else if (mixColor === orange) {
+            io.emit('/api/scene/change/2', {
+                colorId: COLORS.orange,
+                sceneId: 2
+            });
+            res.json({ colorId: COLORS.orange });
+            // 投票数をリセット
+            votesNumberClear();
+            return;
+        } else if (mixColor === purple) {
+            io.emit('/api/scene/change/2', {
+                colorId: COLORS.purple,
+                sceneId: 2
+            });
+            res.json({ colorId: COLORS.purple });
+            // 投票数をリセット
+            votesNumberClear();
+            return;
+        // } {
+        //     // True End の時  
+        //     isTrueEnd = true;
+        } else {
             // False End の時 
             isTrueEnd = false;
         }
