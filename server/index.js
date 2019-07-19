@@ -35,6 +35,8 @@ let vote1ResultColorId; // 1回目の投票結果の色IDを保持する
 let vote2ResultColorId; // 2回目の投票結果の色IDを保持する
 let vote3ResultColorId; // 3回目の投票結果の色IDを保持する
 
+let isTrueEnd;
+
 const vote1colors = [] // 投票１でランダムで選択された2色のID
 
 const app = express();
@@ -376,8 +378,6 @@ app.get('/api/scene/change/:id',(req,res) => {
         console.log(`1回目の投票結果 - ${ vote1ResultColorId }, 2回目の投票結果 -  ${ vote2ResultColorId }`);
         console.log('----------------------------------------');
 
-        const mixColor = Math.max(green,orange,purple);
-
         if (
             trueColorId &&
             (TRUE_COLORS['id' + trueColorId][0] === vote1ResultColorId ||
@@ -399,33 +399,12 @@ app.get('/api/scene/change/:id',(req,res) => {
         //     });
         //     res.json({ colorId: COLORS.sameVote });
         //   }
-        ) if (mixColor === green) {
-            io.emit('/api/scene/change/3', {
-                colorId: COLORS.green,
-                sceneId: 3
-            });
-            res.json({ colorId: COLORS.green });
-            // 投票数をリセット
-            votesNumberClear();
-            return;
-        } else if (mixColor === orange) {
-            io.emit('/api/scene/change/3', {
-                colorId: COLORS.orange,
-                sceneId: 3
-            });
-            res.json({ colorId: COLORS.orange });
-            // 投票数をリセット
-            votesNumberClear();
-            return;
-        } else if (mixColor === purple) {
-            io.emit('/api/scene/change/3', {
-                colorId: COLORS.purple,
-                sceneId: 3
-            });
-            res.json({ colorId: COLORS.purple });
-            // 投票数をリセット
-            votesNumberClear();
-            return;
+        ) {
+            // True End の時  
+            isTrueEnd = true;
+            } else {
+            // False End の時 
+            isTrueEnd = false;
         }
         phase = '/api/scene/change/3';
         io.emit('phase', { phase: phase });

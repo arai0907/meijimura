@@ -273,7 +273,8 @@ socket.on('/api/end', (data) => {
     console.log('サーバーからWebSocketで/api/endのデータを受信しました。')
     console.log(data);
 
-    if(data.colorId === COLORS.sameVote) {
+    io.emit('/api/end', { isTrueEnd: isTrueEnd });
+    if(isTrueEnd === false) {
       false_animaiton();
     }
   }
