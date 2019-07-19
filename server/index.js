@@ -402,27 +402,27 @@ app.get('/api/scene/change/:id',(req,res) => {
         //     res.json({ colorId: COLORS.sameVote });
         //   }
         ) if (mixColor === green) {
-            io.emit('/api/scene/change/2', {
+            io.emit('/api/scene/change/3', {
                 colorId: COLORS.green,
-                sceneId: 2
+                sceneId: 3
             });
             res.json({ colorId: COLORS.green });
             // 投票数をリセット
             votesNumberClear();
             return;
         } else if (mixColor === orange) {
-            io.emit('/api/scene/change/2', {
+            io.emit('/api/scene/change/3', {
                 colorId: COLORS.orange,
-                sceneId: 2
+                sceneId: 3
             });
             res.json({ colorId: COLORS.orange });
             // 投票数をリセット
             votesNumberClear();
             return;
         } else if (mixColor === purple) {
-            io.emit('/api/scene/change/2', {
+            io.emit('/api/scene/change/3', {
                 colorId: COLORS.purple,
-                sceneId: 2
+                sceneId: 3
             });
             res.json({ colorId: COLORS.purple });
             // 投票数をリセット
