@@ -462,6 +462,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             // 投票数をリセット
             votesNumberClear();
             return;
+        }
 
         phase = '/api/scene/change/3';
         io.emit('phase', { phase: phase });
