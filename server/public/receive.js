@@ -241,8 +241,10 @@ socket.on('/api/scene/change/3', (data) => {
         orange_animaiton();
     } else if(data.colorId === COLORS.purple) {
         purple_animaiton();
+    } else if (data.colorId === COLORS.sameVote) {
+        false_animaiton();
     }
-  }
+  };
 });
 
 // 画面の切り替え4
