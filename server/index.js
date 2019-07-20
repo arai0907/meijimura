@@ -455,10 +455,10 @@ app.get('/api/scene/change/:id',(req,res) => {
             return;
         }else if (vote1ResultColorId === COLORS.sameVote && vote2ResultColorId === COLORS.sameVote) {
             io.emit('/api/scene/change/3', {
-                colorId: COLORS.green,
+                colorId: COLORS.sameVote,
                 sceneId: 3
             });
-            res.json({ colorId: COLORS.green });
+            res.json({ colorId: COLORS.sameVote });
             // 投票数をリセット
             votesNumberClear();
             return;
