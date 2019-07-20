@@ -423,7 +423,8 @@ app.get('/api/scene/change/:id',(req,res) => {
         //     return;
         // }
 
-        if (vote1ResultColorId === COLORS.red && vote2ResultColorId === COLORS.yellow) {
+        if (vote1ResultColorId === COLORS.red && vote2ResultColorId === COLORS.yellow ||
+            vote1ResultColorId === COLORS.yellow && vote2ResultColorId === COLORS.red) {
             io.emit('/api/scene/change/3', {
                 colorId: COLORS.orange,
                 sceneId: 3
@@ -432,7 +433,8 @@ app.get('/api/scene/change/:id',(req,res) => {
             // 投票数をリセット
             votesNumberClear();
             return;
-        } else if (vote1ResultColorId === COLORS.red && vote2ResultColorId === COLORS.blue) {
+        } else if (vote1ResultColorId === COLORS.red && vote2ResultColorId === COLORS.blue ||
+            vote1ResultColorId === COLORS.blue && vote2ResultColorId === COLORS.red) {
             io.emit('/api/scene/change/3', {
                 colorId: COLORS.purple,
                 sceneId: 3
@@ -441,7 +443,8 @@ app.get('/api/scene/change/:id',(req,res) => {
             // 投票数をリセット
             votesNumberClear();
             return;
-        } else if (vote1ResultColorId === COLORS.yellow && vote2ResultColorId === COLORS.blue) {
+        } else if (vote1ResultColorId === COLORS.yellow && vote2ResultColorId === COLORS.blue ||
+            vote1ResultColorId === COLORS.blue && vote2ResultColorId === COLORS.yellow) {
             io.emit('/api/scene/change/3', {
                 colorId: COLORS.green,
                 sceneId: 3
