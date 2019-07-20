@@ -22,6 +22,8 @@ let blue = 0; // blueの投票数を記録する変数
 let black = 0; // blackの投票数を記録する変数
 let white = 0; // whiteの投票数を記録する変数
 
+let isTrueEnd = false;
+
 let phase = ''; //シーン番号 途中から入ってきた人対策
 
 // trueColorの正解の組み合わせ
@@ -34,8 +36,6 @@ const TRUE_COLORS = {
 let vote1ResultColorId; // 1回目の投票結果の色IDを保持する
 let vote2ResultColorId; // 2回目の投票結果の色IDを保持する
 let vote3ResultColorId; // 3回目の投票結果の色IDを保持する
-
-const isTrueEnd = false;
 
 const vote1colors = [] // 投票１でランダムで選択された2色のID
 
@@ -453,7 +453,9 @@ app.get('/api/scene/change/:id',(req,res) => {
             // 投票数をリセット
             votesNumberClear();
             return;
-        }else if (vote1ResultColorId === COLORS.sameVote && vote2ResultColorId === COLORS.sameVote) {
+        }else if (vote1ResultColorId === COLORS.red && vote2ResultColorId === COLORS.red ||
+            vote1ResultColorId === COLORS.yellow && vote2ResultColorId === COLORS.yellow ||
+            vote1ResultColorId === COLORS.blue && vote2ResultColorId === COLORS.blue) {
             io.emit('/api/scene/change/3', {
                 colorId: COLORS.sameVote,
                 sceneId: 3
