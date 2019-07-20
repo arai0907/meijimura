@@ -35,10 +35,7 @@ let vote1ResultColorId; // 1回目の投票結果の色IDを保持する
 let vote2ResultColorId; // 2回目の投票結果の色IDを保持する
 let vote3ResultColorId; // 3回目の投票結果の色IDを保持する
 
-const isTrueEnd = {
-    trueEnd: true,
-    FalseEnd: false
-};
+const isTrueEnd = false;
 
 const vote1colors = [] // 投票１でランダムで選択された2色のID
 
