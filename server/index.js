@@ -453,7 +453,15 @@ app.get('/api/scene/change/:id',(req,res) => {
             // 投票数をリセット
             votesNumberClear();
             return;
-        }
+        }else if (vote1ResultColorId === COLORS.sameVote && vote2ResultColorId === COLORS.sameVote) {
+            io.emit('/api/scene/change/3', {
+                colorId: COLORS.green,
+                sceneId: 3
+            });
+            res.json({ colorId: COLORS.green });
+            // 投票数をリセット
+            votesNumberClear();
+            return;
 
         phase = '/api/scene/change/3';
         io.emit('phase', { phase: phase });
