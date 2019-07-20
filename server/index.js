@@ -524,15 +524,12 @@ function votesNumberClear() {
 app.get('/api/end',(req,res) => {
     console.log('【GET】/api/end');
 
-    io.emit('/api/end');
+    io.emit('/api/end', {
+        isTrueEnd: isTrueEnd
+    });
     res.send('end');
     phase = '/api/end';
     io.emit('phase', { phase: phase });
-    if (isTrueEnd === false) {
-        io.emit('/api/end', {
-            colorId: false
-        });
-    };
 });
 
 // リセット
