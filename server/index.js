@@ -528,6 +528,11 @@ app.get('/api/end',(req,res) => {
     res.send('end');
     phase = '/api/end';
     io.emit('phase', { phase: phase });
+    if (isTrueEnd === false) {
+        io.emit('/api/end', {
+            colorId: false
+        });
+    };
 });
 
 // リセット

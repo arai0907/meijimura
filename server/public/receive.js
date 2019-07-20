@@ -275,8 +275,7 @@ socket.on('/api/end', (data) => {
     console.log('サーバーからWebSocketで/api/endのデータを受信しました。')
     console.log(data);
 
-    io.emit('/api/end', { isTrueEnd: isTrueEnd });
-    if(isTrueEnd === false) {
+    if(data.colorId === false) {
       false_animaiton();
     }
   }
