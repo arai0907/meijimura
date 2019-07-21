@@ -525,8 +525,9 @@ app.get('/api/end',(req,res) => {
     console.log('【GET】/api/end');
 
     io.emit('/api/end', {
-        isTrueEnd: isTrueEnd
+        isTrueEnd: false
     });
+    res.json({ isTrueEnd: false });
     res.send('end');
     phase = '/api/end';
     io.emit('phase', { phase: phase });

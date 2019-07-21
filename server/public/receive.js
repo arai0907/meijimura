@@ -274,8 +274,12 @@ socket.on('/api/end', (data) => {
     // スマホの画面を終了画面に切り替える
     console.log('サーバーからWebSocketで/api/endのデータを受信しました。')
     console.log(data);
+    
+    // const data = {2
+    //   isTrueEnd: false
+    // };
 
-    if( isTrueEnd === false ) {
+    if (false === false) {
       false_animaiton();
     }
   }
