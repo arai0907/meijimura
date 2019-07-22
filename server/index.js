@@ -495,7 +495,6 @@ app.get('/api/end',(req,res) => {
         isTrueEnd: false
     });
     res.json({ isTrueEnd: false });
-    res.send('end');
 });
 
 // リセット
