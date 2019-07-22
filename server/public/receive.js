@@ -241,10 +241,10 @@ socket.on('/api/scene/change/3', (data) => {
         orange_animaiton();
     } else if(data.colorId === COLORS.purple) {
         purple_animaiton();
-    } else if(data.colorId === COLORS.sameVote) {
+    } else if (data.colorId === COLORS.sameVote) {
         false_animaiton();
     }
-  }
+  };
 });
 
 // 画面の切り替え4
@@ -274,6 +274,14 @@ socket.on('/api/end', (data) => {
     // スマホの画面を終了画面に切り替える
     console.log('サーバーからWebSocketで/api/endのデータを受信しました。')
     console.log(data);
+    
+    // const data = {2
+    //   isTrueEnd: false
+    // };
+
+    if (data.isTrueEnd === false) {
+      false_animaiton();
+    }
   }
 });
 
