@@ -378,8 +378,6 @@ app.get('/api/scene/change/:id',(req,res) => {
         console.log(`1回目の投票結果 - ${ vote1ResultColorId }, 2回目の投票結果 -  ${ vote2ResultColorId }`);
         console.log('----------------------------------------');
 
-        // const mixColor = Math.max(green,orange,purple);
-
         if (
             trueColorId &&
             (TRUE_COLORS['id' + trueColorId][0] === vote1ResultColorId ||
@@ -393,35 +391,6 @@ app.get('/api/scene/change/:id',(req,res) => {
             // False End の時 
             isTrueEnd = false;
         }
-        
-        // if (mixColor === green) {
-        //     io.emit('/api/scene/change/3', {
-        //         colorId: trueColorId,
-        //         sceneId: 3
-        //     });
-        //     res.json({ colorId: COLORS.green });
-        //     // 投票数をリセット
-        //     votesNumberClear();
-        //     return;
-        // } else if (mixColor === orange) {
-        //     io.emit('/api/scene/change/3', {
-        //         colorId: COLORS.orange,
-        //         sceneId: 3
-        //     });
-        //     res.json({ colorId: COLORS.orange });
-        //     // 投票数をリセット
-        //     votesNumberClear();
-        //     return;
-        // } else if (mixColor === purple) {
-        //     io.emit('/api/scene/change/3', {
-        //         colorId: COLORS.purple,
-        //         sceneId: 3
-        //     });
-        //     res.json({ colorId: COLORS.purple });
-        //     // 投票数をリセット
-        //     votesNumberClear();
-        //     return;
-        // }
 
         if (vote1ResultColorId === COLORS.red && vote2ResultColorId === COLORS.yellow ||
             vote1ResultColorId === COLORS.yellow && vote2ResultColorId === COLORS.red) {
@@ -450,7 +419,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.green });
             // 投票数をリセット
             votesNumberClear();
-        }else if (vote1ResultColorId === COLORS.red && vote2ResultColorId === COLORS.red ||
+        } else (vote1ResultColorId === COLORS.red && vote2ResultColorId === COLORS.red ||
             vote1ResultColorId === COLORS.yellow && vote2ResultColorId === COLORS.yellow ||
             vote1ResultColorId === COLORS.blue && vote2ResultColorId === COLORS.blue) {
             io.emit('/api/scene/change/3', {
