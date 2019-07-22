@@ -279,7 +279,7 @@ socket.on('/api/end', (data) => {
     //   isTrueEnd: false
     // };
 
-    if (false === false) {
+    if (data.isTrueEnd === false) {
       false_animaiton();
     }
   }

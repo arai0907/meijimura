@@ -432,7 +432,6 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.orange });
             // 投票数をリセット
             votesNumberClear();
-            return;
         } else if (vote1ResultColorId === COLORS.red && vote2ResultColorId === COLORS.blue ||
             vote1ResultColorId === COLORS.blue && vote2ResultColorId === COLORS.red) {
             io.emit('/api/scene/change/3', {
@@ -442,7 +441,6 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.purple });
             // 投票数をリセット
             votesNumberClear();
-            return;
         } else if (vote1ResultColorId === COLORS.yellow && vote2ResultColorId === COLORS.blue ||
             vote1ResultColorId === COLORS.blue && vote2ResultColorId === COLORS.yellow) {
             io.emit('/api/scene/change/3', {
@@ -452,7 +450,6 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.green });
             // 投票数をリセット
             votesNumberClear();
-            return;
         }else if (vote1ResultColorId === COLORS.red && vote2ResultColorId === COLORS.red ||
             vote1ResultColorId === COLORS.yellow && vote2ResultColorId === COLORS.yellow ||
             vote1ResultColorId === COLORS.blue && vote2ResultColorId === COLORS.blue) {
@@ -463,7 +460,6 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.sameVote });
             // 投票数をリセット
             votesNumberClear();
-            return;
         }
 
         phase = '/api/scene/change/3';
@@ -524,13 +520,13 @@ function votesNumberClear() {
 app.get('/api/end',(req,res) => {
     console.log('【GET】/api/end');
 
+    phase = '/api/end';
+    io.emit('phase', { phase: phase });
     io.emit('/api/end', {
         isTrueEnd: false
     });
     res.json({ isTrueEnd: false });
     res.send('end');
-    phase = '/api/end';
-    io.emit('phase', { phase: phase });
 });
 
 // リセット
