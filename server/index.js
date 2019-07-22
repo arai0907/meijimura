@@ -419,9 +419,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             res.json({ colorId: COLORS.green });
             // 投票数をリセット
             votesNumberClear();
-        } else (vote1ResultColorId === COLORS.red && vote2ResultColorId === COLORS.red ||
-            vote1ResultColorId === COLORS.yellow && vote2ResultColorId === COLORS.yellow ||
-            vote1ResultColorId === COLORS.blue && vote2ResultColorId === COLORS.blue) {
+        } else {
             io.emit('/api/scene/change/3', {
                 colorId: COLORS.sameVote,
                 sceneId: 3
