@@ -254,6 +254,7 @@ socket.on('/api/scene/change/4', (data) => {
     waitPage.style.opacity = 0.0;
     waitPage.style.display = 'none';
     callMpPage();
+    deletelColorPage();
     console.log('サーバーからWebSocketで/api/scene/change/4のデータを受信しました。')
     console.log(data);
 
@@ -271,6 +272,7 @@ socket.on('/api/endroll', (data) => {
     waitPage.style.opacity = 0.0;
     waitPage.style.display = 'none';
     callMpPage();
+    deletelColorPage();
     console.log('サーバーからWebSocketで/api/endrollのデータを受信しました。')
     console.log(data);
 
