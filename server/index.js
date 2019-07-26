@@ -483,6 +483,16 @@ function votesNumberClear() {
     });
 };
 
+// Endroll
+app.get('/api/endroll',(req,res) => {
+    console.log('/api/endroll');
+
+    io.emit('/api/endroll');
+    res.json({});
+    phase = '/api/endroll';
+    io.emit('phase', { phase: phase });
+});
+
 // ED
 app.get('/api/end',(req,res) => {
     console.log('【GET】/api/end');
