@@ -260,10 +260,24 @@ socket.on('/api/scene/change/4', (data) => {
     if(data.colorId === COLORS.black) {
       alert('黒のアニメーション');
     } else if(data.colorId === COLORS.white) {
-      alert('白のアニメーション');
+      true_animaiton();
     }
   }
 });
+
+socket.on('/api/endroll', (data) => {
+  if ( boolWait == 'true'){
+
+    waitPage.style.opacity = 0.0;
+    waitPage.style.display = 'none';
+    callMpPage();
+    console.log('サーバーからWebSocketで/api/endrollのデータを受信しました。')
+    console.log(data);
+
+    // Endrollアニメーション
+    endroll_animaiton();
+  }
+})
 
 socket.on('/api/end', (data) => {
   if( boolWait == 'true'){
@@ -274,10 +288,6 @@ socket.on('/api/end', (data) => {
     // スマホの画面を終了画面に切り替える
     console.log('サーバーからWebSocketで/api/endのデータを受信しました。')
     console.log(data);
-    
-    // const data = {2
-    //   isTrueEnd: false
-    // };
 
     if (data.isTrueEnd === false) {
       false_animaiton();
