@@ -13,16 +13,16 @@ function opening() {
     console.log("opening");
     createjs.Ticker.setFPS(lib.properties.fps);
     createjs.Ticker.addEventListener("tick",stage);
-  
+
   }
-  
+
   function red_animaiton() {
     var stage = new createjs.Stage('mappingPage');
     stage.canvas.width  = 414;
     stage.canvas.height = 736;
     // Animate CCで出力したコンテンツを読み込む
     // 引数の文字列はAnimate CCから出力したHTMLファイルから調べる
-    var comp = AdobeAn.getComposition("1870C9A25804B243BF68042DB3A873E1");
+    var comp = AdobeAn.getComposition("75CD6775DCFD78479361BCD75BF44E17");
     // ライブラリ内のコンテンツを読み込む
     var lib = comp.getLibrary();
     // Animate CCのシンボル名の先頭に「lib.」をつけると利用できます
@@ -32,14 +32,14 @@ function opening() {
     createjs.Ticker.setFPS(lib.properties.fps);
     createjs.Ticker.addEventListener("tick",stage);
   }
-  
+
   function blue_animaiton() {
     var stage = new createjs.Stage('mappingPage');
     stage.canvas.width  = 414;
     stage.canvas.height = 736;
     // Animate CCで出力したコンテンツを読み込む
     // 引数の文字列はAnimate CCから出力したHTMLファイルから調べる
-    var comp = AdobeAn.getComposition("28191B64D23642939C7AA76300F4960C");
+    var comp = AdobeAn.getComposition("A16512C49FBB554CB7B3983F90E15978");
     // ライブラリ内のコンテンツを読み込む
     var lib = comp.getLibrary();
     // Animate CCのシンボル名の先頭に「lib.」をつけると利用できます
@@ -49,15 +49,15 @@ function opening() {
     createjs.Ticker.setFPS(lib.properties.fps);
     createjs.Ticker.addEventListener("tick",stage);
   }
-  
+
   function yellow_animaiton() {
-  
+
     var stage = new createjs.Stage('mappingPage');
     stage.canvas.width  = 414;
     stage.canvas.height = 736;
     // Animate CCで出力したコンテンツを読み込む
     // 引数の文字列はAnimate CCから出力したHTMLファイルから調べる
-    var comp = AdobeAn.getComposition("F9BD2CB9660943639F1210E96E91F9BC");
+    var comp = AdobeAn.getComposition("91B5A76C76DB734EAED026B4511388A6");
     // ライブラリ内のコンテンツを読み込む
     var lib = comp.getLibrary();
     // Animate CCのシンボル名の先頭に「lib.」をつけると利用できます
@@ -67,7 +67,7 @@ function opening() {
     createjs.Ticker.setFPS(lib.properties.fps);
     createjs.Ticker.addEventListener("tick",stage);
   }
-  
+
   function green_animaiton() {
     var stage = new createjs.Stage('mappingPage');
     stage.canvas.width  = 414;
@@ -84,7 +84,7 @@ function opening() {
     createjs.Ticker.setFPS(lib.properties.fps);
     createjs.Ticker.addEventListener("tick",stage);
   }
-  
+
   function purple_animaiton() {
     var stage = new createjs.Stage('mappingPage');
     stage.canvas.width  = 414;
@@ -101,7 +101,7 @@ function opening() {
     createjs.Ticker.setFPS(lib.properties.fps);
     createjs.Ticker.addEventListener("tick",stage);
   }
-  
+
   function orange_animaiton() {
     var stage = new createjs.Stage('mappingPage');
     stage.canvas.width  = 414;
@@ -118,9 +118,9 @@ function opening() {
     createjs.Ticker.setFPS(lib.properties.fps);
     createjs.Ticker.addEventListener("tick",stage);
   }
-  
-  
-  function true_animaiton() {
+
+
+  function white_animaiton() {
     var stage = new createjs.Stage('mappingPage');
     stage.canvas.width  = 414;
     stage.canvas.height = 736;
@@ -132,12 +132,29 @@ function opening() {
     // Animate CCのシンボル名の先頭に「lib.」をつけると利用できます
     var box = new lib._true();
     stage.addChild(box);
-    console.log("true");
+    console.log("white");
     createjs.Ticker.setFPS(lib.properties.fps);
     createjs.Ticker.addEventListener("tick",stage);
   }
-  
-  
+
+  function black_animaiton() {
+    var stage = new createjs.Stage('mappingPage');
+    stage.canvas.width  = 414;
+    stage.canvas.height = 736;
+    // Animate CCで出力したコンテンツを読み込む
+    // 引数の文字列はAnimate CCから出力したHTMLファイルから調べる
+    var comp = AdobeAn.getComposition("7B10DE9C33FAF64EA8302B6E8A1BEA53");
+    // ライブラリ内のコンテンツを読み込む
+    var lib = comp.getLibrary();
+    // Animate CCのシンボル名の先頭に「lib.」をつけると利用できます
+    var box = new lib.Black();
+    stage.addChild(box);
+    console.log("Black");
+    createjs.Ticker.setFPS(lib.properties.fps);
+    createjs.Ticker.addEventListener("tick",stage);
+  }
+
+
   function false_animaiton() {
     var stage = new createjs.Stage('mappingPage');
     stage.canvas.width  = 414;
@@ -154,7 +171,7 @@ function opening() {
     createjs.Ticker.setFPS(lib.properties.fps);
     createjs.Ticker.addEventListener("tick",stage);
   }
-  
+
   function endroll_animaiton() {
     var stage = new createjs.Stage('mappingPage');
     stage.canvas.width  = 414;
@@ -171,4 +188,3 @@ function opening() {
     createjs.Ticker.setFPS(lib.properties.fps);
     createjs.Ticker.addEventListener("tick",stage);
   }
-  
