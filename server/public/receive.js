@@ -259,9 +259,9 @@ socket.on('/api/scene/change/4', (data) => {
     console.log(data);
 
     if(data.colorId === COLORS.black) {
-      alert('黒のアニメーション');
+      black_animaiton();
     } else if(data.colorId === COLORS.white) {
-      true_animaiton();
+      white_animaiton();
     }
   }
 });
@@ -420,7 +420,7 @@ socket.on('phase', (data) => {
         wMsg2.innerHTML = 'ブラウザを切り替えずそのままの状態で';
         wMsg3.innerHTML = 'マッピングをお楽しみください';
         break;
-        
+
     }
 });
 
