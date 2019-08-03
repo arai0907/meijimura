@@ -216,6 +216,37 @@ function opening() {
     console.log("yellow2");
   }
 
+  function blue2_animaiton() {
+    var comp = AdobeAn.getComposition("BDE1B6BE28D9084EAFDB95895D8C40DF");
+    var lib = comp.getLibrary();
+    var loader = new createjs.LoadQueue(false);
+
+    loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+    loader.addEventListener("complete", function(evt){
+      var lib=comp.getLibrary();
+      var ss=comp.getSpriteSheet();
+      var queue = evt.target;
+      var ssMetadata = lib.ssMetadata;
+      for(i=0; i<ssMetadata.length; i++) {
+        ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+      }
+
+      var box = new lib.blue2();
+      var stage = new createjs.Stage('mappingPage');
+
+      stage.canvas.width  = 414;
+      stage.canvas.height = 736;
+      stage.addChild(box);
+
+      createjs.Ticker.setFPS(lib.properties.fps);
+      createjs.Ticker.addEventListener("tick",stage);
+    });
+
+    loader.loadManifest(lib.properties.manifest);
+
+    console.log("blue2");
+  }
+
   function false_animaiton() {
     var stage = new createjs.Stage('mappingPage');
     stage.canvas.width  = 414;

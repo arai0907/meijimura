@@ -192,7 +192,7 @@ socket.on('/api/scene/change/1', (data) => {
     if(data.colorId === COLORS.red) {
         red2_animaiton();
     } else if(data.colorId === COLORS.blue) {
-        blue_animaiton();
+        blue2_animaiton();
     } else if(data.colorId === COLORS.yellow) {
         yellow2_animaiton();
     } else if(data.colorId === COLORS.sameVote) {
