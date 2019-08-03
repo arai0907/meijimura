@@ -190,11 +190,11 @@ socket.on('/api/scene/change/1', (data) => {
     console.log(data);
 
     if(data.colorId === COLORS.red) {
-        red_animaiton();
+        red2_animaiton();
     } else if(data.colorId === COLORS.blue) {
         blue_animaiton();
     } else if(data.colorId === COLORS.yellow) {
-        yellow_animaiton();
+        yellow2_animaiton();
     } else if(data.colorId === COLORS.sameVote) {
         false_animaiton();
     }
