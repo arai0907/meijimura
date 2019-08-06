@@ -86,8 +86,9 @@
 					// バーの幅（width）を0にして見えないようにする
 					graphRed.style.width = '0%';
 				}
-				phase = '/api/vote/start/3';
-				width = 0;
+				socket.on('phase', (data) => {
+
+				});
 
 				// 黄
 				if (Y > 0) {
