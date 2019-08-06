@@ -81,19 +81,24 @@
 				if (R > 0) {
 					// 赤の投票数が1票以上の時の処理
 					graphRed.style.width = `${R / total * 100}%`;
+					phase = '/api/vote/start/3';
+					io.emit('phase', {
+						width: 0
+					});
 				} else {
 					// 赤の投票数が0以下の時の処理
 					// バーの幅（width）を0にして見えないようにする
 					graphRed.style.width = '0%';
 				}
-				socket.on('phase', (data) => {
-					console.log(data);
-				});
 
 				// 黄
 				if (Y > 0) {
 					// 黄の投票数が1票以上の時の処理
 					graphyellow.style.width = `${Y / total * 100}%`;
+					phase = '/api/vote/start/3';
+					io.emit('phase', {
+						width: 0
+					});
 				} else {
 					// 黄の投票数が0以下の時の処理
 					// バーの幅（width）を0にして見えないようにする
@@ -104,6 +109,10 @@
 				if (B > 0) {
 					// 青の投票数が1票以上の時の処理
 					graphblue.style.width = `${B / total * 100}%`;
+					phase = '/api/vote/start/3';
+					io.emit('phase', {
+						width: 0
+					});
 				} else {
 					// 青の投票数が0以下の時の処理
 					// バーの幅（width）を0にして見えないようにする
@@ -137,6 +146,10 @@
 				graphblack.style.width = '0%';
 				graphwhite.style.width = '0%';
 			}
+		});
+
+		socket.on('phase', (data) => {
+			console.log(data);
 		});
 	</script>
 </body>
