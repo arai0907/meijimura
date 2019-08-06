@@ -58,6 +58,7 @@
 	</div>
 
 	<script>
+		let phase = '';
 		const socket = io();
 
 		const graphRed = document.getElementById("js-vote-red");
@@ -81,10 +82,6 @@
 				if (R > 0) {
 					// 赤の投票数が1票以上の時の処理
 					graphRed.style.width = `${R / total * 100}%`;
-					phase = '/api/vote/start/3';
-					io.emit('phase', {
-						width: 0
-					});
 				} else {
 					// 赤の投票数が0以下の時の処理
 					// バーの幅（width）を0にして見えないようにする
@@ -95,10 +92,6 @@
 				if (Y > 0) {
 					// 黄の投票数が1票以上の時の処理
 					graphyellow.style.width = `${Y / total * 100}%`;
-					phase = '/api/vote/start/3';
-					io.emit('phase', {
-						width: 0
-					});
 				} else {
 					// 黄の投票数が0以下の時の処理
 					// バーの幅（width）を0にして見えないようにする
@@ -109,10 +102,6 @@
 				if (B > 0) {
 					// 青の投票数が1票以上の時の処理
 					graphblue.style.width = `${B / total * 100}%`;
-					phase = '/api/vote/start/3';
-					io.emit('phase', {
-						width: 0
-					});
 				} else {
 					// 青の投票数が0以下の時の処理
 					// バーの幅（width）を0にして見えないようにする
