@@ -58,7 +58,7 @@
 	</div>
 
 	<script>
-		let phase = 'data.phase';
+		let phase = '';
 		const socket = io();
 
 		const graphRed = document.getElementById("js-vote-red");
@@ -140,13 +140,7 @@
 		socket.on('phase', (data) => {
 			console.log(data);
 
-			if(data.phase === data.R) {
-				graphRed.style.width = 0;
-			} else if(data.phase === data.Y) {
-				graphyellow.style.width = 0;
-			} else if(data.phase === data.B) {
-				graphblue.style.width = 0;
-			}
+
 		});
 	</script>
 </body>
