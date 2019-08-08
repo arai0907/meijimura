@@ -58,7 +58,6 @@
 	</div>
 
 	<script>
-		let phase = '';
 		const socket = io();
 
 		const graphRed = document.getElementById("js-vote-red");
@@ -138,7 +137,9 @@
 		});
 
 		socket.on('phase', (data) => {
-			console.log(data);
+			let phase = data;
+
+			console.log(phase);
 
 
 		});
