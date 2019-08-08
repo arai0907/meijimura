@@ -136,8 +136,10 @@
 			}
 		});
 
+		let phase = '';
+
 		socket.on('phase', (data) => {
-			let phase = data.phase;
+			phase = data.phase;
 
 			console.log(phase);
 
