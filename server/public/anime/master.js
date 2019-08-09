@@ -4,11 +4,11 @@ function opening() {
     stage.canvas.height = 736;
     // Animate CCで出力したコンテンツを読み込む
     // 引数の文字列はAnimate CCから出力したHTMLファイルから調べる
-    var comp = AdobeAn.getComposition("FC04ADEABFEC944CB5C638C13B6439D1");
+    var comp = AdobeAn.getComposition("320208A0C54ABB44A408C5BED95BDF4A");
     // ライブラリ内のコンテンツを読み込む
     var lib = comp.getLibrary();
     // Animate CCのシンボル名の先頭に「lib.」をつけると利用できます
-    var box = new lib.opening();
+    var box = new lib.OP();
     stage.addChild(box);
     console.log("opening");
     createjs.Ticker.setFPS(lib.properties.fps);
@@ -69,37 +69,65 @@ function opening() {
   }
 
   function green_animaiton() {
-    var stage = new createjs.Stage('mappingPage');
-    stage.canvas.width  = 414;
-    stage.canvas.height = 736;
-    // Animate CCで出力したコンテンツを読み込む
-    // 引数の文字列はAnimate CCから出力したHTMLファイルから調べる
-    var comp = AdobeAn.getComposition("D9672207A79826468258E7ACDF875F3E");
-    // ライブラリ内のコンテンツを読み込む
+    var comp = AdobeAn.getComposition("BFB189BF562C484782C3932DDD08AA20");
     var lib = comp.getLibrary();
-    // Animate CCのシンボル名の先頭に「lib.」をつけると利用できます
-    var box = new lib.green();
-    stage.addChild(box);
+    var loader = new createjs.LoadQueue(false);
+
+    loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+    loader.addEventListener("complete", function(evt){
+      var lib=comp.getLibrary();
+      var ss=comp.getSpriteSheet();
+      var queue = evt.target;
+      var ssMetadata = lib.ssMetadata;
+      for(i=0; i<ssMetadata.length; i++) {
+        ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+      }
+
+      var box = new lib.green();
+      var stage = new createjs.Stage('mappingPage');
+
+      stage.canvas.width  = 414;
+      stage.canvas.height = 736;
+      stage.addChild(box);
+
+      createjs.Ticker.setFPS(lib.properties.fps);
+      createjs.Ticker.addEventListener("tick",stage);
+    });
+
+    loader.loadManifest(lib.properties.manifest);
+
     console.log("green");
-    createjs.Ticker.setFPS(lib.properties.fps);
-    createjs.Ticker.addEventListener("tick",stage);
   }
 
   function purple_animaiton() {
-    var stage = new createjs.Stage('mappingPage');
-    stage.canvas.width  = 414;
-    stage.canvas.height = 736;
-    // Animate CCで出力したコンテンツを読み込む
-    // 引数の文字列はAnimate CCから出力したHTMLファイルから調べる
-    var comp = AdobeAn.getComposition("D4C55AA399BE47B096256101406838C2");
-    // ライブラリ内のコンテンツを読み込む
+    var comp = AdobeAn.getComposition("14632E5FB800BA4494A184A2DA1C4C20");
     var lib = comp.getLibrary();
-    // Animate CCのシンボル名の先頭に「lib.」をつけると利用できます
-    var box = new lib.purple();
-    stage.addChild(box);
+    var loader = new createjs.LoadQueue(false);
+
+    loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+    loader.addEventListener("complete", function(evt){
+      var lib=comp.getLibrary();
+      var ss=comp.getSpriteSheet();
+      var queue = evt.target;
+      var ssMetadata = lib.ssMetadata;
+      for(i=0; i<ssMetadata.length; i++) {
+        ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+      }
+
+      var box = new lib.purple();
+      var stage = new createjs.Stage('mappingPage');
+
+      stage.canvas.width  = 414;
+      stage.canvas.height = 736;
+      stage.addChild(box);
+
+      createjs.Ticker.setFPS(lib.properties.fps);
+      createjs.Ticker.addEventListener("tick",stage);
+    });
+
+    loader.loadManifest(lib.properties.manifest);
+
     console.log("purple");
-    createjs.Ticker.setFPS(lib.properties.fps);
-    createjs.Ticker.addEventListener("tick",stage);
   }
 
   function orange_animaiton() {
@@ -253,11 +281,11 @@ function opening() {
     stage.canvas.height = 736;
     // Animate CCで出力したコンテンツを読み込む
     // 引数の文字列はAnimate CCから出力したHTMLファイルから調べる
-    var comp = AdobeAn.getComposition("2187670730B0744DB54BAC1B985A6C88");
+    var comp = AdobeAn.getComposition("094486F273D67049BD5BEC32448026B7");
     // ライブラリ内のコンテンツを読み込む
     var lib = comp.getLibrary();
     // Animate CCのシンボル名の先頭に「lib.」をつけると利用できます
-    var box = new lib.False();
+    var box = new lib.False2();
     stage.addChild(box);
     console.log("false");
     createjs.Ticker.setFPS(lib.properties.fps);
@@ -270,11 +298,11 @@ function opening() {
     stage.canvas.height = 736;
     // Animate CCで出力したコンテンツを読み込む
     // 引数の文字列はAnimate CCから出力したHTMLファイルから調べる
-    var comp = AdobeAn.getComposition("062A68303AD206459B2310020EBB2621");
+    var comp = AdobeAn.getComposition("780572263170584C83D340CD9E8880BF");
     // ライブラリ内のコンテンツを読み込む
     var lib = comp.getLibrary();
     // Animate CCのシンボル名の先頭に「lib.」をつけると利用できます
-    var box = new lib.Endroll();
+    var box = new lib.Endroll2();
     stage.addChild(box);
     console.log("endroll");
     createjs.Ticker.setFPS(lib.properties.fps);
