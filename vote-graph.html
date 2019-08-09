@@ -58,6 +58,7 @@
 	</div>
 
 	<script>
+		let phase = '';
 		const socket = io();
 
 		const graphRed = document.getElementById("js-vote-red");
@@ -133,6 +134,18 @@
 				graphblue.style.width = '0%';
 				graphblack.style.width = '0%';
 				graphwhite.style.width = '0%';
+			}
+		});
+
+		socket.on('phase', (data) => {
+			phase = data.phase;
+
+			console.log(phase);
+
+			if (phase === '/api/vote/start/3') {
+				graphRed.style.width = '0%';
+				graphyellow.style.width = '0%';
+				graphblue.style.width = '0%';
 			}
 		});
 	</script>
