@@ -142,7 +142,11 @@
 
 			console.log(phase);
 
-
+			if (phase === '/api/vote/start/3') {
+				graphRed.style.width = 0;
+				graphyellow.style.width = 0;
+				graphblue.style.width = 0;
+			}
 		});
 	</script>
 </body>
