@@ -326,7 +326,7 @@ app.get('/api/scene/change/:id',(req,res) => {
         }
 
         // 投票数をリセット
-        votesNumberClear();
+        // votesNumberClear();
         
         phase = '/api/scene/change/1';
         io.emit('phase', { phase: phase });
@@ -346,7 +346,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.sameVote });
             // 投票数をリセット
-            votesNumberClear();
+            // votesNumberClear();
             return;
         }
 
@@ -357,7 +357,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.red });
             // 投票数をリセット
-            votesNumberClear();
+            // votesNumberClear();
             return;
         } else if (maxVoteNumber2 === yellow) {
             io.emit('/api/scene/change/2', {
@@ -366,7 +366,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.yellow });
             // 投票数をリセット
-            votesNumberClear();
+            // votesNumberClear();
             return;
         } else if (maxVoteNumber2 === blue) {
             io.emit('/api/scene/change/2', {
@@ -375,7 +375,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.blue });
             // 投票数をリセット
-            votesNumberClear();
+            // votesNumberClear();
             return;
         }
     } else if (req.params.id === '3') {
@@ -406,7 +406,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.orange });
             // 投票数をリセット
-            votesNumberClear();
+            // votesNumberClear();
         } else if (vote1ResultColorId === COLORS.red && vote2ResultColorId === COLORS.blue ||
             vote1ResultColorId === COLORS.blue && vote2ResultColorId === COLORS.red) {
             io.emit('/api/scene/change/3', {
@@ -415,7 +415,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.purple });
             // 投票数をリセット
-            votesNumberClear();
+            // votesNumberClear();
         } else if (vote1ResultColorId === COLORS.yellow && vote2ResultColorId === COLORS.blue ||
             vote1ResultColorId === COLORS.blue && vote2ResultColorId === COLORS.yellow) {
             io.emit('/api/scene/change/3', {
@@ -424,7 +424,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.green });
             // 投票数をリセット
-            votesNumberClear();
+            // votesNumberClear();
         } else {
             io.emit('/api/scene/change/3', {
                 colorId: COLORS.sameVote,
@@ -432,7 +432,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: COLORS.sameVote });
             // 投票数をリセット
-            votesNumberClear();
+            // votesNumberClear();
         }
 
         phase = '/api/scene/change/3';
@@ -446,7 +446,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: 7 });
             // 投票数をリセット
-            votesNumberClear();
+            // votesNumberClear();
           } else if(black < white) {
             // 白の投票数が多かった場合
             io.emit('/api/scene/change/4', {
@@ -455,7 +455,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: 8 });
             // 投票数をリセット
-            votesNumberClear();
+            // votesNumberClear();
           } else {
             io.emit('/api/scene/change/4', {
                 colorId: vote3ResultColorId,
@@ -463,7 +463,7 @@ app.get('/api/scene/change/:id',(req,res) => {
             });
             res.json({ colorId: vote3ResultColorId });
             // 投票数をリセット
-            votesNumberClear();
+            // votesNumberClear();
           }
         phase = '/api/scene/change/4';
         io.emit('phase', { phase: phase });
@@ -519,6 +519,8 @@ app.get('/api/reset',(req,res) => {
     res.json({});
     phase = '/api/reset';
     io.emit('phase', { phase: phase });
+    // 投票数をリセット
+    votesNumberClear();
 });
 
 io.on('connection',(socket) => {
@@ -584,6 +586,6 @@ io.on('connection',(socket) => {
 });
 
 httpServer.listen(3000,function(){
-    // console.log('サーバーが起動しました。URLは http://192.168.1.102:3000 です');
-    console.log('サーバーが起動しました。URLは http://localhost:3000 です');
+    console.log('サーバーが起動しました。URLは http://192.168.1.27:3000 です');
+    // console.log('サーバーが起動しました。URLは http://localhost:3000 です');
 });
