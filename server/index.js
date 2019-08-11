@@ -103,6 +103,8 @@ app.get('/api/start',(req,res) => {
 // 投票開始１
 app.get('/api/vote/start/:id',(req,res) => {
     console.log(`【GET】/api/vote/start/${req.params.id}`);
+    // 投票数をリセット
+    votesNumberClear();
 
     if(req.params.id === '1'){
         io.emit('/api/vote/start/1', {
@@ -111,22 +113,16 @@ app.get('/api/vote/start/:id',(req,res) => {
         phase = '/api/vote/start/1';
         io.emit('phase', { phase: phase });
         res.json({});
-        // 投票数をリセット
-        votesNumberClear();
     } else if(req.params.id == '2') {
         io.emit('/api/vote/start/2');
         phase = '/api/vote/start/2';
         io.emit('phase', { phase: phase });
         res.send('start2');
-        // 投票数をリセット
-        votesNumberClear();
     } else {
         io.emit('/api/vote/start/3');
         phase = '/api/vote/start/3';
         io.emit('phase', { phase: phase });
         res.send('start3');
-        // 投票数をリセット
-        votesNumberClear();
     }
 });
 
