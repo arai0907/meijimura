@@ -92,7 +92,7 @@
 			// 黒
 			if (b > 0) {
 					// 黒の投票数が1票以上の時の処理
-					graphblack.style.width = `${b / total * 100}%`;
+					graphblack.style.width = `${b / totalBW * 100}%`;
 				} else {
 					// 黒の投票数が0以下の時の処理
 					// バーの幅（width）を0にして見えないようにする
@@ -102,7 +102,7 @@
 			// 白
 			if (w > 0) {
 					// 白の投票数が1票以上の時の処理
-					graphwhite.style.width = `${w / total * 100}%`;
+					graphwhite.style.width = `${w / totalBW * 100}%`;
 				} else {
 					// 白の投票数が0以下の時の処理
 					// バーの幅（width）を0にして見えないようにする
@@ -119,7 +119,7 @@
 			// 赤
 			if (R > 0) {
 					// 赤の投票数が1票以上の時の処理
-					graphRed.style.width = `${R / total * 100}%`;
+					graphRed.style.width = `${R / totalRYB * 100}%`;
 				} else {
 					// 赤の投票数が0以下の時の処理
 					// バーの幅（width）を0にして見えないようにする
@@ -129,7 +129,7 @@
 			// 黄
 			if (Y > 0) {
 					// 黄の投票数が1票以上の時の処理
-					graphyellow.style.width = `${Y / total * 100}%`;
+					graphyellow.style.width = `${Y / totalRYB * 100}%`;
 				} else {
 					// 黄の投票数が0以下の時の処理
 					// バーの幅（width）を0にして見えないようにする
@@ -139,7 +139,7 @@
 			// 青
 			if (B > 0) {
 					// 青の投票数が1票以上の時の処理
-					graphblue.style.width = `${B / total * 100}%`;
+					graphblue.style.width = `${B / totalRYB * 100}%`;
 				} else {
 					// 青の投票数が0以下の時の処理
 					// バーの幅（width）を0にして見えないようにする
