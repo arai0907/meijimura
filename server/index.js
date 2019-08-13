@@ -542,8 +542,6 @@ io.on('connection',(socket) => {
     socket.on('vote',(msg) => {
         console.log('ユーザーからのメッセージを受信しました。');
         // このサーバーに接続しているユーザーに受信したメッセージを配信します
-        phase = 'receive';
-        io.emit('phase', { phase: phase });
         console.log(phase);
 
         switch (msg){

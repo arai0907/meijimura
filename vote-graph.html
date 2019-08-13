@@ -58,6 +58,7 @@
 	</div>
 
 	<script>
+		let phase = '';
 		const socket = io();
 
 		const graphRed = document.getElementById("js-vote-red");
@@ -68,7 +69,7 @@
 
 		// サーバーから'vote'といイベントネームのついたメッセージを受け取った時の処理
 		socket.on('vote', function (data) {
-			// サーバーに接続した時と自分や他のユーザーが投票した時に呼び出される
+		// サーバーに接続した時と自分や他のユーザーが投票した時に呼び出される
 			const R = data.R;
 			const Y = data.Y;
 			const B = data.B;
@@ -76,63 +77,94 @@
 			const w = data.w;
 			const total = R + Y + B + b + w;
 
-			if (total > 0) {
-			// 全体の投票数が1以上の時の処理
-				if (R > 0) {
-					// 赤の投票数が1票以上の時の処理
-					graphRed.style.width = `${R / total * 100}%`;
-				} else {
-					// 赤の投票数が0以下の時の処理
-					// バーの幅（width）を0にして見えないようにする
-					graphRed.style.width = '0%';
-				}
+		if (total > 0) {
+			// 全体の投票数が0以上の時
 
-				// 黄
-				if (Y > 0) {
-					// 黄の投票数が1票以上の時の処理
-					graphyellow.style.width = `${Y / total * 100}%`;
-				} else {
-					// 黄の投票数が0以下の時の処理
-					// バーの幅（width）を0にして見えないようにする
-					graphyellow.style.width = '0%';
-				}
-			
-				// 青
-				if (B > 0) {
-					// 青の投票数が1票以上の時の処理
-					graphblue.style.width = `${B / total * 100}%`;
-				} else {
-					// 青の投票数が0以下の時の処理
-					// バーの幅（width）を0にして見えないようにする
-					graphblue.style.width = '0%';
-				}
+			if (phase === '/api/vote/start/3') {
+			// 白・黒の時
+			const totalBW = b + w;
 
-				// 黒
-				if (b > 0) {
+			graphRed.style.width = '0%';
+			graphyellow.style.width = '0%';
+			graphblue.style.width = '0%';
+
+			// 黒と白の幅を変える処理
+			// 黒
+			if (b > 0) {
 					// 黒の投票数が1票以上の時の処理
-					graphblack.style.width = `${b / total * 100}%`;
+					graphblack.style.width = `${b / totalBW * 100}%`;
 				} else {
 					// 黒の投票数が0以下の時の処理
 					// バーの幅（width）を0にして見えないようにする
 					graphblack.style.width = '0%';
 				}
 
-				// 白
-				if (w > 0) {
+			// 白
+			if (w > 0) {
 					// 白の投票数が1票以上の時の処理
-					graphwhite.style.width = `${w / total * 100}%`;
+					graphwhite.style.width = `${w / totalBW * 100}%`;
 				} else {
 					// 白の投票数が0以下の時の処理
 					// バーの幅（width）を0にして見えないようにする
 					graphwhite.style.width = '0%';
 				}
 			} else {
-				// 投票数が全て0の時
+			// 赤・黄・青の時
+			const totalRYB = R + Y + B;
+
+			graphblack.style.width = '0%';
+			graphwhite.style.width = '0%';
+
+			// 赤・黄・青のの幅を変える処理
+			// 赤
+			if (R > 0) {
+					// 赤の投票数が1票以上の時の処理
+					graphRed.style.width = `${R / totalRYB * 100}%`;
+				} else {
+					// 赤の投票数が0以下の時の処理
+					// バーの幅（width）を0にして見えないようにする
+					graphRed.style.width = '0%';
+				}
+
+			// 黄
+			if (Y > 0) {
+					// 黄の投票数が1票以上の時の処理
+					graphyellow.style.width = `${Y / totalRYB * 100}%`;
+				} else {
+					// 黄の投票数が0以下の時の処理
+					// バーの幅（width）を0にして見えないようにする
+					graphyellow.style.width = '0%';
+				}
+
+			// 青
+			if (B > 0) {
+					// 青の投票数が1票以上の時の処理
+					graphblue.style.width = `${B / totalRYB * 100}%`;
+				} else {
+					// 青の投票数が0以下の時の処理
+					// バーの幅（width）を0にして見えないようにする
+					graphblue.style.width = '0%';
+				}
+			}
+		} else {
+			// 投票数が全て0の時
+			graphRed.style.width = '0%';
+			graphyellow.style.width = '0%';
+			graphblue.style.width = '0%';
+			graphblack.style.width = '0%';
+			graphwhite.style.width = '0%';
+			}
+		});
+
+		socket.on('phase', (data) => {
+			phase = data.phase;
+
+			console.log(phase);
+
+			if (phase === '/api/vote/start/3') {
 				graphRed.style.width = '0%';
 				graphyellow.style.width = '0%';
 				graphblue.style.width = '0%';
-				graphblack.style.width = '0%';
-				graphwhite.style.width = '0%';
 			}
 		});
 	</script>
